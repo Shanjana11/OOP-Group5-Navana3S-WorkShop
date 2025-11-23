@@ -8,7 +8,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.group5.navana3s_workshop.Tasfia.User5Controller"
+            fx:controller="com.group5.navana3s_workshop.Tanaka.User3Controller"
             prefHeight="400.0" prefWidth="600.0">
 
 </AnchorPane>
