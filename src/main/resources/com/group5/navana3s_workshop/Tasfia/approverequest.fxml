@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="502.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Tasfia.ApproverequestController">
+   <children>
+      <Label layoutX="36.0" layoutY="29.0" text="Approve Spare Parts  Request">
+         <font>
+            <Font name="Arial Bold Italic" size="23.0" />
+         </font></Label>
+      <TableView fx:id="tableview" layoutX="70.0" layoutY="100.0" prefHeight="266.0" prefWidth="515.0">
+        <columns>
+          <TableColumn fx:id="techniciancol" prefWidth="75.0" text="Technician" />
+          <TableColumn fx:id="partnamecol" prefWidth="103.20001220703125" text="Part Name" />
+            <TableColumn fx:id="qtycol" prefWidth="81.59999084472656" text="Qty" />
+            <TableColumn fx:id="reasoncol" prefWidth="110.4000244140625" text="Reason" />
+            <TableColumn fx:id="statuscol" prefWidth="144.0" text="Status" />
+        </columns>
+      </TableView>
+      <Button layoutX="53.0" layoutY="435.0" mnemonicParsing="false" onAction="#approveOnActionButton" text="Approve" />
+      <Button layoutX="142.0" layoutY="435.0" mnemonicParsing="false" onAction="#rejectOnActionButton" text="Reject" />
+      <Button layoutX="230.0" layoutY="435.0" mnemonicParsing="false" onAction="#backOnActionButton" text="Back" />
+   </children>
+</AnchorPane>
