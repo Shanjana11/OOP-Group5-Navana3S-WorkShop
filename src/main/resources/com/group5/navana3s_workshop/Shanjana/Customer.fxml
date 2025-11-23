@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="485.0" prefWidth="746.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Shanjana.CustomerController">
+   <children>
+      <Label layoutX="36.0" layoutY="45.0" text="Welcome">
+         <font>
+            <Font name="Arial Bold Italic" size="21.0" />
+         </font>
+      </Label>
+      <Button layoutX="36.0" layoutY="104.0" mnemonicParsing="false" onAction="#bookService" text="Book Service" />
+      <Button layoutX="36.0" layoutY="159.0" mnemonicParsing="false" onAction="#serviceHistory" text="View Service HIstory" />
+      <Button layoutX="36.0" layoutY="218.0" mnemonicParsing="false" onAction="#trackStatus" text="Track Service Status" />
+      <Button layoutX="36.0" layoutY="282.0" mnemonicParsing="false" onAction="#checkParts" text="Check Spare Part Availability" />
+      <Button layoutX="464.0" layoutY="104.0" mnemonicParsing="false" onAction="#repairApprove" text="Repair Approval" />
+      <Button layoutX="464.0" layoutY="159.0" mnemonicParsing="false" onAction="#invoice" text="Invoice" />
+      <Button layoutX="464.0" layoutY="218.0" mnemonicParsing="false" onAction="#feedback" text="Feedback/ Complaint" />
+      <Button layoutX="665.0" layoutY="434.0" mnemonicParsing="false" onAction="#logOut" style="-fx-background-color: #3e3e3e;" text="Log Out" textFill="#f4efef" />
+      <Button layoutX="464.0" layoutY="282.0" mnemonicParsing="false" onAction="#warrenty" text="Warranty Claim" />
+      <Line endX="3.600006103515625" endY="235.19998168945312" layoutX="349.0" layoutY="102.0" startX="3.600006103515625" startY="-19.400001525878906" />
+   </children>
+</AnchorPane>
