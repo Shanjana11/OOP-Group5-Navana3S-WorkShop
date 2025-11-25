@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="599.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Tasfia.FaultdiagnosisController">
+   <children>
+      <Label layoutX="41.0" layoutY="31.0" prefHeight="18.0" prefWidth="175.0" text="Fault Diagnosis">
+         <font>
+            <Font name="Arial Bold Italic" size="23.0" />
+         </font></Label>
+      <Label layoutX="33.0" layoutY="94.0" text="Job ID :" />
+      <Label layoutX="33.0" layoutY="130.0" text="Vechicle No :" />
+      <TextField fx:id="jobfield" layoutX="120.0" layoutY="90.0" promptText="JOB001" />
+      <TextField fx:id="vechiclefield" layoutX="122.0" layoutY="126.0" prefHeight="26.0" prefWidth="157.0" promptText="DHAKA-XX-1234" />
+      <Label layoutX="39.0" layoutY="189.0" prefHeight="18.0" prefWidth="109.0" text="Problem Details" />
+      <Label layoutX="21.0" layoutY="238.0" prefHeight="163.0" prefWidth="138.0" />
+      <Label layoutX="400.0" layoutY="32.0" text="Diagnosis Entry" />
+      <Label layoutX="372.0" layoutY="73.0" text="Error Code" />
+      <TextField fx:id="errorfield" layoutX="459.0" layoutY="69.0" />
+      <Label layoutX="386.0" layoutY="131.0" text="Description" />
+      <Label layoutX="483.0" layoutY="123.0" prefHeight="171.0" prefWidth="175.0" />
+      <TableView fx:id="tableview" layoutX="323.0" layoutY="349.0" prefHeight="171.0" prefWidth="370.0">
+        <columns>
+          <TableColumn fx:id="errorcol" prefWidth="178.4000244140625" text="Error Code" />
+          <TableColumn fx:id="descriptioncol" prefWidth="204.00003051757812" text="Description" />
+        </columns>
+      </TableView>
+      <Button layoutX="545.0" layoutY="307.0" mnemonicParsing="false" onAction="#addDiagnosisButton" text="Add Diagnosis" />
+      <Button layoutX="415.0" layoutY="541.0" mnemonicParsing="false" onAction="#saveOnActionButton" style="-fx-background-color: #3e3e3e;" text="Save" textFill="#faf7f7" />
+      <Button layoutX="526.0" layoutY="541.0" mnemonicParsing="false" onAction="#backOnActionButton" style="-fx-background-color: #3e3e3e;" text="Back" textFill="#eceaea" />
+   </children>
+</AnchorPane>
