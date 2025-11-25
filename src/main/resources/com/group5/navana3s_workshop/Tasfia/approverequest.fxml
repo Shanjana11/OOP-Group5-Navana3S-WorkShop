@@ -22,7 +22,7 @@
             <TableColumn fx:id="statuscol" prefWidth="144.0" text="Status" />
         </columns>
       </TableView>
-      <Button layoutX="53.0" layoutY="435.0" mnemonicParsing="false" onAction="#approveOnActionButton" text="Approve" />
+      <Button layoutX="53.0" layoutY="435.0" mnemonicParsing="false" onAction="#approveOnActionButton" text="Approve" textFill="#1e1d1d" />
       <Button layoutX="142.0" layoutY="435.0" mnemonicParsing="false" onAction="#rejectOnActionButton" text="Reject" />
       <Button layoutX="230.0" layoutY="435.0" mnemonicParsing="false" onAction="#backOnActionButton" text="Back" />
    </children>
