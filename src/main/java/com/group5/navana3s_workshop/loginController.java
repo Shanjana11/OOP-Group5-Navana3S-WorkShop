@@ -129,7 +129,7 @@ public class loginController
             stage.setTitle("Spare Parts Manager Dashboard");
             stage.setScene(scene);
         } else if ((userComboBox.getValue().equals("Workshop Manager")) && (passLogIn.getText().equals("12345"))) {
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Karima/user7.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Karima/manager_dashboard.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = null;
             stage = (Stage) loginInfo.getScene().getWindow();
