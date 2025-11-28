@@ -136,7 +136,7 @@ public class loginController
             stage.setTitle("Workshop Manager Dashboard");
             stage.setScene(scene);
         } else if ((userComboBox.getValue().equals("Sales Executive")) && (passLogIn.getText().equals("12345"))) {
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Shanjana/csa.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Karima/sales_dashboard.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = null;
             stage = (Stage) loginInfo.getScene().getWindow();
