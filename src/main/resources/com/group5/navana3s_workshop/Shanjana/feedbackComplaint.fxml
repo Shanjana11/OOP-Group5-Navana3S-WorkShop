@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="521.0" prefWidth="759.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Shanjana.FeedbackComplaintController">
+   <children>
+      <Label layoutX="35.0" layoutY="36.0" text="Feedback">
+         <font>
+            <Font name="Arial Bold Italic" size="23.0" />
+         </font>
+      </Label>
+      <TextField fx:id="customerNF" layoutX="445.0" layoutY="137.0" promptText="Customer Name" />
+      <ComboBox fx:id="typeCombo" layoutX="109.0" layoutY="199.0" prefHeight="26.0" prefWidth="188.0" promptText="Select Service Type" />
+      <ComboBox fx:id="rateCombo" layoutX="426.0" layoutY="199.0" prefHeight="26.0" prefWidth="188.0" promptText="Rating" />
+      <TextField fx:id="customerIDF" layoutX="128.0" layoutY="137.0" promptText="Customer ID" />
+      <Label fx:id="infoLabel" alignment="CENTER" layoutX="212.0" layoutY="328.0" prefHeight="87.0" prefWidth="336.0" />
+      <Button layoutX="354.0" layoutY="261.0" mnemonicParsing="false" onAction="#submitButton" style="-fx-background-color: #3e3e3e;" text="Submit" textFill="#fcfafa" />
+      <Button layoutX="671.0" layoutY="460.0" mnemonicParsing="false" onAction="#backButton" style="-fx-background-color: #3e3e3e;" text="Back" textFill="#f7f3f3" />
+   </children>
+</AnchorPane>

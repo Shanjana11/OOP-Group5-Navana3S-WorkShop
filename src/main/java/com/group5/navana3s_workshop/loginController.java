@@ -33,7 +33,7 @@ public class loginController
 
     @FXML
     public void initialize() {
-        userComboBox.getItems().addAll("Customer", "Customer Service Advisor", "Accounts Officer", "Customer Support Executive", "Technician", "Spare Parts Manager", "Workshop Manager", "Sales Executive");
+        userComboBox.getItems().addAll("Customer", "Customer Service Advisor", "Accounts Officer", "Marketing & Promotional Officer", "Technician", "Spare Parts Manager", "Workshop Manager", "Sales Executive");
     }
 
     @FXML
@@ -101,13 +101,13 @@ public class loginController
             stage.setTitle("Customer Service Advisor Dashboard");
             stage.setScene(scene);
         } else if ((userComboBox.getValue().equals("Accounts Officer")) && (passLogIn.getText().equals("12345"))) {
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Shanjana/csa.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Tanaka/accountsOfficerDashboard.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = null;
             stage = (Stage) loginInfo.getScene().getWindow();
             stage.setTitle("Accounts Officer Dashboard");
             stage.setScene(scene);
-        } else if ((userComboBox.getValue().equals("Customer Support Executive")) && (passLogIn.getText().equals("12345"))) {
+        } else if ((userComboBox.getValue().equals("Marketing & Promotional Officer")) && (passLogIn.getText().equals("12345"))) {
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Shanjana/csa.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = null;
@@ -129,14 +129,14 @@ public class loginController
             stage.setTitle("Spare Parts Manager Dashboard");
             stage.setScene(scene);
         } else if ((userComboBox.getValue().equals("Workshop Manager")) && (passLogIn.getText().equals("12345"))) {
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Karima/user7.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Karima/manager_dashboard.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = null;
             stage = (Stage) loginInfo.getScene().getWindow();
             stage.setTitle("Workshop Manager Dashboard");
             stage.setScene(scene);
         } else if ((userComboBox.getValue().equals("Sales Executive")) && (passLogIn.getText().equals("12345"))) {
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Shanjana/csa.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Karima/sales_dashboard.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = null;
             stage = (Stage) loginInfo.getScene().getWindow();

@@ -5,7 +5,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="488.0" prefWidth="715.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.UserDashboardController">
    <children>
       <Label layoutX="23.0" layoutY="22.0" text="Dashboard">
@@ -13,6 +12,6 @@
             <Font name="System Bold Italic" size="23.0" />
          </font>
       </Label>
-      <Button layoutX="611.0" layoutY="423.0" mnemonicParsing="false" onAction="#LogOut" text="Log Out" />
+      <Button layoutX="611.0" layoutY="423.0" mnemonicParsing="false" onAction="#LogOut" style="-fx-background-color: #3e3e3e;" text="Log Out" textFill="#f4f1f1" />
    </children>
 </AnchorPane>

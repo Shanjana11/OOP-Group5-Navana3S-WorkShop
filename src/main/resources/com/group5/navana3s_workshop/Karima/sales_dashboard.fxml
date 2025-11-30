@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="440.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Karima.sales_dashboardController">
+   <children>
+      <Label layoutX="193.0" layoutY="26.0" text=" Sales Executive Dashboard">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="285.0" layoutY="71.0" text="WELCOME">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="43.0" layoutY="302.0" text="Customer Consultation">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="361.0" layoutY="184.0" text="Customer Management">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="59.0" layoutY="245.0" text="Financing Options">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="371.0" layoutY="129.0" text="Payment coordination">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="379.0" layoutY="302.0" text="Sales Performance">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="66.0" layoutY="184.0" text="Vehicle Booking">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="397.0" layoutY="245.0" text="Sales History">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="51.0" layoutY="129.0" text="Vehicle Specification">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Line endX="30.20001220703125" endY="149.60003662109375" layoutX="290.0" layoutY="184.0" startX="30.20001220703125" startY="-62.80000305175781" />
+      <Button layoutX="285.0" layoutY="373.0" mnemonicParsing="false" onAction="#logOutButton" style="-fx-background-color: black;" text="LOG OUT" textFill="WHITE" />
+      <Button layoutX="229.0" layoutY="300.0" mnemonicParsing="false" onAction="#customerConsultation" text="OPEN" />
+      <Button layoutX="531.0" layoutY="182.0" mnemonicParsing="false" onAction="#customerManagement" text="OPEN" />
+      <Button layoutX="229.0" layoutY="241.0" mnemonicParsing="false" onAction="#financingOptions" text="OPEN" />
+      <Button layoutX="531.0" layoutY="127.0" mnemonicParsing="false" onAction="#paymentCoordination" text="OPEN" />
+      <Button layoutX="531.0" layoutY="298.0" mnemonicParsing="false" onAction="#salesPerformance" text="OPEN" />
+      <Button layoutX="229.0" layoutY="182.0" mnemonicParsing="false" onAction="#vehicleBooking" text="OPEN" />
+      <Button layoutX="531.0" layoutY="241.0" mnemonicParsing="false" onAction="#salesHistory" text="OPEN" />
+      <Button layoutX="229.0" layoutY="127.0" mnemonicParsing="false" onAction="#vehicleSpecification" text="OPEN" />
+   </children>
+</AnchorPane>

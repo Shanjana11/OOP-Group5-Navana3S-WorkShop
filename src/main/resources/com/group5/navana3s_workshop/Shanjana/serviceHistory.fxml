@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="537.0" prefWidth="867.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Shanjana.ServiceHistoryController">
+    <children>
+        <Text layoutX="45.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Service History">
+            <font>
+                <Font name="Arial Bold Italic" size="23.0" />
+            </font>
+        </Text>
+
+        <TableView fx:id="serviceHistoryTable" layoutX="50.0" layoutY="65.0" prefHeight="314.0" prefWidth="766.0">
+            <columns>
+                <TableColumn fx:id="bookingIdCol" prefWidth="120.0" text="Booking ID" />
+                <TableColumn fx:id="dateCol" prefWidth="140.0" text="Service Date" />
+                <TableColumn fx:id="serviceTypeCol" prefWidth="180.0" text="Service Type" />
+                <TableColumn fx:id="invoiceNoCol" prefWidth="130.0" text="Invoice No" />
+                <TableColumn fx:id="amountCol" prefWidth="120.0" text="Amount" />
+                <TableColumn fx:id="statusCol" prefWidth="116.0" text="Status" />
+            </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+        </TableView>
+
+        <Button layoutX="769.0" layoutY="480.0" mnemonicParsing="false" onAction="#BackButton" prefHeight="36.0" prefWidth="66.0" style="-fx-background-color: #3e3e3e;" text="Back" textFill="WHITE" />
+
+        <Button layoutX="272.0" layoutY="396.0" mnemonicParsing="false" onAction="#InvoiceButton" prefHeight="36.0" prefWidth="124.0" style="-fx-background-color: #3e3e3e;" text="View Invoice Details" textFill="WHITE" />
+      <TextField fx:id="invoiceSearchF" layoutX="70.0" layoutY="401.0" prefHeight="26.0" prefWidth="167.0" promptText="Enter Invoice No" />
+      <Label fx:id="invoiceInfoLabel" alignment="CENTER" layoutX="64.0" layoutY="438.0" prefHeight="59.0" prefWidth="383.0" />
+    </children>
+</AnchorPane>
