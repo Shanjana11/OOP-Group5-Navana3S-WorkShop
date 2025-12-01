@@ -6,7 +6,6 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="448.0" prefWidth="726.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Shanjana.CSAController">
    <children>
       <Label layoutX="36.0" layoutY="36.0" text="Welcome">
@@ -22,7 +21,7 @@
       <Button layoutX="401.0" layoutY="146.0" mnemonicParsing="false" onAction="#vehicleDelivery" text="Vehicle Delivery" />
       <Button layoutX="401.0" layoutY="199.0" mnemonicParsing="false" onAction="#generateDailyReport" text="Generate Daily Report" />
       <Button layoutX="401.0" layoutY="251.0" mnemonicParsing="false" onAction="#complaintManagement" text="Complaint Management" />
-      <Button layoutX="638.0" layoutY="391.0" mnemonicParsing="false" onAction="#logOut" text="Log Out" />
+      <Button layoutX="638.0" layoutY="391.0" mnemonicParsing="false" onAction="#logOut" style="-fx-background-color: #3e3e3e;" text="Log Out" textFill="#faf8f8" />
       <Line endX="66.0" endY="167.80001831054688" layoutX="262.0" layoutY="125.0" startX="66.0" startY="-33.80000305175781" />
    </children>
 </AnchorPane>

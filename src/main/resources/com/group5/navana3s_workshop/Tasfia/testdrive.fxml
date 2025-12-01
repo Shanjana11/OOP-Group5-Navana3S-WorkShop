@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="510.0" prefWidth="749.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Tasfia.TestdriveController">
+   <children>
+      <Label layoutX="26.0" layoutY="25.0" prefHeight="18.0" prefWidth="147.0" text="Test Drive">
+         <font>
+            <Font name="System Bold Italic" size="23.0" />
+         </font></Label>
+      <Label layoutX="28.0" layoutY="71.0" text="Job ID :" />
+      <Label layoutX="20.0" layoutY="105.0" text="Vechicle No :" />
+      <Label layoutX="94.0" layoutY="71.0" text="JOB001" />
+      <Label layoutX="100.0" layoutY="105.0" text="DHAKA-XX-1234" />
+      <Label layoutX="28.0" layoutY="151.0" text="Speed Perforamnce" />
+      <Label layoutX="27.0" layoutY="182.0" text="Brake Test" />
+      <Label layoutX="20.0" layoutY="216.0" text="Engine Noise" />
+      <Label layoutX="23.0" layoutY="277.0" text="Overall Performances" />
+      <TextField fx:id="speedfield" layoutX="147.0" layoutY="147.0" promptText="Smooth/Sluggish" />
+      <TextField fx:id="brakefield" layoutX="147.0" layoutY="178.0" promptText="Normal/Weak" />
+      <TextField fx:id="noisefield" layoutX="147.0" layoutY="212.0" promptText="Normal/High" />
+      <Label layoutX="31.0" layoutY="416.0" text="Result" />
+      <ComboBox fx:id="resultCombobox" layoutX="121.0" layoutY="412.0" prefWidth="150.0" />
+      <Button layoutX="196.0" layoutY="455.0" mnemonicParsing="false" onAction="#savereportOnActionButton" text="Save Report" />
+      <Button layoutX="307.0" layoutY="455.0" mnemonicParsing="false" onAction="#backOnActionButton" text="Back" />
+      <TextArea fx:id="textarea" layoutX="145.0" layoutY="254.0" prefHeight="141.0" prefWidth="200.0" />
+   </children>
+</AnchorPane>

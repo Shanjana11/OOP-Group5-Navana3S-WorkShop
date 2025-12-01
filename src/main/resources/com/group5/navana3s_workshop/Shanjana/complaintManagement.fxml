@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Shanjana.ComplaintManagementController">
+    <children>
+        <Text layoutX="26.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Complaint Management">
+            <font>
+                <Font name="Arial Bold Italic" size="23.0" />
+            </font>
+        </Text>
+
+        <TableView fx:id="complaintsTable" layoutX="47.0" layoutY="100.0" prefHeight="200.0" prefWidth="806.0">
+            <columns>
+                <TableColumn fx:id="complaintIdCol" prefWidth="110.0" text="Complaint ID" />
+                <TableColumn fx:id="customerCol" prefWidth="140.0" text="Customer" />
+                <TableColumn fx:id="bookingIdCol" prefWidth="110.0" text="Booking ID" />
+                <TableColumn fx:id="dateCol" prefWidth="120.0" text="Date" />
+                <TableColumn fx:id="typeCol" prefWidth="100.0" text="Type" />
+                <TableColumn fx:id="statusCol" prefWidth="110.0" text="Status" />
+                <TableColumn fx:id="priorityCol" prefWidth="116.0" text="Priority" />
+            </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+        </TableView>
+
+        <Text layoutX="60.0" layoutY="330.0" text="Complaint Details:">
+            <font>
+                <Font name="System Bold" size="16.0" />
+            </font>
+        </Text>
+
+        <Label fx:id="complaintDetailsLabel" layoutX="60.0" layoutY="350.0" prefHeight="60.0" prefWidth="780.0" style="-fx-border-color: #cccccc; -fx-padding: 10;" text="Select a complaint to view details" wrapText="true" />
+
+        <Text layoutX="60.0" layoutY="440.0" text="Action:">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Text>
+        <ComboBox fx:id="actionComboBox" layoutX="130.0" layoutY="420.0" prefHeight="30.0" prefWidth="200.0" />
+
+        <Text layoutX="360.0" layoutY="440.0" text="Resolution Notes:">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Text>
+        <TextArea fx:id="resolutionNotesArea" layoutX="360.0" layoutY="450.0" prefHeight="60.0" prefWidth="480.0" promptText="Enter resolution details..." wrapText="true" />
+
+        <Button layoutX="811.0" layoutY="542.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="36.0" prefWidth="63.0" style="-fx-background-color: #3e3e3e;" text="Back" textFill="WHITE" />
+
+        <Button layoutX="35.0" layoutY="542.0" mnemonicParsing="false" onAction="#handleEscalateButton" prefHeight="36.0" prefWidth="77.0" style="-fx-background-color: #ff9800;" text="Escalate" textFill="WHITE" />
+
+        <Button layoutX="130.0" layoutY="542.0" mnemonicParsing="false" onAction="#handleResolveButton" prefHeight="36.0" prefWidth="86.0" style="-fx-background-color: #4CAF50;" text="Resolve" textFill="WHITE" />
+    </children>
+</AnchorPane>

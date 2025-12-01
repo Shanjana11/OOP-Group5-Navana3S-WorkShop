@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="570.0" prefWidth="838.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Tasfia.RequestsparepartsController">
+   <children>
+      <Label layoutX="20.0" layoutY="29.0" prefHeight="34.0" prefWidth="240.0" text="Request Spare Parts">
+         <font>
+            <Font name="System Bold Italic" size="23.0" />
+         </font></Label>
+      <Label layoutX="28.0" layoutY="84.0" text="Job ID :" />
+      <Label layoutX="28.0" layoutY="109.0" text="Vehicle No :" />
+      <Label layoutX="104.0" layoutY="84.0" text="JOB001" />
+      <Label layoutX="104.0" layoutY="109.0" text="DHAKA-XX-1234" />
+      <Label layoutX="26.0" layoutY="169.0" text="Part Name" />
+      <Label layoutX="26.0" layoutY="204.0" text="Quantity" />
+      <Label layoutX="26.0" layoutY="238.0" text="Reason" />
+      <TextField fx:id="partnamefield" layoutX="119.0" layoutY="165.0" />
+      <TextField fx:id="quantityfield" layoutX="119.0" layoutY="200.0" />
+      <Button layoutX="144.0" layoutY="410.0" mnemonicParsing="false" onAction="#addrequestOnActionButton" text="Add request" />
+      <TableView fx:id="tableview" layoutX="433.0" layoutY="90.0" prefHeight="270.0" prefWidth="378.0">
+        <columns>
+          <TableColumn fx:id="partnamecol" prefWidth="115.99993896484375" text="Part Name" />
+          <TableColumn fx:id="qtycol" prefWidth="121.60000610351562" text="Qty" />
+            <TableColumn fx:id="reasoncol" prefWidth="121.60000610351562" text="Reason" />
+        </columns>
+      </TableView>
+      <Button layoutX="454.0" layoutY="397.0" mnemonicParsing="false" onAction="#submittomanagerOnActionButton" text="Submit to Manager" />
+      <Button layoutX="710.0" layoutY="397.0" mnemonicParsing="false" onAction="#backOnActionButton" text="Back" />
+      <TextArea fx:id="textarea" layoutX="94.0" layoutY="247.0" prefHeight="142.0" prefWidth="240.0" />
+   </children>
+</AnchorPane>

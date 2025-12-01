@@ -5,40 +5,48 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ApproverequestController
+public class CheckstockController
 {
     @javafx.fxml.FXML
-    private TableColumn techniciancol;
+    private TableColumn locationcol;
+    @javafx.fxml.FXML
+    private TableColumn partidcol;
     @javafx.fxml.FXML
     private TableColumn partnamecol;
     @javafx.fxml.FXML
-    private TableColumn qtycol;
-    @javafx.fxml.FXML
-    private TableColumn reasoncol;
-    @javafx.fxml.FXML
     private TableColumn statuscol;
     @javafx.fxml.FXML
-    private TableView tableview;
+    private TableColumn quantitycol;
     @javafx.fxml.FXML
-    private ComboBox combobox;
+    private TextField searchfield;
+    @javafx.fxml.FXML
+    private TableView tableview;
 
     @javafx.fxml.FXML
     public void initialize() {
     }
 
     @javafx.fxml.FXML
-    public void backOnActionButton(ActionEvent actionEvent) throws IOException {
+    public void searchOnActionButton(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void refreshOnActionButton(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void backOnActionButton(ActionEvent actionEvent)throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Tasfia/sparepartsmanager.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Button signOutButton = (Button) actionEvent.getSource();
         Stage stage = (Stage) signOutButton.getScene().getWindow();
         stage.setScene(scene);
-    } 
+    }
 }
