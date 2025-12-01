@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -25,7 +26,6 @@
       <ComboBox fx:id="combobox" layoutX="157.0" layoutY="111.0" prefWidth="150.0" />
       <DatePicker fx:id="trainingdate" layoutX="145.0" layoutY="144.0" />
       <ComboBox fx:id="completioncombobox" layoutX="145.0" layoutY="181.0" prefWidth="150.0" />
-      <Label layoutX="143.0" layoutY="223.0" prefHeight="90.0" prefWidth="114.0" />
       <TableView fx:id="tableview" layoutX="406.0" layoutY="66.0" prefHeight="316.0" prefWidth="328.0">
         <columns>
           <TableColumn fx:id="modulecol" prefWidth="75.0" text="Module" />
@@ -37,5 +37,6 @@
       <Button layoutX="365.0" layoutY="446.0" mnemonicParsing="false" onAction="#addtrainigOnActionButton" text="Add Training" />
       <Button layoutX="480.0" layoutY="446.0" mnemonicParsing="false" onAction="#saveOnActionButton" text="Save" />
       <Button layoutX="562.0" layoutY="447.0" mnemonicParsing="false" onAction="#backOnActionButton" text="Back" />
+      <TextArea fx:id="textarea" layoutX="120.0" layoutY="223.0" prefHeight="200.0" prefWidth="233.0" />
    </children>
 </AnchorPane>

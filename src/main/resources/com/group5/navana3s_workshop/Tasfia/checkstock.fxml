@@ -26,5 +26,6 @@
             <TableColumn fx:id="statuscol" prefWidth="75.0" text="Status" />
         </columns>
       </TableView>
+      <Button layoutX="584.0" layoutY="411.0" mnemonicParsing="false" onAction="#backOnActionButton" text="Back" />
    </children>
 </AnchorPane>

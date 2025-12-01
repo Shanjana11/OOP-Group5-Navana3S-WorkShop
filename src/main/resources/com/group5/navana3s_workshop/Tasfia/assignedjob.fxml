@@ -29,5 +29,6 @@
       <Button layoutX="86.0" layoutY="432.0" mnemonicParsing="false" onAction="#viewdetailsOnAction" text="View Details" />
       <Button layoutX="237.0" layoutY="432.0" mnemonicParsing="false" onAction="#startServiceOnAction" text="Start Service" />
       <Button layoutX="376.0" layoutY="432.0" mnemonicParsing="false" onAction="#refreshOnAction" text="Refresh" />
+      <Button layoutX="657.0" layoutY="458.0" mnemonicParsing="false" onAction="#backOnActionButton" text="Back" />
    </children>
 </AnchorPane>

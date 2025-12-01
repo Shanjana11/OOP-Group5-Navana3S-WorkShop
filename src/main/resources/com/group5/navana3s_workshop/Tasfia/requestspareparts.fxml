@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -23,16 +24,16 @@
       <Label layoutX="26.0" layoutY="238.0" text="Reason" />
       <TextField fx:id="partnamefield" layoutX="119.0" layoutY="165.0" />
       <TextField fx:id="quantityfield" layoutX="119.0" layoutY="200.0" />
-      <Label layoutX="87.0" layoutY="247.0" prefHeight="150.0" prefWidth="174.0" />
-      <Button layoutX="118.0" layoutY="427.0" mnemonicParsing="false" onAction="#addrequestOnActionButton" text="Add request" />
-      <TableView fx:id="tableview" layoutX="380.0" layoutY="24.0" prefHeight="270.0" prefWidth="378.0">
+      <Button layoutX="144.0" layoutY="410.0" mnemonicParsing="false" onAction="#addrequestOnActionButton" text="Add request" />
+      <TableView fx:id="tableview" layoutX="433.0" layoutY="90.0" prefHeight="270.0" prefWidth="378.0">
         <columns>
           <TableColumn fx:id="partnamecol" prefWidth="115.99993896484375" text="Part Name" />
           <TableColumn fx:id="qtycol" prefWidth="121.60000610351562" text="Qty" />
             <TableColumn fx:id="reasoncol" prefWidth="121.60000610351562" text="Reason" />
         </columns>
       </TableView>
-      <Button layoutX="419.0" layoutY="341.0" mnemonicParsing="false" onAction="#submittomanagerOnActionButton" text="Submit to Manager" />
-      <Button layoutX="614.0" layoutY="341.0" mnemonicParsing="false" onAction="#backOnActionButton" text="Back" />
+      <Button layoutX="454.0" layoutY="397.0" mnemonicParsing="false" onAction="#submittomanagerOnActionButton" text="Submit to Manager" />
+      <Button layoutX="710.0" layoutY="397.0" mnemonicParsing="false" onAction="#backOnActionButton" text="Back" />
+      <TextArea fx:id="textarea" layoutX="94.0" layoutY="247.0" prefHeight="142.0" prefWidth="240.0" />
    </children>
 </AnchorPane>

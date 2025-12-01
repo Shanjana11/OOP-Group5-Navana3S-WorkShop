@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Tasfia.TechinicianController">
    <children>
-      <Label layoutX="126.0" layoutY="36.0" text="Welcome">
+      <Label layoutX="55.0" layoutY="22.0" text="Welcome">
          <font>
             <Font name="System Bold Italic" size="23.0" />
          </font>
       </Label>
+      <Button layoutX="30.0" layoutY="89.0" mnemonicParsing="false" onAction="#assignedjobOnActionButton" text="Assigned Job" />
+      <Button layoutX="30.0" layoutY="130.0" mnemonicParsing="false" onAction="#startserviceOnActionButton" text="Start and Perform Service" />
+      <Button layoutX="30.0" layoutY="174.0" mnemonicParsing="false" onAction="#faultdiagnosisOnActionButton" text="Fault Diagonosis" />
+      <Button layoutX="30.0" layoutY="217.0" mnemonicParsing="false" onAction="#requestsparepartsOnACtionButton" text="Request Spare Parts" />
+      <Line endX="8.5999755859375" endY="192.60000610351562" layoutX="237.0" layoutY="93.0" startX="8.5999755859375" startY="-6.5999908447265625" />
+      <Button layoutX="286.0" layoutY="89.0" mnemonicParsing="false" onAction="#completeserviceOnActionButton" text="Complete Service" />
+      <Button layoutX="290.0" layoutY="130.0" mnemonicParsing="false" onAction="#testdriveOnActionButton" text="Test Drive" />
+      <Button layoutX="290.0" layoutY="173.0" mnemonicParsing="false" onAction="#unresolvedissuesOnACtionButton" text="Unresolved Issues" />
+      <Button layoutX="290.0" layoutY="217.0" mnemonicParsing="false" onAction="#safetytraningOnActionButton" text="Safety Training" />
+      <Button layoutX="489.0" layoutY="332.0" mnemonicParsing="false" onAction="#logoutOnActionButton" text="Log Out" />
    </children>
 </AnchorPane>
