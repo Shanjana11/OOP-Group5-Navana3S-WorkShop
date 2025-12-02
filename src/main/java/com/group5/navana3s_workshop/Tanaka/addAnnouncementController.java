@@ -1,6 +1,6 @@
 package com.group5.navana3s_workshop.Tanaka;
 
-public class User3Controller
+public class addAnnouncementController
 {
     @javafx.fxml.FXML
     public void initialize() {

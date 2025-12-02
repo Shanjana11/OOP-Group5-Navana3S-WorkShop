@@ -1,14 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.group5.navana3s_workshop.Tanaka.accountHistoryController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="423.0" prefWidth="575.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Tanaka.accountHistoryController">
+   <children>
+      <Label layoutX="174.0" layoutY="14.0" text="Accounts History">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="70.0" text="Customer Name:" />
+      <TextField layoutX="111.0" layoutY="66.0" />
+      <TextField layoutX="112.0" layoutY="101.0" />
+      <Label layoutX="14.0" layoutY="105.0" text="Invoice No:" />
+      <Label layoutX="14.0" layoutY="138.0" text="Vehicle No:" />
+      <TextField layoutX="112.0" layoutY="134.0" />
+      <Label layoutX="14.0" layoutY="175.0" text="Filter Date:" />
+      <DatePicker layoutX="105.0" layoutY="171.0" />
+      <Button layoutX="17.0" layoutY="214.0" mnemonicParsing="false" text="Search" />
+      <Button layoutX="122.0" layoutY="214.0" mnemonicParsing="false" text="Show Full Details" />
+      <TableView layoutX="36.0" layoutY="250.0" prefHeight="140.0" prefWidth="425.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="Invoice No" />
+          <TableColumn prefWidth="75.0" text="Customer" />
+            <TableColumn prefWidth="93.60002136230469" text="Amount" />
+            <TableColumn prefWidth="91.99996948242188" text="Paid/Unpaid" />
+            <TableColumn prefWidth="70.4000244140625" text="Date" />
+        </columns>
+      </TableView>
+      <Button layoutX="508.0" layoutY="390.0" mnemonicParsing="false" text="Back" />
+   </children>
 </AnchorPane>

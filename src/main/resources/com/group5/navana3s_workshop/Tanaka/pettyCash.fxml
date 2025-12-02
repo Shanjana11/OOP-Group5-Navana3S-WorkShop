@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.group5.navana3s_workshop.Tanaka.pettyCashController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="422.0" prefWidth="546.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Tanaka.pettyCashController">
+   <children>
+      <Label layoutX="108.0" layoutY="14.0" prefHeight="39.0" prefWidth="254.0" text="Manage Petty Cash">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+      </Label>
+      <Button layoutX="18.0" layoutY="67.0" mnemonicParsing="false" text="Add New Button" />
+      <TableView layoutX="18.0" layoutY="100.0" prefHeight="111.0" prefWidth="361.0">
+        <columns>
+          <TableColumn prefWidth="60.80002212524414" text="Date" />
+          <TableColumn prefWidth="73.5999984741211" text="Description" />
+            <TableColumn prefWidth="67.19998168945312" text="Amount" />
+            <TableColumn prefWidth="160.79998779296875" text="Type(Expense/ Recieved)" />
+        </columns>
+      </TableView>
+      <Label layoutX="18.0" layoutY="220.0" text="Entry Amount:" />
+      <TextField layoutX="104.0" layoutY="216.0" />
+      <TextArea layoutX="111.0" layoutY="265.0" prefHeight="123.0" prefWidth="325.0" />
+      <Label layoutX="18.0" layoutY="256.0" text="Description Box:" />
+      <Button layoutX="475.0" layoutY="382.0" mnemonicParsing="false" text="Back" />
+   </children>
 </AnchorPane>
