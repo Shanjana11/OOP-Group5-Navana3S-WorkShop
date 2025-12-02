@@ -9,7 +9,6 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="500.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Karima.customerConsultationController">
    <children>
       <Label layoutX="213.0" layoutY="22.0" text="Customer Consultation">
@@ -35,5 +34,6 @@
       <Button layoutX="433.0" layoutY="320.0" mnemonicParsing="false" onAction="#quotationButton" text="Get Quotation" />
       <Button layoutX="544.0" layoutY="433.0" mnemonicParsing="false" onAction="#backButton" style="-fx-background-color: black;" text="BACK" textFill="WHITE" />
       <Label layoutX="159.0" layoutY="398.0" prefHeight="43.0" prefWidth="320.0" />
+      <Label fx:id="outputLabel" layoutX="168.0" layoutY="392.0" prefHeight="58.0" prefWidth="283.0" />
    </children>
 </AnchorPane>

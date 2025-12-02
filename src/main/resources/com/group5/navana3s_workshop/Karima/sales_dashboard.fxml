@@ -38,7 +38,7 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="379.0" layoutY="302.0" text="Sales Performance">
+      <Label layoutX="335.0" layoutY="302.0" text="Service Pricing Management">
          <font>
             <Font size="15.0" />
          </font>
@@ -61,12 +61,12 @@
       <Line endX="30.20001220703125" endY="149.60003662109375" layoutX="290.0" layoutY="184.0" startX="30.20001220703125" startY="-62.80000305175781" />
       <Button layoutX="285.0" layoutY="373.0" mnemonicParsing="false" onAction="#logOutButton" style="-fx-background-color: black;" text="LOG OUT" textFill="WHITE" />
       <Button layoutX="229.0" layoutY="300.0" mnemonicParsing="false" onAction="#customerConsultation" text="OPEN" />
-      <Button layoutX="531.0" layoutY="182.0" mnemonicParsing="false" onAction="#customerManagement" text="OPEN" />
+      <Button layoutX="544.0" layoutY="182.0" mnemonicParsing="false" onAction="#customerManagement" text="OPEN" />
       <Button layoutX="229.0" layoutY="241.0" mnemonicParsing="false" onAction="#financingOptions" text="OPEN" />
-      <Button layoutX="531.0" layoutY="127.0" mnemonicParsing="false" onAction="#paymentCoordination" text="OPEN" />
-      <Button layoutX="531.0" layoutY="298.0" mnemonicParsing="false" onAction="#salesPerformance" text="OPEN" />
+      <Button layoutX="545.0" layoutY="127.0" mnemonicParsing="false" onAction="#paymentCoordination" text="OPEN" />
+      <Button layoutX="545.0" layoutY="300.0" mnemonicParsing="false" onAction="#servicePricing" text="OPEN" />
       <Button layoutX="229.0" layoutY="182.0" mnemonicParsing="false" onAction="#vehicleBooking" text="OPEN" />
-      <Button layoutX="531.0" layoutY="241.0" mnemonicParsing="false" onAction="#salesHistory" text="OPEN" />
+      <Button layoutX="545.0" layoutY="241.0" mnemonicParsing="false" onAction="#salesHistory" text="OPEN" />
       <Button layoutX="229.0" layoutY="127.0" mnemonicParsing="false" onAction="#vehicleSpecification" text="OPEN" />
    </children>
 </AnchorPane>

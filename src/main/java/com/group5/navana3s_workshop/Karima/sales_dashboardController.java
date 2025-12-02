@@ -15,9 +15,9 @@ public class sales_dashboardController
     public void initialize() {
     }
 
-    @javafx.fxml.FXML
+    @Deprecated
     public void salesPerformance(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Karima/salesPerformance.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Karima/servicePricing.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Button salesPerformance = (Button) actionEvent.getSource();
         Stage stage = (Stage) salesPerformance.getScene().getWindow();
@@ -46,7 +46,7 @@ public class sales_dashboardController
 
     @javafx.fxml.FXML
     public void logOutButton(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Karima/login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/login.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Button logOutButton = (Button) actionEvent.getSource();
         Stage stage = (Stage) logOutButton.getScene().getWindow();
@@ -100,4 +100,14 @@ public class sales_dashboardController
         Stage stage = (Stage) paymentCoordination.getScene().getWindow();
         stage.setScene(scene);
     }
+
+    @javafx.fxml.FXML
+    public void servicePricing(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Karima/servicePricing.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Button paymentCoordination = (Button) actionEvent.getSource();
+        Stage stage = (Stage) paymentCoordination.getScene().getWindow();
+        stage.setScene(scene);
+    }
+
 }
