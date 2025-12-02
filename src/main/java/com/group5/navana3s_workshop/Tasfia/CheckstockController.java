@@ -34,11 +34,11 @@ public class CheckstockController
     }
 
     @javafx.fxml.FXML
-    public void searchOnActionButton(ActionEvent actionEvent) {
+    public void refreshOnActionButtons(ActionEvent actionEvent) {
     }
 
     @javafx.fxml.FXML
-    public void refreshOnActionButton(ActionEvent actionEvent) {
+    public void searchOnActionButton(ActionEvent actionEvent) {
     }
 
     @javafx.fxml.FXML

@@ -8,24 +8,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="515.0" prefWidth="728.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Tasfia.CheckstockController">
+
+<AnchorPane prefHeight="465.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Tasfia.CheckstockController">
    <children>
-      <Label layoutX="40.0" layoutY="27.0" text="Check Stock">
+      <Label layoutX="51.0" layoutY="27.0" text="Check Stock">
          <font>
-            <Font name="Arial Bold Italic" size="23.0" />
-         </font></Label>
-      <TextField fx:id="searchfield" layoutX="34.0" layoutY="67.0" promptText="Search by Part Name/Id" />
-      <Button layoutX="221.0" layoutY="67.0" mnemonicParsing="false" onAction="#searchOnActionButton" text="Search" />
-      <Button layoutX="313.0" layoutY="67.0" mnemonicParsing="false" onAction="#refreshOnActionButton" text="Refresh" />
-      <TableView fx:id="tableview" layoutX="75.0" layoutY="159.0" prefHeight="200.0" prefWidth="406.0">
+            <Font name="System Bold Italic" size="23.0" />
+         </font>
+      </Label>
+      <TextField fx:id="searchfield" layoutX="41.0" layoutY="85.0" promptText="Search by Part Name/ID" />
+      <Button layoutX="276.0" layoutY="85.0" mnemonicParsing="false" onAction="#searchOnActionButton" text="Search" />
+      <Button layoutX="369.0" layoutY="85.0" mnemonicParsing="false" onAction="#refreshOnActionButtons" text="Refresh" />
+      <TableView fx:id="tableview" layoutX="79.0" layoutY="178.0" prefHeight="200.0" prefWidth="450.0">
         <columns>
-          <TableColumn fx:id="partidcol" prefWidth="75.0" text="Part ID" />
-          <TableColumn fx:id="partnamecol" prefWidth="75.0" text="Part Name" />
-            <TableColumn fx:id="quantitycol" prefWidth="75.0" text="Quantity" />
-            <TableColumn fx:id="locationcol" prefWidth="75.0" text="Location" />
-            <TableColumn fx:id="statuscol" prefWidth="75.0" text="Status" />
+          <TableColumn fx:id="partidcol" prefWidth="81.60004425048828" text="Part ID" />
+          <TableColumn fx:id="partnamecol" prefWidth="82.39996337890625" text="Part Name" />
+            <TableColumn fx:id="quantitycol" prefWidth="90.39996337890625" text="Quantity" />
+            <TableColumn fx:id="locationcol" prefWidth="89.60003662109375" text="Location" />
+            <TableColumn fx:id="statuscol" prefWidth="106.39993286132812" text="Status" />
         </columns>
       </TableView>
-      <Button layoutX="584.0" layoutY="411.0" mnemonicParsing="false" onAction="#backOnActionButton" text="Back" />
+      <Button layoutX="541.0" layoutY="412.0" mnemonicParsing="false" onAction="#backOnActionButton" text="Back" />
    </children>
 </AnchorPane>
