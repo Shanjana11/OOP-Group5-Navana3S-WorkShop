@@ -15,18 +15,19 @@ import java.io.IOException;
 public class FeedbackComplaintController
 {
     @javafx.fxml.FXML
-    private ComboBox rateCombo;
+    private ComboBox<String> rateCombo;
     @javafx.fxml.FXML
     private Label infoLabel;
     @javafx.fxml.FXML
     private TextField customerNF;
     @javafx.fxml.FXML
-    private ComboBox typeCombo;
+    private ComboBox<String> typeCombo;
     @javafx.fxml.FXML
     private TextField customerIDF;
 
     @javafx.fxml.FXML
     public void initialize() {
+        rateCombo.getItems().addAll("★☆☆☆☆ - Very Poor","★★☆☆☆ - Poor","★★★☆☆ - Average","★★★★☆ - Good","★★★★★ - Excellent");
     }
 
     @javafx.fxml.FXML
