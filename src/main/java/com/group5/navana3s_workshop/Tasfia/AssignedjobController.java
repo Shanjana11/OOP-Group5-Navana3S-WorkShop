@@ -21,9 +21,9 @@ public class AssignedjobController
     @javafx.fxml.FXML
     private TableColumn jobIDcol;
     @javafx.fxml.FXML
-    private TableColumn assigneddatecol;
+    private TableColumn<AssignedJob,String> assigneddatecol;
     @javafx.fxml.FXML
-    private TableView jobTable;
+    private TableView<AssignedJob> jobTable;
     @javafx.fxml.FXML
     private TableColumn vechiclenocol;
     @javafx.fxml.FXML

@@ -115,14 +115,14 @@ public class loginController
             stage.setTitle("Customer Support Executive Dashboard");
             stage.setScene(scene);
         } else if ((userComboBox.getValue().equals("Technician")) && (passLogIn.getText().equals("12345"))) {
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Tasfia/user5.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Tasfia/techinician.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = null;
             stage = (Stage) loginInfo.getScene().getWindow();
             stage.setTitle("Technician Dashboard");
             stage.setScene(scene);
         } else if ((userComboBox.getValue().equals("Spare Parts Manager")) && (passLogIn.getText().equals("12345"))) {
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Shanjana/csa.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Tasfia/sparepartsmanager.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = null;
             stage = (Stage) loginInfo.getScene().getWindow();

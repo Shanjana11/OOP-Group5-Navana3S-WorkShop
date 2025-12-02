@@ -32,7 +32,7 @@ public class WarrantyclaimController
 
     @javafx.fxml.FXML
     public void backOnActionButton(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/src/main/resources/com/group5/navana3s_workshop/Tasfia/sparepartsmanager.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Tasfia/sparepartsmanager.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Button signOutButton = (Button) actionEvent.getSource();
         Stage stage = (Stage) signOutButton.getScene().getWindow();
