@@ -30,11 +30,11 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TableView fx:id="tableField" layoutX="405.0" layoutY="136.0" prefHeight="200.0" prefWidth="229.0">
+      <TableView fx:id="tableField" layoutX="405.0" layoutY="136.0" prefHeight="200.0" prefWidth="254.0">
         <columns>
           <TableColumn fx:id="planCol" prefWidth="75.0" text="Plan" />
-          <TableColumn fx:id="paymentCol" prefWidth="99.20001220703125" text="Down Payment" />
-            <TableColumn fx:id="emiCol" prefWidth="53.599999999999994" text="EMI" />
+          <TableColumn fx:id="paymentCol" prefWidth="119.199951171875" text="Down Payment" />
+            <TableColumn fx:id="emiCol" prefWidth="59.199987792968756" text="EMI" />
         </columns>
       </TableView>
       <Button layoutX="165.0" layoutY="281.0" mnemonicParsing="false" onAction="#searchPlanButton" text="Search Plans">

@@ -24,10 +24,30 @@ public class paymentCoordinationController
 
     @javafx.fxml.FXML
     public void initialize() {
+        statusField.setText("Not Verified");
     }
 
     @javafx.fxml.FXML
     public void verifyPaymentButton(ActionEvent actionEvent) {
+        String ref = referenceField.getText();
+
+        if(ref == null || ref.isEmpty()) {
+            outputLabel.setText("Enter reference number");
+            return;
+        }
+
+
+        boolean isValid = ref.startsWith("PAY");
+
+        if(isValid) {
+
+            statusField.setText("Payment Verified");
+
+            outputLabel.setText("Payment confirmed");
+        } else {
+            statusField.setText("Not Verified");
+            outputLabel.setText("Invalid reference");
+        }
     }
 
     @javafx.fxml.FXML

@@ -1,13 +1,18 @@
 package com.group5.navana3s_workshop.Karima;
 
 import com.group5.navana3s_workshop.HelloApplication;
+import com.group5.navana3s_workshop.Karima.modelClass.customer;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class customerManagementController
 {
@@ -16,24 +21,69 @@ public class customerManagementController
     @javafx.fxml.FXML
     private TextField numberField;
     @javafx.fxml.FXML
-    private TableColumn<customerManagementController,Integer> contactCol;
+    private TableColumn<customer,String> contactCol;
     @javafx.fxml.FXML
-    private TableColumn<customerManagementController,String> nameCol;
+    private TableColumn<customer,String> nameCol;
     @javafx.fxml.FXML
     private TextField interestField;
     @javafx.fxml.FXML
-    private TableView<customerManagementController> tableView;
+    private TableView<customer> tableView;
     @javafx.fxml.FXML
-    private TableColumn<customerManagementController,String> interestCol;
+    private TableColumn<customer,String> interestCol;
     @javafx.fxml.FXML
     private TextField nameField;
 
+
     @javafx.fxml.FXML
     public void initialize() {
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        contactCol.setCellValueFactory(new PropertyValueFactory<>("contact"));
+        interestCol.setCellValueFactory(new PropertyValueFactory<>("interestModel"));
     }
 
     @javafx.fxml.FXML
     public void saveCustomerButton(ActionEvent actionEvent) {
+        String name = nameField.getText().trim();
+        String contact = numberField.getText().trim();
+        String interest = interestField.getText().trim();
+
+        // Event 4: Validate
+        if (name.isEmpty() || contact.isEmpty() || interest.isEmpty()) {
+            outputLabel.setText("Please fill all fields.");
+            return;
+        }
+
+        if (!contact.matches("\\d{11}")) {
+            outputLabel.setText("Enter a 11 digit valid contact number.");
+            return;
+        }
+
+        // Event 5: Check if customer exists
+        customer existing = null;
+        for (customer c : tableView.getItems()) {
+            if (c.getContact().equals(contact)) {
+                existing = c;
+                break;
+            }
+        }
+
+        // Event 6: Update or Create
+        if (existing == null) {
+            customer newCustomer = new customer(name, contact, interest);
+            tableView.getItems().add(newCustomer);
+        } else {
+            existing.setName(name);
+            existing.setInterestModel(interest);
+            tableView.refresh();
+        }
+
+        // Event 7: Confirmation Output
+        outputLabel.setText("Customer saved successfully.");
+
+        nameField.clear();
+        numberField.clear();
+        interestField.clear();
+
     }
 
     @javafx.fxml.FXML
@@ -45,3 +95,4 @@ public class customerManagementController
         stage.setScene(scene);
     }
 }
+
