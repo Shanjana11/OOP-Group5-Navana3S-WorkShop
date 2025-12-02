@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Tanaka.marketingAndPromotionsDashboardController">
+   <children>
+      <Button layoutX="57.0" layoutY="90.0" mnemonicParsing="false" onAction="#editofferOnActionButton" text="Edit Offer" />
+      <Button layoutX="57.0" layoutY="140.0" mnemonicParsing="false" onAction="#addofferOnActionButton" text="Add Offer" />
+      <Button layoutX="57.0" layoutY="187.0" mnemonicParsing="false" onAction="#deleteofferOnActionButton" text="Delete Offer" />
+      <Button layoutX="57.0" layoutY="239.0" mnemonicParsing="false" onAction="#socialmediaplanningOnActionButton" text="Social media Planning" />
+      <Button layoutX="348.0" layoutY="103.0" mnemonicParsing="false" onAction="#seasonalcampaignOnActiionButton" text="Seasonal Campaign" />
+      <Button layoutX="348.0" layoutY="153.0" mnemonicParsing="false" onAction="#addannouncementOnActionButton" text="Add Announcement" />
+      <Button layoutX="348.0" layoutY="193.0" mnemonicParsing="false" onAction="#trackcustomerresaponseOnActionButton" text="Track Customer Responses" />
+      <Button layoutX="348.0" layoutY="239.0" mnemonicParsing="false" onAction="#campaignsummaryOnActionButton" text="Campaign Summary Report" />
+      <Line endX="88.0" endY="212.80001831054688" layoutX="168.0" layoutY="68.0" startX="88.0" startY="11.199996948242188" />
+      <Label layoutX="43.0" layoutY="27.0" text="Welcome">
+         <font>
+            <Font name="System Bold Italic" size="23.0" />
+         </font>
+      </Label>
+      <Button layoutX="471.0" layoutY="333.0" mnemonicParsing="false" onAction="#logoutOnActionButton" text="Log Out" />
+   </children>
+</AnchorPane>

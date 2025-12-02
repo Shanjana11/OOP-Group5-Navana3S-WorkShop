@@ -17,7 +17,7 @@
             </font>
         </Text>
 
-        <TableView fx:id="serviceHistoryTable" layoutX="50.0" layoutY="65.0" prefHeight="314.0" prefWidth="766.0">
+        <TableView fx:id="serviceHistoryTable" layoutX="50.0" layoutY="65.0" prefHeight="284.0" prefWidth="766.0">
             <columns>
                 <TableColumn fx:id="bookingIdCol" prefWidth="120.0" text="Booking ID" />
                 <TableColumn fx:id="dateCol" prefWidth="140.0" text="Service Date" />
@@ -31,10 +31,11 @@
          </columnResizePolicy>
         </TableView>
 
-        <Button layoutX="769.0" layoutY="480.0" mnemonicParsing="false" onAction="#BackButton" prefHeight="36.0" prefWidth="66.0" style="-fx-background-color: #3e3e3e;" text="Back" textFill="WHITE" />
+        <Button layoutX="757.0" layoutY="454.0" mnemonicParsing="false" onAction="#BackButton" prefHeight="26.0" prefWidth="58.0" style="-fx-background-color: #3e3e3e;" text="Back" textFill="WHITE" />
 
-        <Button layoutX="272.0" layoutY="396.0" mnemonicParsing="false" onAction="#InvoiceButton" prefHeight="36.0" prefWidth="124.0" style="-fx-background-color: #3e3e3e;" text="View Invoice Details" textFill="WHITE" />
-      <TextField fx:id="invoiceSearchF" layoutX="70.0" layoutY="401.0" prefHeight="26.0" prefWidth="167.0" promptText="Enter Invoice No" />
-      <Label fx:id="invoiceInfoLabel" alignment="CENTER" layoutX="64.0" layoutY="438.0" prefHeight="59.0" prefWidth="383.0" />
+        <Button layoutX="274.0" layoutY="371.0" mnemonicParsing="false" onAction="#InvoiceButton" prefHeight="26.0" prefWidth="127.0" style="-fx-background-color: #3e3e3e;" text="View Invoice Details" textFill="WHITE" />
+      <TextField fx:id="invoiceSearchF" layoutX="70.0" layoutY="371.0" prefHeight="26.0" prefWidth="167.0" promptText="Enter Invoice No" />
+      <Label fx:id="invoiceInfoLabel" alignment="CENTER" layoutX="142.0" layoutY="407.0" prefHeight="119.0" prefWidth="424.0" />
+      <Button layoutX="732.0" layoutY="371.0" mnemonicParsing="false" onAction="#LoadHistory" style="-fx-background-color: #3e3e3e;" text="Load History" textFill="WHITE" />
     </children>
 </AnchorPane>
