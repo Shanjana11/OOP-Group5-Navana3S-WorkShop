@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="488.0" prefWidth="715.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.UserDashboardController">
    <children>
@@ -13,5 +14,10 @@
          </font>
       </Label>
       <Button layoutX="611.0" layoutY="423.0" mnemonicParsing="false" onAction="#LogOut" style="-fx-background-color: #3e3e3e;" text="Log Out" textFill="#f4f1f1" />
+      <Text layoutX="234.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This page is under construction.">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
