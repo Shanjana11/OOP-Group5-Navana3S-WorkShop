@@ -40,9 +40,9 @@ public class ApproverequestController
     public void initialize() {
         selectstatusCombobox.getItems().addAll("Approved","Rejected","Pending");
 
-        techniciancol.setCellValueFactory(new PropertyValueFactory<>("technician"));
-        partnamecol.setCellValueFactory(new PropertyValueFactory<>("partname"));
-        qtycol.setCellValueFactory(new PropertyValueFactory<>("qty"));
+        techniciancol.setCellValueFactory(new PropertyValueFactory<>("technicianName"));
+        partnamecol.setCellValueFactory(new PropertyValueFactory<>("partName"));
+        qtycol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         reasoncol.setCellValueFactory(new PropertyValueFactory<>("reason"));
         statuscol.setCellValueFactory(new PropertyValueFactory<>("status"));
 
@@ -52,8 +52,13 @@ public class ApproverequestController
         requestList.add(new PartRequest("REQ001", "Brake Pad", 4, "Worn out", "Tariq", "Pending"));
         requestList.add(new PartRequest("REQ002", "Battery", 1, "Dead battery", "Nadia", "Pending"));
         requestList.add(new PartRequest("REQ003", "Wheel Bearing", 2, "Noise issue", "Hasan", "Rejected"));
+        requestList.add(new PartRequest("REQ101", "Brake Fluid", 2, "Fluid Top-up", "Karim", "Approved"));
 
        //Set List into tableview
+
+        tableview.getItems().setAll(requestList);
+
+
 
 
     }
