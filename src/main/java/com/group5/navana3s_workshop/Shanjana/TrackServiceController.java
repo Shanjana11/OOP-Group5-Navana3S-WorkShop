@@ -24,6 +24,17 @@ public class TrackServiceController
 
     @javafx.fxml.FXML
     public void trackButton(ActionEvent actionEvent) {
+        String bookingId = bookID.getText();
+
+        if (bookingId.isEmpty()) {
+            progressStatus.setText("Enter booking ID!");
+            return;
+        }
+
+        // Fetch status from database
+        // sample data
+        progressBar.setProgress(0.6);
+        progressStatus.setText("Status: In Progress" + "\n" + "Estimated Completion: 2 hours" + "\n" + "Your vehicle is currently undergoing brake service and oil change.");
     }
 
     @javafx.fxml.FXML
