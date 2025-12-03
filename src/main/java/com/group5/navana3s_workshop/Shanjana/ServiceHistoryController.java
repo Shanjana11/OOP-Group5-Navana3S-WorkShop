@@ -8,7 +8,10 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +38,7 @@ public class ServiceHistoryController
     private Label invoiceInfoLabel;
 
     private List<ServiceHistory> historyList = new ArrayList<>();
+    private static final String BookingFile = "bookings.bin";
 
     @javafx.fxml.FXML
     public void initialize() {
@@ -96,25 +100,85 @@ public class ServiceHistoryController
     @javafx.fxml.FXML
     public void LoadHistory(ActionEvent actionEvent) {
         try {
-            // adding sample data
-            historyList.add(new ServiceHistory("BK001", LocalDate.of(2024, 11, 15), "Regular Service", "INV001", 5000.0, "Completed"));
-            historyList.add(new ServiceHistory("BK002", LocalDate.of(2024, 10, 20), "Oil Change", "INV002", 1500.0, "Completed"));
+            historyList.clear();
 
+            // Load bookings from file using ObjectInputStream
+            List<BookService> bookings = loadBookingsFromFile();
+
+            if (bookings.isEmpty()) {
+                invoiceInfoLabel.setText("No previous service history found.");
+                return;
+            }
+
+            // Convert Booking objects to ServiceHistory objects
+            for (BookService booking : bookings) {
+                // Generate invoice number based on booking ID
+                String invoiceNo = "INV" + booking.getBookingId().substring(2);
+
+                // Create ServiceHistory from Booking File
+                ServiceHistory history = new ServiceHistory(
+                        booking.getBookingId(),
+                        booking.getBookingDate(),
+                        booking.getServiceType(),
+                        invoiceNo,
+                        generateAmount(booking.getServiceType()), // Generate amount based on service type
+                        "Completed"
+                );
+
+                historyList.add(history);
+            }
+
+            // Display in table
             serviceHistoryTable.getItems().clear();
             serviceHistoryTable.getItems().addAll(historyList);
 
-            // Show message if no records found
-            if (historyList.isEmpty()) {
-                invoiceInfoLabel.setText("No previous service history found for your account.");
-            }
+            invoiceInfoLabel.setText("Service history loaded successfully! Total records: " + historyList.size());
+
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setContentText("Error loading service history: " + e.getMessage());
             alert.show();
+            e.printStackTrace();
         }
     }
 
+    private List<BookService> loadBookingsFromFile() {
+        File file = new File(BookingFile);
+
+        if (!file.exists()) {
+            System.out.println("Booking file does not exist.");
+            return new ArrayList<>();
+        }
+
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(BookingFile))) {
+            return (List<BookService>) ois.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            System.err.println("Error reading bookings from file: " + e.getMessage());
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+
+    // Helper method to generate amount based on service type
+    private double generateAmount(String serviceType) {
+        switch (serviceType) {
+            case "Regular Service":
+                return 5000.0;
+            case "Oil Change":
+                return 1500.0;
+            case "Brake Service":
+                return 3500.0;
+            case "Engine Repair":
+                return 8000.0;
+            case "AC Service":
+                return 4000.0;
+            case "Tire Change":
+                return 6000.0;
+            default:
+                return 2000.0;
+        }
 
 
+    }
 }

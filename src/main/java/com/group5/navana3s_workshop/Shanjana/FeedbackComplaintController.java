@@ -28,6 +28,7 @@ public class FeedbackComplaintController
     @javafx.fxml.FXML
     public void initialize() {
         rateCombo.getItems().addAll("★☆☆☆☆ - Very Poor","★★☆☆☆ - Poor","★★★☆☆ - Average","★★★★☆ - Good","★★★★★ - Excellent");
+        typeCombo.getItems().addAll("Regular Service", "Oil Change", "Brake Service", "Engine Repair", "AC Service", "Tire Change");
     }
 
     @javafx.fxml.FXML
