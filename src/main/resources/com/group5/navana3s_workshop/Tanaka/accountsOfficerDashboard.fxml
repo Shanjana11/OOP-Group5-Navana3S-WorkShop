@@ -6,23 +6,22 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Tanaka.accountsOfficerDashboardController">
    <children>
-      <Label layoutX="181.0" layoutY="32.0" text="Accounts Officer Dashboard">
+      <Label layoutX="181.0" layoutY="22.0" text="Accounts Officer Dashboard">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="82.0" layoutY="91.0" mnemonicParsing="false" text="Generate Invoice" />
-      <Button layoutX="82.0" layoutY="137.0" mnemonicParsing="false" text="Process Payment" />
-      <Button layoutX="82.0" layoutY="187.0" mnemonicParsing="false" text="Daily Ledger" />
-      <Button layoutX="82.0" layoutY="240.0" mnemonicParsing="false" text="Claims" />
-      <Button layoutX="364.0" layoutY="137.0" mnemonicParsing="false" text="Petty Cash" />
-      <Button layoutX="364.0" layoutY="91.0" mnemonicParsing="false" text="Vendor Payments" />
-      <Button layoutX="364.0" layoutY="187.0" mnemonicParsing="false" text="Financial Reports" />
-      <Button layoutX="364.0" layoutY="240.0" mnemonicParsing="false" text="Account History" />
-      <Button layoutX="511.0" layoutY="345.0" mnemonicParsing="false" text="Log Out" />
+      <Button layoutX="82.0" layoutY="91.0" mnemonicParsing="false" onAction="#generateInvoiceOnActionButton" text="Generate Invoice" />
+      <Button layoutX="82.0" layoutY="137.0" mnemonicParsing="false" onAction="#processPaymentOnActionButton" text="Process Payment" />
+      <Button layoutX="82.0" layoutY="187.0" mnemonicParsing="false" onAction="#dailyLedgerOnActionButton" text="Daily Ledger" />
+      <Button layoutX="82.0" layoutY="240.0" mnemonicParsing="false" onAction="#claimsOnActionButton" text="Claims" />
+      <Button layoutX="364.0" layoutY="137.0" mnemonicParsing="false" onAction="#pettyCashOnActionButton" text="Petty Cash" />
+      <Button layoutX="364.0" layoutY="91.0" mnemonicParsing="false" onAction="#vendorPayments" text="Vendor Payments" />
+      <Button layoutX="364.0" layoutY="187.0" mnemonicParsing="false" onAction="#financialReportsOnActionButton" text="Financial Reports" />
+      <Button layoutX="364.0" layoutY="240.0" mnemonicParsing="false" onAction="#accountHistoryOnActionButton" text="Account History" />
+      <Button layoutX="511.0" layoutY="345.0" mnemonicParsing="false" onAction="#logOutOnActionButton" text="Log Out" />
       <Line endX="-41.5999755859375" endY="167.60003662109375" layoutX="321.0" layoutY="122.0" startX="-41.5999755859375" startY="-33.19999694824219" />
    </children>
 </AnchorPane>

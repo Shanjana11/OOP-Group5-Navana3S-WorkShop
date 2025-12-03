@@ -17,24 +17,24 @@
          </font>
       </Label>
       <Label layoutX="14.0" layoutY="70.0" text="Customer Name:" />
-      <TextField layoutX="111.0" layoutY="66.0" />
-      <TextField layoutX="112.0" layoutY="101.0" />
+      <TextField fx:id="customerNameTextField" layoutX="111.0" layoutY="66.0" />
+      <TextField fx:id="invoiceNoTextField" layoutX="112.0" layoutY="101.0" />
       <Label layoutX="14.0" layoutY="105.0" text="Invoice No:" />
       <Label layoutX="14.0" layoutY="138.0" text="Vehicle No:" />
-      <TextField layoutX="112.0" layoutY="134.0" />
+      <TextField fx:id="vehicleNoTextField" layoutX="112.0" layoutY="134.0" />
       <Label layoutX="14.0" layoutY="175.0" text="Filter Date:" />
-      <DatePicker layoutX="105.0" layoutY="171.0" />
-      <Button layoutX="17.0" layoutY="214.0" mnemonicParsing="false" text="Search" />
-      <Button layoutX="122.0" layoutY="214.0" mnemonicParsing="false" text="Show Full Details" />
-      <TableView layoutX="36.0" layoutY="250.0" prefHeight="140.0" prefWidth="425.0">
+      <DatePicker fx:id="filterDateDatePicker" layoutX="105.0" layoutY="171.0" />
+      <Button layoutX="17.0" layoutY="214.0" mnemonicParsing="false" onAction="#searchOnActionButton" text="Search" />
+      <Button layoutX="122.0" layoutY="214.0" mnemonicParsing="false" onAction="#showFullDetailsOnActionButton" text="Show Full Details" />
+      <TableView fx:id="tableViewAccountsHistory" layoutX="36.0" layoutY="250.0" prefHeight="140.0" prefWidth="425.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Invoice No" />
-          <TableColumn prefWidth="75.0" text="Customer" />
-            <TableColumn prefWidth="93.60002136230469" text="Amount" />
-            <TableColumn prefWidth="91.99996948242188" text="Paid/Unpaid" />
-            <TableColumn prefWidth="70.4000244140625" text="Date" />
+          <TableColumn fx:id="invoiceNoColumn" prefWidth="75.0" text="Invoice No" />
+          <TableColumn fx:id="customerColumn" prefWidth="75.0" text="Customer" />
+            <TableColumn fx:id="amountColumn" prefWidth="93.60002136230469" text="Amount" />
+            <TableColumn fx:id="paidOrUnpaidColumn" prefWidth="91.99996948242188" text="Paid/Unpaid" />
+            <TableColumn fx:id="dateColumn" prefWidth="87.9999938964844" text="Date" />
         </columns>
       </TableView>
-      <Button layoutX="508.0" layoutY="390.0" mnemonicParsing="false" text="Back" />
+      <Button layoutX="508.0" layoutY="390.0" mnemonicParsing="false" onAction="#backOnActionButton" text="Back" />
    </children>
 </AnchorPane>
