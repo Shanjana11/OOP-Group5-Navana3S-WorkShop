@@ -19,6 +19,13 @@ public class Invoice {
         this.dueDate = dueDate;
     }
 
+    public Invoice(String invoiceId, LocalDate dueDate, double amount, String paymentStatus) {
+        this.invoiceId = invoiceId;
+        this.dueDate = dueDate;
+        this.amount = amount;
+        this.paymentStatus = paymentStatus;
+    }
+
     public String getInvoiceId() {
         return invoiceId;
     }

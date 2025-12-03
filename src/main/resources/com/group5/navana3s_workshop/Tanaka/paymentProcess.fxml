@@ -11,28 +11,28 @@
 
 <AnchorPane prefHeight="371.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Tanaka.paymentProcessController">
    <children>
-      <Label layoutX="228.0" layoutY="29.0" text="Process Payment">
+      <Label layoutX="236.0" layoutY="14.0" text="Process Payment">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="68.0" layoutY="78.0" text="Invoice Number" />
-      <Label layoutX="68.0" layoutY="117.0" text="Transaction ID" />
-      <Label layoutX="68.0" layoutY="152.0" text="Payment Method" />
-      <Label layoutX="68.0" layoutY="191.0" text="Payment Amount" />
-      <Label layoutX="68.0" layoutY="225.0" prefHeight="38.0" prefWidth="290.0" text="Invoice Status" />
-      <TextField layoutX="206.0" layoutY="74.0" />
-      <TextField layoutX="207.0" layoutY="113.0" />
-      <TextField layoutX="208.0" layoutY="187.0" />
-      <ComboBox layoutX="207.0" layoutY="148.0" prefWidth="150.0" />
-      <Button layoutX="127.0" layoutY="273.0" mnemonicParsing="false" text="Validate Payment" />
-      <Button layoutX="283.0" layoutY="273.0" mnemonicParsing="false" text="Submit Payment" />
-      <TableView layoutX="397.0" layoutY="67.0" prefHeight="170.0" prefWidth="310.0">
+      <Label layoutX="68.0" layoutY="78.0" text="Invoice Number:" />
+      <Label layoutX="68.0" layoutY="117.0" text="Transaction ID:" />
+      <Label layoutX="68.0" layoutY="152.0" text="Payment Method:" />
+      <Label layoutX="68.0" layoutY="191.0" text="Payment Amount:" />
+      <Label fx:id="invoiceStatusLabel" layoutX="68.0" layoutY="225.0" prefHeight="38.0" prefWidth="290.0" text="Invoice Status" />
+      <TextField fx:id="invoiceNumberTextField" layoutX="206.0" layoutY="74.0" />
+      <TextField fx:id="transactionIDTextField" layoutX="207.0" layoutY="113.0" />
+      <TextField fx:id="paymentAmountTextField" layoutX="208.0" layoutY="187.0" />
+      <ComboBox fx:id="paymentMethodComboBox" layoutX="207.0" layoutY="148.0" prefWidth="150.0" />
+      <Button layoutX="127.0" layoutY="273.0" mnemonicParsing="false" onAction="#validatepaymentOnActionButton" text="Validate Payment" />
+      <Button layoutX="283.0" layoutY="273.0" mnemonicParsing="false" onAction="#submitPaymentOnActionButton" text="Submit Payment" />
+      <TableView fx:id="processPaymrntTableView" layoutX="397.0" layoutY="67.0" prefHeight="170.0" prefWidth="310.0">
         <columns>
-          <TableColumn prefWidth="158.39996337890625" text="Invoice Number" />
-          <TableColumn prefWidth="151.20001220703125" text="Payment Amount" />
+          <TableColumn fx:id="invoiceNumberColumn" prefWidth="158.39996337890625" text="Invoice Number" />
+          <TableColumn fx:id="paymentAmountColumn" prefWidth="151.20001220703125" text="Payment Amount" />
         </columns>
       </TableView>
-      <Button layoutX="656.0" layoutY="317.0" mnemonicParsing="false" text="Back" />
+      <Button layoutX="656.0" layoutY="317.0" mnemonicParsing="false" onAction="#backOnActionButton" text="Back" />
    </children>
 </AnchorPane>

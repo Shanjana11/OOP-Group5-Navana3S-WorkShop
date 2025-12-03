@@ -11,28 +11,28 @@
 
 <AnchorPane prefHeight="521.0" prefWidth="685.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Tanaka.generateInvoiceController">
    <children>
-      <TextField layoutX="179.0" layoutY="70.0" />
-      <TextField layoutX="179.0" layoutY="106.0" />
-      <TextField layoutX="179.0" layoutY="143.0" />
-      <TextField layoutX="179.0" layoutY="180.0" />
-      <Label layoutX="228.0" layoutY="24.0" text="Generate Invoice">
+      <TextField fx:id="jobCardNoTextField" layoutX="179.0" layoutY="70.0" />
+      <TextField fx:id="customerIDTextField" layoutX="179.0" layoutY="106.0" />
+      <TextField fx:id="vehicleNoTextField" layoutX="179.0" layoutY="143.0" />
+      <TextField fx:id="amountTextField" layoutX="179.0" layoutY="180.0" />
+      <Label layoutX="225.0" layoutY="14.0" text="Generate Invoice">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="26.0" />
          </font>
       </Label>
-      <Label layoutX="56.0" layoutY="74.0" text="Job Card No." />
-      <Label layoutX="56.0" layoutY="110.0" text="Customer ID" />
-      <Label layoutX="56.0" layoutY="147.0" text="Vehicle No." />
-      <Label layoutX="56.0" layoutY="184.0" text="Amount" />
-      <TextArea layoutX="179.0" layoutY="229.0" prefHeight="82.0" prefWidth="428.0" />
+      <Label layoutX="56.0" layoutY="74.0" text="Job Card No:" />
+      <Label layoutX="56.0" layoutY="110.0" text="Customer ID:" />
+      <Label layoutX="56.0" layoutY="147.0" text="Vehicle No:" />
+      <Label layoutX="56.0" layoutY="184.0" text="Amount:" />
+      <TextArea fx:id="maintenanceDetailsTextArea" layoutX="179.0" layoutY="229.0" prefHeight="82.0" prefWidth="428.0" />
       <Label layoutX="56.0" layoutY="241.0" text="Maintenance Details:" />
-      <Label layoutX="56.0" layoutY="337.0" text="Invoice Date" />
-      <DatePicker layoutX="179.0" layoutY="333.0" />
-      <ComboBox layoutX="179.0" layoutY="375.0" prefWidth="150.0" />
-      <Label layoutX="56.0" layoutY="379.0" text="Payment Type" />
-      <Button layoutX="166.0" layoutY="433.0" mnemonicParsing="false" text="Validate" />
-      <Button layoutX="300.0" layoutY="433.0" mnemonicParsing="false" text="Generate Invoice " />
-      <Label layoutX="166.0" layoutY="474.0" prefHeight="25.0" prefWidth="300.0" text="Validation messages" />
-      <Button layoutX="599.0" layoutY="474.0" mnemonicParsing="false" text="Back" />
+      <Label layoutX="56.0" layoutY="337.0" text="Invoice Date:" />
+      <DatePicker fx:id="invoiceDateDatePicker" layoutX="179.0" layoutY="333.0" />
+      <ComboBox fx:id="paymenttypeComboBox" layoutX="179.0" layoutY="375.0" prefWidth="150.0" />
+      <Label layoutX="56.0" layoutY="379.0" text="Payment Type:" />
+      <Button layoutX="166.0" layoutY="433.0" mnemonicParsing="false" onAction="#validateOnActionButton" text="Validate" />
+      <Button layoutX="300.0" layoutY="433.0" mnemonicParsing="false" onAction="#generateInvoiceOnActionButton" text="Generate Invoice " />
+      <Label fx:id="validationMessagesLabel" layoutX="166.0" layoutY="474.0" prefHeight="25.0" prefWidth="300.0" text="Validation messages" />
+      <Button layoutX="599.0" layoutY="474.0" mnemonicParsing="false" onAction="#backOnActionButton" text="Back" />
    </children>
 </AnchorPane>

@@ -44,11 +44,11 @@ public class loginController
     @FXML
     public void createAccount(ActionEvent actionEvent) {
         if (userField.getText().isEmpty() || password.getText().isEmpty()){
-            createInfo.setText("Please Fill all the fields.");
+            createInfo.setText("Please Fill all the fields!");
             return;
         }
         if (!password.getText().equals(confirmPassword.getText())){
-            createInfo.setText("Password doesn't match! Enter correct password.");
+            createInfo.setText("Password doesn't match! Enter correct password!");
             return;
         }
         for (User u: userList){
@@ -74,16 +74,16 @@ public class loginController
             loginInfo.setText("Please Fill all the fields.");
             return;
         }
-//        for (User u: userList){
-//            if (u.getUserName().equals(userComboBox.getValue()) && u.getPassword().equals(passLogIn.getText())){
-//                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("UserDashboard.fxml"));
-//                Scene scene = new Scene(fxmlLoader.load());
-//
-//                Stage stage = (Stage) loginInfo.getScene().getWindow();
-//                stage.setScene(scene);
-//                return;
-//            }
-//        }
+        for (User u: userList){
+            if (u.getUserName().equals(userComboBox.getValue()) && u.getPassword().equals(passLogIn.getText())){
+                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("UserDashboard.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                Stage stage = (Stage) loginInfo.getScene().getWindow();
+                stage.setTitle("Dashboard");
+                stage.setScene(scene);
+                return;
+            }
+        }
 
         if ((userComboBox.getValue().equals("Customer")) && (passLogIn.getText().equals("12345"))) {
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Shanjana/Customer.fxml"));
@@ -108,11 +108,11 @@ public class loginController
             stage.setTitle("Accounts Officer Dashboard");
             stage.setScene(scene);
         } else if ((userComboBox.getValue().equals("Marketing & Promotional Officer")) && (passLogIn.getText().equals("12345"))) {
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Shanjana/csa.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Tanaka/marketingAndPromotionsDashboard.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = null;
             stage = (Stage) loginInfo.getScene().getWindow();
-            stage.setTitle("Customer Support Executive Dashboard");
+            stage.setTitle("Marketing & Promotional Officer Dashboard");
             stage.setScene(scene);
         } else if ((userComboBox.getValue().equals("Technician")) && (passLogIn.getText().equals("12345"))) {
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Tasfia/techinician.fxml"));

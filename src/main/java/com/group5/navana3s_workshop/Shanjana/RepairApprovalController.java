@@ -48,11 +48,10 @@ public class RepairApprovalController
             if (newValue != null) {
                 repairDetailsLabel.setText(
                         "Booking ID: " + newValue.getBookingId() + "\n" +
-                                "Description: " + newValue.getRepairDescription() + "\n" +
-                                "Estimated Cost: " + newValue.getEstimatedCost() + "\n" +
-                                "Date: " + newValue.getRequestDate() + "\n" +
-                                "Status: " + newValue.getStatus()
-                );
+                        "Description: " + newValue.getRepairDescription() + "\n" +
+                        "Estimated Cost: " + newValue.getEstimatedCost() + "\n" +
+                        "Date: " + newValue.getRequestDate() + "\n" +
+                        "Status: " + newValue.getStatus());
             }
         });
 

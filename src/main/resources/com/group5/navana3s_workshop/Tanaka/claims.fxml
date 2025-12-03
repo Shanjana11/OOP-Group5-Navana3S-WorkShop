@@ -10,31 +10,32 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="461.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Tanaka.claimsController">
+<AnchorPane prefHeight="488.0" prefWidth="615.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Tanaka.claimsController">
    <children>
       <Label layoutX="142.0" layoutY="14.0" text="Insurance Claims">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <TableView layoutX="21.0" layoutY="111.0" prefHeight="114.0" prefWidth="543.0">
+      <TableView fx:id="insuranceClaimsTableView" layoutX="21.0" layoutY="111.0" prefHeight="114.0" prefWidth="543.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Claim ID" />
-          <TableColumn prefWidth="75.0" text="Invoice No" />
-            <TableColumn prefWidth="126.4000244140625" text="Customer Name" />
-            <TableColumn prefWidth="87.99993896484375" text="Claim Type" />
-            <TableColumn prefWidth="105.5999755859375" text="Approval Status" />
-            <TableColumn prefWidth="73.59991455078125" text="Date" />
+          <TableColumn fx:id="ClaimIDColumn" prefWidth="75.0" text="Claim ID" />
+          <TableColumn fx:id="invoiceNoColumn" prefWidth="75.0" text="Invoice No" />
+            <TableColumn fx:id="customerNameColumn" prefWidth="126.4000244140625" text="Customer Name" />
+            <TableColumn fx:id="claimTypeTextField" prefWidth="87.99993896484375" text="Claim Type" />
+            <TableColumn fx:id="approvalStatusTextField" prefWidth="105.5999755859375" text="Approval Status" />
+            <TableColumn fx:id="dateTextField" prefWidth="73.59991455078125" text="Date" />
         </columns>
       </TableView>
       <Label layoutX="14.0" layoutY="238.0" text="Invoice No:" />
       <Label layoutX="13.0" layoutY="280.0" text="Claim Type:" />
       <Label layoutX="13.0" layoutY="316.0" text="Issue Details:" />
-      <Button layoutX="389.0" layoutY="423.0" mnemonicParsing="false" text="Submit" />
-      <TextField layoutX="102.0" layoutY="238.0" />
-      <ChoiceBox layoutX="102.0" layoutY="276.0" prefHeight="26.0" prefWidth="122.0" />
-      <TextArea layoutX="93.0" layoutY="334.0" prefHeight="102.0" prefWidth="268.0" />
-      <Button layoutX="28.0" layoutY="71.0" mnemonicParsing="false" text="New Claim" />
-      <Button layoutX="153.0" layoutY="71.0" mnemonicParsing="false" text="Update Status" />
+      <Button layoutX="389.0" layoutY="423.0" mnemonicParsing="false" onAction="#submitOnActionButton" text="Submit" />
+      <TextField fx:id="invoiceNoTextField" layoutX="102.0" layoutY="238.0" />
+      <ChoiceBox fx:id="claimTypeChoiceBox" layoutX="102.0" layoutY="276.0" prefHeight="26.0" prefWidth="122.0" />
+      <TextArea fx:id="issueDetailsTextArea" layoutX="93.0" layoutY="334.0" prefHeight="102.0" prefWidth="268.0" />
+      <Button layoutX="28.0" layoutY="71.0" mnemonicParsing="false" onAction="#newClaimOnActionButton" text="New Claim" />
+      <Button layoutX="153.0" layoutY="71.0" mnemonicParsing="false" onAction="#updateStatusOnActionButton" text="Update Status" />
+      <Button layoutX="560.0" layoutY="449.0" mnemonicParsing="false" onAction="#backOnActionButton" text="Back" />
    </children>
 </AnchorPane>
