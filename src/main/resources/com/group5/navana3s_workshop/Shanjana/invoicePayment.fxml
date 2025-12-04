@@ -6,7 +6,6 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="436.0" prefWidth="647.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Shanjana.InvoicePaymentController">
@@ -19,7 +18,7 @@
       <Button layoutX="589.0" layoutY="396.0" mnemonicParsing="false" onAction="#Back" style="-fx-background-color: #3e3e3e;" text="Back" textFill="#faf8f8" />
       <TableView fx:id="tableView" layoutX="23.0" layoutY="73.0" prefHeight="200.0" prefWidth="598.0">
         <columns>
-          <TableColumn fx:id="invoiceC" prefWidth="75.0" text="Invoice No" />
+          <TableColumn fx:id="BookIDC" prefWidth="75.0" text="Booking ID" />
           <TableColumn fx:id="dateC" prefWidth="75.0" text="Date" />
             <TableColumn fx:id="amountC" prefWidth="75.0" text="Amount" />
             <TableColumn fx:id="statusC" prefWidth="75.0" text="Status" />
@@ -28,13 +27,9 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button layoutX="445.0" layoutY="323.0" mnemonicParsing="false" onAction="#PayButton" style="-fx-background-color: #4CAF50;" text="Pay Now" textFill="#faf9f9" />
-      <ComboBox fx:id="statusCombo" layoutX="71.0" layoutY="285.0" prefHeight="26.0" prefWidth="170.0" promptText="Select Status" />
-      <Button layoutX="60.0" layoutY="336.0" mnemonicParsing="false" onAction="#Filter" style="-fx-background-color: #3e3e3e;" text="Search" textFill="#f4f1f1" />
-      <Button layoutX="211.0" layoutY="336.0" mnemonicParsing="false" onAction="#ResetFilter" prefHeight="26.0" prefWidth="52.0" style="-fx-background-color: #3e3e3e;" text="Reset" textFill="#f7f1f1" />
-      <Line endX="2.60003662109375" endY="61.999969482421875" layoutX="320.0" layoutY="326.0" startX="2.60003662109375" startY="-41.20001220703125" />
-      <Label layoutX="351.0" layoutY="289.0" text="Payment method:" />
-      <ComboBox fx:id="methodCombo" layoutX="459.0" layoutY="285.0" prefWidth="150.0" promptText="Select Method" />
-      <Label fx:id="infoLabel" alignment="CENTER" layoutX="347.0" layoutY="357.0" prefHeight="37.0" prefWidth="222.0" />
+      <Button layoutX="275.0" layoutY="321.0" mnemonicParsing="false" onAction="#PayButton" style="-fx-background-color: #4CAF50;" text="Pay Now" textFill="#faf9f9" />
+      <Label layoutX="181.0" layoutY="287.0" text="Payment method:" />
+      <ComboBox fx:id="methodCombo" layoutX="289.0" layoutY="283.0" prefWidth="150.0" promptText="Select Method" />
+      <Label fx:id="infoLabel" alignment="CENTER" layoutX="123.0" layoutY="358.0" prefHeight="38.0" prefWidth="398.0" />
    </children>
 </AnchorPane>

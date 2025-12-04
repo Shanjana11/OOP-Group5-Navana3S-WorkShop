@@ -1,106 +1,145 @@
 package com.group5.navana3s_workshop.Shanjana;
 
 import com.group5.navana3s_workshop.HelloApplication;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-import java.time.LocalDate;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InvoicePaymentController
-{
-    @javafx.fxml.FXML
-    private TableColumn<Invoice, String> invoiceC;
-    @javafx.fxml.FXML
-    private TableColumn<Invoice, Double> amountC;
-    @javafx.fxml.FXML
-    private ComboBox<String> statusCombo;
-    @javafx.fxml.FXML
-    private TableView<Invoice> tableView;
-    @javafx.fxml.FXML
-    private TableColumn<Invoice, LocalDate> dateC;
-    @javafx.fxml.FXML
-    private TableColumn<Invoice, String> statusC;
-    @javafx.fxml.FXML
-    private ComboBox<String> methodCombo;
-    @javafx.fxml.FXML
-    private Label infoLabel;
+public class InvoicePaymentController {
 
-    private List<Invoice> invoiceList = new ArrayList<>();
+    private final String BOOKING_FILE = "bookings.dat";
+    private final String PAYMENT_FILE = "payments.dat";
 
-    @javafx.fxml.FXML
+    @FXML private TableView<Invoice> tableView;
+    @FXML private TableColumn<Invoice, String> BookIDC;
+    @FXML private TableColumn<Invoice, String> amountC;
+    @FXML private TableColumn<Invoice, String> statusC;
+    @FXML private TableColumn<Invoice, String> dateC;
+    @FXML private Label infoLabel;
+    @FXML private ComboBox<String> methodCombo;
+
+    private ObservableList<Invoice> invoiceList = FXCollections.observableArrayList();
+
+    @FXML
     public void initialize() {
-        statusCombo.getItems().addAll("Paid","Unpaid");
-        methodCombo.getItems().addAll("Credit Card", "Debit Card","Bkash", "Nagad");
 
-        invoiceC.setCellValueFactory(new PropertyValueFactory<>("invoiceId"));
-        dateC.setCellValueFactory(new PropertyValueFactory<>("dueDate"));
+        methodCombo.getItems().addAll("Cash", "Card", "Bkash", "Nagad");
+
+        BookIDC.setCellValueFactory(new PropertyValueFactory<>("bookingId"));
         amountC.setCellValueFactory(new PropertyValueFactory<>("amount"));
-        statusC.setCellValueFactory(new PropertyValueFactory<>("paymentStatus"));
+        statusC.setCellValueFactory(new PropertyValueFactory<>("status"));
+        dateC.setCellValueFactory(new PropertyValueFactory<>("date"));
 
         loadInvoices();
     }
 
     private void loadInvoices() {
-        invoiceList.add(new Invoice("INV001", LocalDate.of(2025,3,10), 6500.0, "Unpaid"));
-        invoiceList.add(new Invoice("INV002", LocalDate.of(2025,7,20), 1500.0, "Paid"));
-        invoiceList.add(new Invoice("INV003", LocalDate.of(2025,11,27), 4500.0, "Paid"));
-        invoiceList.add(new Invoice("INV004", LocalDate.of(2025,12,1), 1000.0, "Unpaid"));
-        tableView.getItems().addAll(invoiceList);
+        List<BookService> bookings = loadBookings();
+
+        invoiceList.clear();
+
+        for (BookService b : bookings) {
+            double amount = calculateAmount(b.getServiceType());
+
+            Invoice record = new Invoice(
+                    b.getConfirmationId(),
+                    b.getVehicleId(),
+                    b.getServiceType(),
+                    b.getDate(),
+                    amount,
+                    "Unpaid"
+            );
+
+            invoiceList.add(record);
+        }
+
+        tableView.setItems(invoiceList);
     }
 
-    @javafx.fxml.FXML
-    public void Filter(ActionEvent actionEvent) {
-        String statusFilter = statusCombo.getValue();
+    private double calculateAmount(String type) {
+        return switch (type) {
+            case "Regular Service" -> 1500;
+            case "Oil Change" -> 700;
+            case "Brake Service" -> 1200;
+            case "Engine Repair" -> 4500;
+            case "AC Service" -> 1800;
+            case "Tire Change" -> 900;
+            default -> 1000;
+        };
+    }
 
-        tableView.getItems().clear();
-        for (Invoice u : invoiceList){
-            if (u.getPaymentStatus().equals(statusFilter)){
-                tableView.getItems().add(u);
-            }
+    private List<BookService> loadBookings() {
+        File file = new File(BOOKING_FILE);
+        if (!file.exists()) return new ArrayList<>();
+
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(file))) {
+            return (List<BookService>) in.readObject();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<>();
         }
     }
 
-    @javafx.fxml.FXML
-    public void ResetFilter(ActionEvent actionEvent) {
-        tableView.getItems().clear();
-        tableView.getItems().addAll(invoiceList);
-    }
-
-    @javafx.fxml.FXML
-    public void PayButton(ActionEvent actionEvent) throws IOException {
+    @FXML
+    public void PayButton(ActionEvent actionEvent) {
         Invoice selected = tableView.getSelectionModel().getSelectedItem();
+        String method = methodCombo.getValue();
 
         if (selected == null) {
-            infoLabel.setText("Select an invoice first!");
+            infoLabel.setText("Select a service to pay.");
             return;
         }
-
-        String method = methodCombo.getValue();
         if (method == null) {
-            infoLabel.setText("Choose payment method!");
+            infoLabel.setText("Select a payment method.");
             return;
         }
 
-        // Process payment
-        selected.setPaymentStatus("Paid");
+        selected.setStatus("Paid");
         tableView.refresh();
-        infoLabel.setText("Payment successful!");
+
+        savePayment(selected);
+
+        infoLabel.setText("Payment successful for " + selected.getBookingId());
     }
 
+    private void savePayment(Invoice record) {
+        List<Invoice> paid = loadPayments();
+        paid.add(record);
 
-    @javafx.fxml.FXML
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(PAYMENT_FILE))) {
+            out.writeObject(paid);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private List<Invoice> loadPayments() {
+        File file = new File(PAYMENT_FILE);
+        if (!file.exists()) return new ArrayList<>();
+
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(file))) {
+            return (List<Invoice>) in.readObject();
+        } catch (Exception e) {
+            return new ArrayList<>();
+        }
+    }
+
+    @FXML
     public void Back(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Shanjana/Customer.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        Button signOutButton = (Button) actionEvent.getSource();
-        Stage stage = (Stage) signOutButton.getScene().getWindow();
+        Button backBtn = (Button) actionEvent.getSource();
+        Stage stage = (Stage) backBtn.getScene().getWindow();
         stage.setScene(scene);
     }
 }

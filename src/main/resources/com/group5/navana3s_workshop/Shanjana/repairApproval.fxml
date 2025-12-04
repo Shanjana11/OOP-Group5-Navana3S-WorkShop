@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Shanjana.RepairApprovalController">
+<AnchorPane prefHeight="542.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Shanjana.RepairApprovalController">
     <children>
         <Text layoutX="24.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Repair Approval Requests">
             <font>
@@ -19,25 +19,21 @@
         <TableView fx:id="repairRequestTable" layoutX="47.0" layoutY="100.0" prefHeight="250.0" prefWidth="806.0">
             <columns>
                 <TableColumn fx:id="bookingIdCol" prefWidth="120.0" text="Booking ID" />
-                <TableColumn fx:id="repairDescCol" prefWidth="300.0" text="Repair Description" />
+                <TableColumn fx:id="repairDescCol" prefWidth="300.0" text="Additional Repair Suggestion" />
                 <TableColumn fx:id="estimatedCostCol" prefWidth="150.0" text="Estimated Cost" />
                 <TableColumn fx:id="dateCol" prefWidth="120.0" text="Request Date" />
-                <TableColumn fx:id="statusCol" prefWidth="116.0" text="Status" />
             </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
         </TableView>
 
-        <Text layoutX="60.0" layoutY="390.0" text="Repair Details:">
-            <font>
-                <Font name="System Bold" size="16.0" />
-            </font>
-        </Text>
+        <Label fx:id="infoLabel" layoutX="60.0" layoutY="375.0" prefHeight="71.0" prefWidth="780.0" style="-fx-border-color: #cccccc; -fx-padding: 10;" wrapText="true" />
 
-        <Label fx:id="repairDetailsLabel" layoutX="60.0" layoutY="410.0" prefHeight="117.0" prefWidth="780.0" style="-fx-border-color: #cccccc; -fx-padding: 10;" text="Select a repair request to view details" wrapText="true" />
+        <Button layoutX="811.0" layoutY="473.0" mnemonicParsing="false" onAction="#Back" prefHeight="32.0" prefWidth="58.0" style="-fx-background-color: #3e3e3e;" text="Back" textFill="WHITE" />
 
-        <Button layoutX="817.0" layoutY="540.0" mnemonicParsing="false" onAction="#Back" prefHeight="32.0" prefWidth="58.0" style="-fx-background-color: #3e3e3e;" text="Back" textFill="WHITE" />
+        <Button layoutX="195.0" layoutY="473.0" mnemonicParsing="false" onAction="#Reject" prefHeight="32.0" prefWidth="58.0" style="-fx-background-color: #d32f2f;" text="Reject" textFill="WHITE" />
 
-        <Button layoutX="176.0" layoutY="540.0" mnemonicParsing="false" onAction="#Reject" prefHeight="32.0" prefWidth="58.0" style="-fx-background-color: #d32f2f;" text="Reject" textFill="WHITE" />
-
-        <Button layoutX="60.0" layoutY="540.0" mnemonicParsing="false" onAction="#Approve" prefHeight="32.0" prefWidth="69.0" style="-fx-background-color: #4CAF50;" text="Approve" textFill="WHITE" />
+        <Button layoutX="70.0" layoutY="473.0" mnemonicParsing="false" onAction="#Approve" prefHeight="32.0" prefWidth="69.0" style="-fx-background-color: #4CAF50;" text="Approve" textFill="WHITE" />
     </children>
 </AnchorPane>

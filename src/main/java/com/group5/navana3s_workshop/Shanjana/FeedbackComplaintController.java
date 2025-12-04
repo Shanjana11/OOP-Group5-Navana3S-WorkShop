@@ -1,7 +1,9 @@
 package com.group5.navana3s_workshop.Shanjana;
 
 import com.group5.navana3s_workshop.HelloApplication;
+import com.group5.navana3s_workshop.Shanjana.BookService;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -13,108 +15,105 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FeedbackComplaintController {
-    @javafx.fxml.FXML
-    private ComboBox<String> rateCombo;
-    @javafx.fxml.FXML
-    private Label infoLabel;
-    @javafx.fxml.FXML
-    private TextField customerNF;
-    @javafx.fxml.FXML
-    private ComboBox<String> typeCombo;
 
-    private static final String FeedbackFile = "feedbacks.bin";
+    private final String FEEDBACK_FILE = "feedback.dat";
+    private final String BOOKING_FILE = "bookings.dat";
 
-    @javafx.fxml.FXML
+    @FXML private ComboBox<String> bookingIdCombo;
+    @FXML private ComboBox<String> rateCombo;
+    @FXML private ComboBox<String> typeCombo;
+    @FXML private Label infoLabel;
+
+    @FXML
     public void initialize() {
-        rateCombo.getItems().addAll("★☆☆☆☆ - Very Poor","★★☆☆☆ - Poor","★★★☆☆ - Average","★★★★☆ - Good","★★★★★ - Excellent");
-        typeCombo.getItems().addAll("Regular Service", "Oil Change", "Brake Service", "Engine Repair", "AC Service", "Tire Change");
 
-        infoLabel.setText("");  //clear infolabel initially
+        // Load rating items
+        rateCombo.getItems().addAll("Excellent", "Average", "Poor");
+
+        // Load service types
+        typeCombo.getItems().addAll(
+                "Regular Service", "Oil Change", "Brake Service",
+                "Engine Repair", "AC Service", "Tire Change"
+        );
+
+        // Load booking IDs from bookings.dat
+        List<BookService> bookings = loadBookings();
+
+        for (BookService b : bookings) {
+            bookingIdCombo.getItems().add(b.getConfirmationId());
+        }
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void submitButton(ActionEvent actionEvent) {
-        String customerName = customerNF.getText().trim();
-        String serviceType = typeCombo.getValue();
-        String rating = rateCombo.getValue();
 
-        // Validation
-        if (customerName.isEmpty() || serviceType == null || rating == null) {
-            alert("Please fill all required fields!");
-            infoLabel.setText("");
+        String bookingId = bookingIdCombo.getValue();
+        String rating = rateCombo.getValue();
+        String serviceType = typeCombo.getValue();
+
+        if (bookingId == null || rating == null || serviceType == null) {
+            infoLabel.setText("Please fill all fields.");
             return;
         }
 
-        // Generate feedback ID
-        String feedbackId = "FB" + String.format("%05d", (int)(Math.random() * 100000));
+        Feedback record = new Feedback(
+                bookingId,
+                serviceType,
+                rating,
+                LocalDateTime.now()
+        );
 
-        // Create Feedback object
-        Feedback feedback = new Feedback(feedbackId, customerName, serviceType, rating, LocalDateTime.now());
+        saveFeedback(record);
 
-        // Save to file
-        if (saveFeedbackToFile(feedback)) {
-            // Show thank you message on label
-            infoLabel.setText("Thank you " + customerName + " for your feedback!\nReference ID: " + feedbackId);
-            infoLabel.setStyle("-fx-text-fill: green; -fx-font-weight: bold;");
+        infoLabel.setText("Your feedback has been submitted successfully.");
+    }
 
-            // Show alert message
-            alert("Thank you! Your feedback has been submitted successfully.\nReference ID: " + feedbackId);
+    private void saveFeedback(Feedback record) {
+        List<Feedback> list = loadFeedback();
 
-            // Clear form
-            clearForm();
-        } else {
-            infoLabel.setText("Failed to submit feedback. Please try again!");
-            infoLabel.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
-            alert("Error submitting feedback. Please try again!");
+        list.add(record);
+
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(FEEDBACK_FILE))) {
+            out.writeObject(list);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
-    private boolean saveFeedbackToFile(Feedback feedback) {
-        List<Feedback> feedbacks = loadExistingFeedbacks();
-        feedbacks.add(feedback);
+    private List<Feedback> loadFeedback() {
+        File file = new File(FEEDBACK_FILE);
+        if (!file.exists()) return new ArrayList<>();
 
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FeedbackFile))) {
-            oos.writeObject(feedbacks);
-            return true;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    private List<Feedback> loadExistingFeedbacks() {
-        File file = new File(FeedbackFile);
-
-        if (!file.exists()) {
-            return new ArrayList<>();
-        }
-
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FeedbackFile))) {
-            return (List<Feedback>) ois.readObject();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(file))) {
+            return (List<Feedback>) in.readObject();
+        } catch (Exception e) {
             return new ArrayList<>();
         }
     }
 
-    private void clearForm() {
-        customerNF.clear();
-        typeCombo.setValue(null);
-        rateCombo.setValue(null);
+    private List<BookService> loadBookings() {
+        File file = new File(BOOKING_FILE);
+        if (!file.exists()) return new ArrayList<>();
+
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(file))) {
+            return (List<BookService>) in.readObject();
+        } catch (Exception e) {
+            return new ArrayList<>();
+        }
     }
 
-    private void alert(String message) {
-        Alert msgBox = new Alert(Alert.AlertType.INFORMATION);
-        msgBox.setContentText(message);
-        msgBox.show();
-    }
-
-    @javafx.fxml.FXML
-    public void backButton(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Shanjana/Customer.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        Button signOutButton = (Button) actionEvent.getSource();
-        Stage stage = (Stage) signOutButton.getScene().getWindow();
-        stage.setScene(scene);
+    @FXML
+    public void backButton(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(
+                    HelloApplication.class.getResource("/com/group5/navana3s_workshop/Shanjana/Customer.fxml")
+            );
+            Scene scene = new Scene(fxmlLoader.load());
+            Button btn = (Button) actionEvent.getSource();
+            Stage stage = (Stage) btn.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

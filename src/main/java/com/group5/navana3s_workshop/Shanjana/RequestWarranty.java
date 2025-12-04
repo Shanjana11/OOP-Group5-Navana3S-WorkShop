@@ -3,18 +3,18 @@ package com.group5.navana3s_workshop.Shanjana;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Feedback implements Serializable {
+public class RequestWarranty implements Serializable {
     private String bookingId;
-    private String serviceType;
-    private String rating;
+    private String partName;
+    private String description;
     private LocalDateTime submittedAt;
 
     @Override
     public String toString() {
-        return "Feedback{" +
+        return "RequestWarranty{" +
                 "bookingId='" + bookingId + '\'' +
-                ", serviceType='" + serviceType + '\'' +
-                ", rating='" + rating + '\'' +
+                ", partName='" + partName + '\'' +
+                ", description='" + description + '\'' +
                 ", submittedAt=" + submittedAt +
                 '}';
     }
@@ -27,20 +27,20 @@ public class Feedback implements Serializable {
         this.bookingId = bookingId;
     }
 
-    public String getServiceType() {
-        return serviceType;
+    public String getPartName() {
+        return partName;
     }
 
-    public void setServiceType(String serviceType) {
-        this.serviceType = serviceType;
+    public void setPartName(String partName) {
+        this.partName = partName;
     }
 
-    public String getRating() {
-        return rating;
+    public String getDescription() {
+        return description;
     }
 
-    public void setRating(String rating) {
-        this.rating = rating;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public LocalDateTime getSubmittedAt() {
@@ -51,10 +51,10 @@ public class Feedback implements Serializable {
         this.submittedAt = submittedAt;
     }
 
-    public Feedback(String bookingId, String serviceType, String rating, LocalDateTime submittedAt) {
+    public RequestWarranty(String bookingId, String partName, String description, LocalDateTime submittedAt) {
         this.bookingId = bookingId;
-        this.serviceType = serviceType;
-        this.rating = rating;
+        this.partName = partName;
+        this.description = description;
         this.submittedAt = submittedAt;
     }
 }

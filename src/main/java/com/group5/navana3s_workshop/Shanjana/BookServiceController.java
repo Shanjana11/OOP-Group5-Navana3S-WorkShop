@@ -27,7 +27,7 @@ public class BookServiceController
     @javafx.fxml.FXML
     private Label statusLabel;
 
-    private static final String BookingFile = "bookings.bin";
+    private final String FILE_PATH = "bookings.dat";
 
     @javafx.fxml.FXML
     public void initialize() {
@@ -46,81 +46,75 @@ public class BookServiceController
 
     @javafx.fxml.FXML
     public void SubmitBooking(ActionEvent actionEvent) {
-        String vehicleId = vehicleIdField.getText();
-        String serviceType = serviceTypeCombo.getValue();
+        String vehicleId = vehicleIdField.getText().trim();
         LocalDate date = datePicker.getValue();
-        String time = slotCombo.getValue();
+        String serviceType = serviceTypeCombo.getValue();
+        String timeSlot = slotCombo.getValue();
 
         // validation
-        if (vehicleId.isEmpty() || serviceType == null || date == null || time == null) {
-            statusLabel.setText("Please fill all fields!");
+        if (vehicleId.isEmpty() || date == null || serviceType == null || timeSlot == null) {
+            statusLabel.setText("Please fill all fields.");
             return;
         }
 
-        //Booking date must be in future
+        if (!checkSlotAvailability(date, timeSlot)) {
+            statusLabel.setText("Selected slot is already full.");
+            return;
+        }
+
+        //booking date must not be in past
         if (date.isBefore(LocalDate.now())) {
-            statusLabel.setText("Booking Date cannot be in the past!");
+            statusLabel.setText("Booking Date cannot be in the past");
             return;
         }
 
-        // Generate booking ID
-        String bookingId = "BK" + String.format("%05d", new Random().nextInt(100000));
+        String confirmationId = generateConfirmationId();
 
-        // create booking object
-        BookService newBooking = new BookService(bookingId, vehicleId, serviceType, date, time);
+        BookService booking = new BookService(vehicleId, date, timeSlot, serviceType, confirmationId);
 
-        // Save booking to file
-        if (saveBookingToFile(newBooking)) {
-            statusLabel.setText("Booking confirmed! ID: " + bookingId);
-            showAlert("Success", "Your service has been booked successfully!\nBooking ID: " + bookingId);
+        saveBookingBinary(booking);
 
-            // Clear fields after successful booking
-            clearFields();
-        } else {
-            statusLabel.setText("Failed to save booking!");
-            showAlert("Error", "Could not save booking. Please try again.");
-        }
+        statusLabel.setText(
+                "Booking confirmed! ID: " + confirmationId +
+                        "\nDate: " + date +
+                        "\nTime: " + timeSlot
+        );
     }
 
-    private boolean saveBookingToFile(BookService booking) {
-        List<BookService> bookings = loadExistingBookings();
+    private boolean checkSlotAvailability(LocalDate date, String slot) {
+        List<BookService> existing = loadBookingsBinary();
+
+        long count = existing.stream()
+                .filter(b -> b.getDate().equals(date) && b.getTimeSlot().equals(slot))
+                .count();
+
+        return count < 3;  // Example: 3 customers per slot max
+    }
+
+    private void saveBookingBinary(BookService booking) {
+        List<BookService> bookings = loadBookingsBinary();
         bookings.add(booking);
 
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(BookingFile))) {
-            oos.writeObject(bookings);
-            return true;
-        } catch (IOException e) {
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(FILE_PATH))) {
+            out.writeObject(bookings);
+        } catch (Exception e) {
             e.printStackTrace();
-            return false;
         }
     }
 
-    private List<BookService> loadExistingBookings() {
-        File file = new File(BookingFile);
+    private List<BookService> loadBookingsBinary() {
+        File file = new File(FILE_PATH);
+        if (!file.exists()) return new ArrayList<>();
 
-        if (!file.exists()) {
-            return new ArrayList<>();
-        }
-
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(BookingFile))) {
-            return (List<BookService>) ois.readObject();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(FILE_PATH))) {
+            return (List<BookService>) in.readObject();
+        } catch (Exception e) {
             return new ArrayList<>();
         }
     }
 
-    private void clearFields() {
-        vehicleIdField.clear();
-        serviceTypeCombo.setValue(null);
-        datePicker.setValue(null);
-        slotCombo.setValue(null);
-    }
-
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setContentText(message);
-        alert.showAndWait();
+    private String generateConfirmationId() {
+        int num = new Random().nextInt(900000) + 100000;
+        return "BK" + num;
     }
 }

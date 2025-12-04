@@ -4,26 +4,18 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 public class BookService implements Serializable {
-    private String bookingId;
     private String vehicleId;
-    private String serviceType;
-    private LocalDate bookingDate;
+    private LocalDate date;
     private String timeSlot;
+    private String serviceType;
+    private String confirmationId;
 
-    public BookService(String bookingId, String vehicleId, String serviceType, LocalDate bookingDate, String timeSlot) {
-        this.bookingId = bookingId;
+    public BookService(String vehicleId, LocalDate date, String timeSlot, String serviceType, String confirmationId) {
         this.vehicleId = vehicleId;
-        this.serviceType = serviceType;
-        this.bookingDate = bookingDate;
+        this.date = date;
         this.timeSlot = timeSlot;
-    }
-
-    public String getBookingId() {
-        return bookingId;
-    }
-
-    public void setBookingId(String bookingId) {
-        this.bookingId = bookingId;
+        this.serviceType = serviceType;
+        this.confirmationId = confirmationId;
     }
 
     public String getVehicleId() {
@@ -34,20 +26,12 @@ public class BookService implements Serializable {
         this.vehicleId = vehicleId;
     }
 
-    public String getServiceType() {
-        return serviceType;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setServiceType(String serviceType) {
-        this.serviceType = serviceType;
-    }
-
-    public LocalDate getBookingDate() {
-        return bookingDate;
-    }
-
-    public void setBookingDate(LocalDate bookingDate) {
-        this.bookingDate = bookingDate;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     public String getTimeSlot() {
@@ -58,14 +42,30 @@ public class BookService implements Serializable {
         this.timeSlot = timeSlot;
     }
 
+    public String getServiceType() {
+        return serviceType;
+    }
+
+    public void setServiceType(String serviceType) {
+        this.serviceType = serviceType;
+    }
+
+    public String getConfirmationId() {
+        return confirmationId;
+    }
+
+    public void setConfirmationId(String confirmationId) {
+        this.confirmationId = confirmationId;
+    }
+
     @Override
     public String toString() {
         return "BookService{" +
-                "bookingId='" + bookingId + '\'' +
-                ", vehicleId='" + vehicleId + '\'' +
-                ", serviceType='" + serviceType + '\'' +
-                ", bookingDate=" + bookingDate +
+                "vehicleId='" + vehicleId + '\'' +
+                ", date=" + date +
                 ", timeSlot='" + timeSlot + '\'' +
+                ", serviceType='" + serviceType + '\'' +
+                ", confirmationId='" + confirmationId + '\'' +
                 '}';
     }
 }
