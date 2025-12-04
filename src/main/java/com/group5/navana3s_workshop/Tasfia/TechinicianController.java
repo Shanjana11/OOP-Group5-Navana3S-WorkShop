@@ -77,7 +77,7 @@ public class TechinicianController
 
     @javafx.fxml.FXML
     public void faultdiagnosisOnActionButton(ActionEvent actionEvent)throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Tasfia/unresolvedissues.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Tasfia/faultdiagnosis.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Button signOutButton = (Button) actionEvent.getSource();
         Stage stage = (Stage) signOutButton.getScene().getWindow();

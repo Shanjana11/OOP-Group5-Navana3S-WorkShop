@@ -11,12 +11,12 @@ public class Part {
         this.quantity = quantity;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public int getId() {
+        return id;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -27,12 +27,12 @@ public class Part {
         this.name = name;
     }
 
-    public int getId() {
-        return id;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     @Override

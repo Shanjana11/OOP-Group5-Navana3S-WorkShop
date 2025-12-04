@@ -29,7 +29,7 @@
       <Button layoutX="146.0" layoutY="467.0" mnemonicParsing="false" onAction="#saveOnActionButton" text="Save" />
       <TableView fx:id="tableview" layoutX="415.0" layoutY="50.0" prefHeight="200.0" prefWidth="343.0">
         <columns>
-          <TableColumn fx:id="desriptioncol" prefWidth="115.20001220703125" text="Description" />
+          <TableColumn fx:id="descriptioncol" prefWidth="115.20001220703125" text="Description" />
           <TableColumn fx:id="severitycol" prefWidth="112.800048828125" text="Severity" />
             <TableColumn fx:id="managercol" prefWidth="112.800048828125" text="Manager" />
         </columns>

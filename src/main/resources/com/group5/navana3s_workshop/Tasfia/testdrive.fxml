@@ -30,5 +30,7 @@
       <Button layoutX="196.0" layoutY="455.0" mnemonicParsing="false" onAction="#savereportOnActionButton" text="Save Report" />
       <Button layoutX="307.0" layoutY="455.0" mnemonicParsing="false" onAction="#backOnActionButton" text="Back" />
       <TextArea fx:id="textarea" layoutX="145.0" layoutY="254.0" prefHeight="141.0" prefWidth="200.0" />
+      <Label layoutX="475.0" layoutY="79.0" prefHeight="86.0" prefWidth="114.0" text="JobId" />
+      <Label layoutX="480.0" layoutY="169.0" prefHeight="86.0" prefWidth="104.0" text="VechicleNo" />
    </children>
 </AnchorPane>
