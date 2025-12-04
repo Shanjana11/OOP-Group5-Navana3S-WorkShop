@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="599.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Tasfia.FaultdiagnosisController">
+<AnchorPane prefHeight="599.0" prefWidth="798.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Tasfia.FaultdiagnosisController">
    <children>
       <Label layoutX="41.0" layoutY="31.0" prefHeight="18.0" prefWidth="175.0" text="Fault Diagnosis">
          <font>
@@ -24,10 +24,12 @@
       <Label layoutX="372.0" layoutY="73.0" text="Error Code" />
       <TextField fx:id="errorfield" layoutX="459.0" layoutY="69.0" />
       <Label layoutX="386.0" layoutY="131.0" text="Description" />
-      <TableView fx:id="tableview" layoutX="323.0" layoutY="349.0" prefHeight="171.0" prefWidth="370.0">
+      <TableView fx:id="tableview" layoutX="332.0" layoutY="346.0" prefHeight="182.0" prefWidth="427.0">
         <columns>
-          <TableColumn fx:id="errorcol" prefWidth="178.4000244140625" text="Error Code" />
-          <TableColumn fx:id="descriptioncol" prefWidth="204.00003051757812" text="Description" />
+          <TableColumn fx:id="jobidcol" text="Job Id" />
+          <TableColumn fx:id="vechiclenocol" prefWidth="103.20001220703125" text="Vechicle No" />
+            <TableColumn fx:id="errorcol" prefWidth="120.0" text="Error Code" />
+            <TableColumn fx:id="errorcol2" prefWidth="132.800048828125" text="Description" />
         </columns>
       </TableView>
       <Button layoutX="545.0" layoutY="307.0" mnemonicParsing="false" onAction="#addDiagnosisButton" text="Add Diagnosis" />

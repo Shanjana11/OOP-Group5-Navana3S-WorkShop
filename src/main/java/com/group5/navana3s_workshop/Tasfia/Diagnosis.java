@@ -1,57 +1,57 @@
 package com.group5.navana3s_workshop.Tasfia;
 
 public class Diagnosis {
-    private String JobId;
-    private String issue;
-    private String severity;
-    private String notes;
+    private String error;
+    private String description;
+    private String jobid;
+    private String vechicleno;
 
-    public Diagnosis(String jobId, String issue, String severity, String notes) {
-        JobId = jobId;
-        this.issue = issue;
-        this.severity = severity;
-        this.notes = notes;
+    public Diagnosis(String error, String description, String jobid, String vechicleno) {
+        this.error = error;
+        this.description = description;
+        this.jobid = jobid;
+        this.vechicleno = vechicleno;
     }
 
-    public String getJobId() {
-        return JobId;
+    public String getError() {
+        return error;
     }
 
-    public void setJobId(String jobId) {
-        JobId = jobId;
+    public void setError(String error) {
+        this.error = error;
     }
 
-    public String getIssue() {
-        return issue;
+    public String getDescription() {
+        return description;
     }
 
-    public void setIssue(String issue) {
-        this.issue = issue;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getSeverity() {
-        return severity;
+    public String getJobid() {
+        return jobid;
     }
 
-    public void setSeverity(String severity) {
-        this.severity = severity;
+    public void setJobid(String jobid) {
+        this.jobid = jobid;
     }
 
-    public String getNotes() {
-        return notes;
+    public String getVechicleno() {
+        return vechicleno;
     }
 
-    public void setNotes(String notes) {
-        this.notes = notes;
+    public void setVechicleno(String vechicleno) {
+        this.vechicleno = vechicleno;
     }
 
     @Override
     public String toString() {
         return "Diagnosis{" +
-                "JobId='" + JobId + '\'' +
-                ", issue='" + issue + '\'' +
-                ", severity='" + severity + '\'' +
-                ", notes='" + notes + '\'' +
+                "error='" + error + '\'' +
+                ", description='" + description + '\'' +
+                ", jobid='" + jobid + '\'' +
+                ", vechicleno='" + vechicleno + '\'' +
                 '}';
     }
 }
