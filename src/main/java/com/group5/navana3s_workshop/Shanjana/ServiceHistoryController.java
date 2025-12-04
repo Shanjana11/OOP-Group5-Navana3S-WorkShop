@@ -32,7 +32,7 @@ public class ServiceHistoryController {
     @FXML
     public void initialize() {
 
-        bookingIdCol.setCellValueFactory(new PropertyValueFactory<>("confirmationId"));
+        bookingIdCol.setCellValueFactory(new PropertyValueFactory<>("bookingId"));
         dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
         serviceTypeCol.setCellValueFactory(new PropertyValueFactory<>("serviceType"));
     }

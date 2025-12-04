@@ -8,14 +8,18 @@ public class BookService implements Serializable {
     private LocalDate date;
     private String timeSlot;
     private String serviceType;
+    private String bookingId;
     private String confirmationId;
 
-    public BookService(String vehicleId, LocalDate date, String timeSlot, String serviceType, String confirmationId) {
-        this.vehicleId = vehicleId;
-        this.date = date;
-        this.timeSlot = timeSlot;
-        this.serviceType = serviceType;
-        this.confirmationId = confirmationId;
+    @Override
+    public String toString() {
+        return "BookService{" +
+                "vehicleId='" + vehicleId + '\'' +
+                ", date=" + date +
+                ", timeSlot='" + timeSlot + '\'' +
+                ", serviceType='" + serviceType + '\'' +
+                ", bookingId='" + bookingId + '\'' +
+                '}';
     }
 
     public String getVehicleId() {
@@ -50,22 +54,23 @@ public class BookService implements Serializable {
         this.serviceType = serviceType;
     }
 
+    public String getBookingId() {
+        return bookingId;
+    }
+
+    public void setBookingId(String bookingId) {
+        this.bookingId = bookingId;
+    }
+
+    public BookService(String vehicleId, LocalDate date, String timeSlot, String serviceType, String bookingId) {
+        this.vehicleId = vehicleId;
+        this.date = date;
+        this.timeSlot = timeSlot;
+        this.serviceType = serviceType;
+        this.bookingId = bookingId;
+    }
+
     public String getConfirmationId() {
         return confirmationId;
-    }
-
-    public void setConfirmationId(String confirmationId) {
-        this.confirmationId = confirmationId;
-    }
-
-    @Override
-    public String toString() {
-        return "BookService{" +
-                "vehicleId='" + vehicleId + '\'' +
-                ", date=" + date +
-                ", timeSlot='" + timeSlot + '\'' +
-                ", serviceType='" + serviceType + '\'' +
-                ", confirmationId='" + confirmationId + '\'' +
-                '}';
     }
 }

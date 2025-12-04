@@ -13,8 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class BookServiceController
-{
+public class BookServiceController {
 
     @javafx.fxml.FXML
     private DatePicker datePicker;
@@ -39,8 +38,7 @@ public class BookServiceController
     public void Back(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Shanjana/Customer.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        Button signOutButton = (Button) actionEvent.getSource();
-        Stage stage = (Stage) signOutButton.getScene().getWindow();
+        Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
         stage.setScene(scene);
     }
 
@@ -51,9 +49,13 @@ public class BookServiceController
         String serviceType = serviceTypeCombo.getValue();
         String timeSlot = slotCombo.getValue();
 
-        // validation
         if (vehicleId.isEmpty() || date == null || serviceType == null || timeSlot == null) {
             statusLabel.setText("Please fill all fields.");
+            return;
+        }
+
+        if (date.isBefore(LocalDate.now())) {
+            statusLabel.setText("Booking Date cannot be in the past.");
             return;
         }
 
@@ -62,47 +64,31 @@ public class BookServiceController
             return;
         }
 
-        //booking date must not be in past
-        if (date.isBefore(LocalDate.now())) {
-            statusLabel.setText("Booking Date cannot be in the past");
-            return;
-        }
+        String bookingId = generateBookingId();
+        BookService booking = new BookService(vehicleId, date, timeSlot, serviceType, bookingId);
+        saveBooking(booking);
 
-        String confirmationId = generateConfirmationId();
-
-        BookService booking = new BookService(vehicleId, date, timeSlot, serviceType, confirmationId);
-
-        saveBookingBinary(booking);
-
-        statusLabel.setText(
-                "Booking confirmed! ID: " + confirmationId +
-                        "\nDate: " + date +
-                        "\nTime: " + timeSlot
-        );
+        statusLabel.setText("Booking confirmed! ID: " + bookingId + "\nDate: " + date + "\nTime: " + timeSlot);
     }
 
     private boolean checkSlotAvailability(LocalDate date, String slot) {
-        List<BookService> existing = loadBookingsBinary();
-
-        long count = existing.stream()
-                .filter(b -> b.getDate().equals(date) && b.getTimeSlot().equals(slot))
-                .count();
-
-        return count < 3;  // Example: 3 customers per slot max
+        List<BookService> bookings = loadBookings();
+        long count = bookings.stream().filter(b -> b.getDate().equals(date) && b.getTimeSlot().equals(slot)).count();
+        return count < 3; // max 3 per slot
     }
 
-    private void saveBookingBinary(BookService booking) {
-        List<BookService> bookings = loadBookingsBinary();
+    private void saveBooking(BookService booking) {
+        List<BookService> bookings = loadBookings();
         bookings.add(booking);
 
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(FILE_PATH))) {
             out.writeObject(bookings);
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private List<BookService> loadBookingsBinary() {
+    private List<BookService> loadBookings() {
         File file = new File(FILE_PATH);
         if (!file.exists()) return new ArrayList<>();
 
@@ -113,8 +99,8 @@ public class BookServiceController
         }
     }
 
-    private String generateConfirmationId() {
-        int num = new Random().nextInt(900000) + 100000;
+    private String generateBookingId() {
+        int num = new Random().nextInt(90000) + 10000; // 5-digit
         return "BK" + num;
     }
 }
