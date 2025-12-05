@@ -1,6 +1,8 @@
 package com.group5.navana3s_workshop.Karima.modelClass;
 
-public class vehicleBooking {
+import java.io.Serializable;
+
+public class vehicleBooking implements Serializable {
     private String customerName;
     private String model;
     private String color;
@@ -15,7 +17,6 @@ public class vehicleBooking {
         this.contact = contact;
 
     }
-
 
     public String getCustomerName() {
         return customerName;
@@ -52,7 +53,7 @@ public class vehicleBooking {
     @Override
     public String toString() {
         return "vehicleBooking{" +
-                ", customerName='" + customerName + '\'' +
+                "customerName='" + customerName + '\'' +
                 ", model='" + model + '\'' +
                 ", color='" + color + '\'' +
                 ", contact='" + contact + '\'' +

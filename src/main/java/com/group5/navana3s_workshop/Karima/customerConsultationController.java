@@ -7,11 +7,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.*;
 
 public class customerConsultationController
 {
@@ -31,6 +33,8 @@ public class customerConsultationController
     private TableColumn<customerConsultation,String> modelCol;
     @javafx.fxml.FXML
     private Label outputLabel;
+    @FXML
+    private BarChart<String, Number> barChart;
 
     @javafx.fxml.FXML
     public void initialize() {
@@ -42,7 +46,18 @@ public class customerConsultationController
         modelCol.setCellValueFactory(new PropertyValueFactory<>("model"));
         colorCol.setCellValueFactory(new PropertyValueFactory<>("color"));
 
-        //tableView.getItems().add(new customerConsultation("15-20 Lakh", "Toyota Corolla", "White"));
+        XYChart.Series<String, Number> workloadSeries = new XYChart.Series<>();
+        workloadSeries.setName("Customer Consultation");
+
+
+        workloadSeries.getData().add(new XYChart.Data<>("Toyota Corolla", 15));
+        workloadSeries.getData().add(new XYChart.Data<>("Toyota Axio", 20));
+        workloadSeries.getData().add(new XYChart.Data<>("Honda Civic", 25));
+
+
+        barChart.getData().clear();
+        barChart.getData().add(workloadSeries);
+
 
     }
 
@@ -64,8 +79,8 @@ public class customerConsultationController
             tableView.getItems().add(new customerConsultation(b, m, c));
         }
 
-        outputLabel.setText("✓ Search completed: " + tableView.getItems().size() + " vehicle(s) found");
-        outputLabel.setStyle("-fx-text-fill: green;");
+        outputLabel.setText(" Search completed: " + tableView.getItems().size() + " vehicle(s) found");
+        outputLabel.setStyle("-fx-text-fill: black; -fx-font-weight: bold;");
     }
 
     @FXML
@@ -73,15 +88,13 @@ public class customerConsultationController
         customerConsultation v = tableView.getSelectionModel().getSelectedItem();
 
         if (v == null) {
-            outputLabel.setText("⚠ Please select a vehicle first!");
-            outputLabel.setStyle("-fx-text-fill: red;");
+            outputLabel.setText(" Please select a vehicle first!");
+            outputLabel.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
             return;
         }
 
-        // EVENT 8 → DP: Calculate quotation
         String basePrice = v.getBudget();
 
-        // Convert "15-20 Lakh" into numeric approx.
         int minPrice = Integer.parseInt(basePrice.split("-")[0]) * 100000;
         int maxPrice = Integer.parseInt(basePrice.split("-")[1].split(" ")[0]) * 100000;
         int estimated = (minPrice + maxPrice) / 2;
@@ -89,7 +102,7 @@ public class customerConsultationController
         double vat = estimated * 0.15;
         double total = estimated + vat;
 
-        // EVENT 8 → OP: Display quotation
+
         outputLabel.setStyle("-fx-text-fill: green; -fx-font-size: 14px;");
         outputLabel.setText(
                 "Quotation for " + v.getModel() + "\n" +
@@ -109,4 +122,41 @@ public class customerConsultationController
     }
 
 
+    @FXML
+    public void loadButton(ActionEvent actionEvent) {
+        tableView.getItems().clear();
+
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("sales.bin"))) {
+
+            while (true) {
+                customerConsultation s = (customerConsultation) in.readObject();
+                tableView.getItems().add(s);
+            }
+
+        } catch (EOFException ex) {
+            outputLabel.setText("Sales loaded!");
+            outputLabel.setStyle("-fx-text-fill: black; -fx-font-weight: bold;");
+        } catch (Exception ex) {
+            outputLabel.setText("Loading failed!");
+            outputLabel.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
+        }
+    }
+
+
+    @FXML
+    public void saveButton(ActionEvent actionEvent) {
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("sales.bin"))) {
+
+            for (customerConsultation s : tableView.getItems()) {
+                out.writeObject(s);
+            }
+
+            outputLabel.setText("Sales saved!");
+            outputLabel.setStyle("-fx-text-fill: black; -fx-font-weight: bold;");
+
+        } catch (IOException ex) {
+            outputLabel.setText("Saving failed!");
+            outputLabel.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
+        }
+    }
 }

@@ -53,10 +53,12 @@ public class financingOptionsController
 
         if (selected == null) {
             outputLabel.setText("Please select a plan first.");
+            outputLabel.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
             return;
         }
 
         outputLabel.setText("Application sent to Accounts Officer ✔");
+        outputLabel.setStyle("-fx-text-fill: black; -fx-font-weight: bold;");
     }
 
     @javafx.fxml.FXML
@@ -77,6 +79,7 @@ public class financingOptionsController
 
         if (model.isEmpty() || incomeText.isEmpty()) {
             outputLabel.setText("Please enter model & income.");
+            outputLabel.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
             return;
         }
 
@@ -85,6 +88,7 @@ public class financingOptionsController
             income = Integer.parseInt(incomeText);
         } catch (Exception e) {
             outputLabel.setText("Income must be a number.");
+            outputLabel.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
             return;
         }
 
@@ -104,10 +108,7 @@ public class financingOptionsController
 
         tableField.getItems().clear();
         tableField.getItems().addAll(plans);
-//        for (FinancingPlan p : plans) {
-//            tableField.getItems().add(p);
-//        }
-
         outputLabel.setText("Available plans generated.");
+        outputLabel.setStyle("-fx-text-fill: black; -fx-font-weight: bold;");
     }
 }

@@ -36,7 +36,7 @@
          </font>
       </Label>
       <Button layoutX="519.0" layoutY="381.0" mnemonicParsing="false" onAction="#backButton" style="-fx-background-color: black;" text="BACK" textFill="WHITE" />
-      <Button layoutX="121.0" layoutY="353.0" mnemonicParsing="false" onAction="#availabilityButton" text="Check Availability">
+      <Button layoutX="26.0" layoutY="312.0" mnemonicParsing="false" onAction="#availabilityButton" text="Check Availability">
          <font>
             <Font size="13.0" />
          </font>
@@ -56,5 +56,8 @@
             <Font size="14.0" />
          </font>
       </Label>
+      <Button layoutX="185.0" layoutY="313.0" mnemonicParsing="false" onAction="#saveButton" text="Save" />
+      <Button layoutX="292.0" layoutY="313.0" mnemonicParsing="false" onAction="#loadButton" text="Load" />
+      <Label fx:id="outputLabel" layoutX="160.0" layoutY="380.0" prefHeight="27.0" prefWidth="292.0" />
    </children>
 </AnchorPane>

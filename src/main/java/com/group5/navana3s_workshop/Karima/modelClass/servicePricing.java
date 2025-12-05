@@ -1,6 +1,8 @@
 package com.group5.navana3s_workshop.Karima.modelClass;
 
-public class servicePricing {
+import java.io.Serializable;
+
+public class servicePricing implements Serializable {
     private String serviceId;
     private String serviceName;
     private double price;

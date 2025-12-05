@@ -1,9 +1,8 @@
 package com.group5.navana3s_workshop.Karima;
 
 import com.group5.navana3s_workshop.HelloApplication;
-import com.group5.navana3s_workshop.Karima.modelClass.customer;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import com.group5.navana3s_workshop.Karima.modelClass.customerConsultation;
+import com.group5.navana3s_workshop.Karima.modelClass.customerManagement;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,8 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-import java.util.ArrayList;
+import java.io.*;
 
 public class customerManagementController
 {
@@ -21,15 +19,15 @@ public class customerManagementController
     @javafx.fxml.FXML
     private TextField numberField;
     @javafx.fxml.FXML
-    private TableColumn<customer,String> contactCol;
+    private TableColumn<customerManagement,String> contactCol;
     @javafx.fxml.FXML
-    private TableColumn<customer,String> nameCol;
+    private TableColumn<customerManagement,String> nameCol;
     @javafx.fxml.FXML
     private TextField interestField;
     @javafx.fxml.FXML
-    private TableView<customer> tableView;
+    private TableView<customerManagement> tableView;
     @javafx.fxml.FXML
-    private TableColumn<customer,String> interestCol;
+    private TableColumn<customerManagement,String> interestCol;
     @javafx.fxml.FXML
     private TextField nameField;
 
@@ -58,31 +56,45 @@ public class customerManagementController
             return;
         }
 
-        // Event 5: Check if customer exists
-        customer existing = null;
-        for (customer c : tableView.getItems()) {
+
+        customerManagement existing = null;
+        for (customerManagement c : tableView.getItems()) {
             if (c.getContact().equals(contact)) {
                 existing = c;
                 break;
             }
         }
 
-        // Event 6: Update or Create
+
         if (existing == null) {
-            customer newCustomer = new customer(name, contact, interest);
-            tableView.getItems().add(newCustomer);
+            customerManagement CustomerManagement = new customerManagement(name, contact, interest);
+            tableView.getItems().add(CustomerManagement);
         } else {
             existing.setName(name);
             existing.setInterestModel(interest);
             tableView.refresh();
         }
 
-        // Event 7: Confirmation Output
+
         outputLabel.setText("Customer saved successfully.");
 
         nameField.clear();
         numberField.clear();
         interestField.clear();
+
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("management.bin"))) {
+
+            for (customerManagement s : tableView.getItems()) {
+                out.writeObject(s);
+            }
+
+            outputLabel.setText("Customer saved!");
+            outputLabel.setStyle("-fx-text-fill: black; -fx-font-weight: bold;");
+
+        } catch (IOException ex) {
+            outputLabel.setText("Saving failed!");
+            outputLabel.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
+        }
 
     }
 
@@ -93,6 +105,26 @@ public class customerManagementController
         Button backButton = (Button) actionEvent.getSource();
         Stage stage = (Stage) backButton.getScene().getWindow();
         stage.setScene(scene);
+    }
+
+    @javafx.fxml.FXML
+    public void loadButton(ActionEvent actionEvent) {
+        tableView.getItems().clear();
+
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("management.bin"))) {
+
+            while (true) {
+                customerManagement m = (customerManagement) in.readObject();
+                tableView.getItems().add(m);
+            }
+
+        } catch (EOFException ex) {
+            outputLabel.setText("Sales loaded!");
+            outputLabel.setStyle("-fx-text-fill: black; -fx-font-weight: bold;");
+        } catch (Exception ex) {
+            outputLabel.setText("Loading failed!");
+            outputLabel.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
+        }
     }
 }
 

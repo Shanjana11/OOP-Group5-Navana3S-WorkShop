@@ -1,6 +1,8 @@
 package com.group5.navana3s_workshop.Karima.modelClass;
 
-public class vehicle {
+import java.io.Serializable;
+
+public class vehicle implements Serializable {
     private String model;
     private String fuelType;
     private String features;

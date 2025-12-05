@@ -12,11 +12,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
-public class vehicleSpecificationController
-{
+public class vehicleSpecificationController {
     @javafx.fxml.FXML
     private ComboBox<String> modelField;
     @javafx.fxml.FXML
@@ -27,6 +26,8 @@ public class vehicleSpecificationController
     private TextField engineTypeField;
 
     ArrayList<vehicle> vehicleList = new ArrayList<>();
+    @javafx.fxml.FXML
+    private Label outputLabel;
 
     @javafx.fxml.FXML
     public void initialize() {
@@ -53,7 +54,6 @@ public class vehicleSpecificationController
         if (selectedModel == null) {
             return;
         }
-
 
         for (vehicle v : vehicleList) {
             if (v.getModel().equals(selectedModel)) {
@@ -94,5 +94,37 @@ public class vehicleSpecificationController
         stage.show();
     }
 
+
+    @javafx.fxml.FXML
+    public void loadButton(ActionEvent actionEvent) {
+
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("vehicles.bin"))) {
+
+            vehicleList = (ArrayList<vehicle>) in.readObject();
+
+            modelField.getItems().clear();
+            for (vehicle v : vehicleList) {
+                modelField.getItems().add(v.getModel());
+            }
+
+            outputLabel.setText("Loaded successfully!");
+
+        } catch (Exception ex) {
+            outputLabel.setText("No saved file found!");
+        }
+    }
+
+    @javafx.fxml.FXML
+    public void saveButton(ActionEvent actionEvent) {
+
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("vehicles.bin"))) {
+
+            out.writeObject(vehicleList);
+            outputLabel.setText("Vehicles saved!");
+
+        } catch (IOException ex) {
+            outputLabel.setText("Saving failed!");
+        }
+    }
 
 }

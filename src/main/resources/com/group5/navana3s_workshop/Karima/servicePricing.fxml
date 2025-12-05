@@ -25,7 +25,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TableView fx:id="tableView" layoutX="320.0" layoutY="134.0" prefHeight="200.0" prefWidth="277.0">
+      <TableView fx:id="tableView" layoutX="314.0" layoutY="91.0" prefHeight="200.0" prefWidth="277.0">
         <columns>
           <TableColumn fx:id="serviceIdCol" text="Service ID" />
           <TableColumn fx:id="serviceNameCol" prefWidth="102.39996337890625" text="Service Name" />
@@ -47,11 +47,13 @@
       </Label>
       <TextField fx:id="currentPriceField" layoutX="134.0" layoutY="221.0" />
       <TextField fx:id="newPriceField" layoutX="134.0" layoutY="263.0" />
-      <Label layoutX="33.0" layoutY="266.0" text="New Price">
+      <Label layoutX="43.0" layoutY="266.0" text="New Price">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="outputLabel" layoutX="170.0" layoutY="409.0" prefHeight="34.0" prefWidth="262.0" />
+      <Label fx:id="outputLabel" layoutX="295.0" layoutY="326.0" prefHeight="34.0" prefWidth="262.0" />
+      <Button layoutX="144.0" layoutY="414.0" mnemonicParsing="false" onAction="#savePricingButton" text="Save Pricing" />
+      <Button layoutX="307.0" layoutY="414.0" mnemonicParsing="false" onAction="#loadPricingButton" text="Load Pricing" />
    </children>
 </AnchorPane>

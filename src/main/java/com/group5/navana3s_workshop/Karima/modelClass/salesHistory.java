@@ -1,5 +1,7 @@
 package com.group5.navana3s_workshop.Karima.modelClass;
 
+import java.time.LocalDate;
+
 public class salesHistory {
     private String customerName;
     private String vehicle;
@@ -51,7 +53,7 @@ public class salesHistory {
                 "customerName='" + customerName + '\'' +
                 ", vehicle='" + vehicle + '\'' +
                 ", amount=" + amount +
-                ", date='" + date + '\'' +
+                ", date=" + date +
                 '}';
     }
 }

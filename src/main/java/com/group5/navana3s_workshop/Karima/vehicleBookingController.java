@@ -3,34 +3,35 @@ package com.group5.navana3s_workshop.Karima;
 import com.group5.navana3s_workshop.HelloApplication;
 import com.group5.navana3s_workshop.Karima.modelClass.vehicleBooking;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
 
 public class vehicleBookingController {
-    @javafx.fxml.FXML
+    @FXML
     private ComboBox<String> modelField;
-    @javafx.fxml.FXML
+    @FXML
     private TextField numberField;
-    @javafx.fxml.FXML
+    @FXML
     private ComboBox<String> colorField;
-    @javafx.fxml.FXML
+    @FXML
     private TextArea textArea;
-    @javafx.fxml.FXML
+    @FXML
     private TextField nameField;
+    @FXML
+    private Label outputLabel;
 
     private int corollaStock = 3;
     private int axioStock = 0;
     private int civicStock = 2;
 
 
-    @javafx.fxml.FXML
+    @FXML
     public void initialize() {
         modelField.getItems().addAll("Toyota Corolla", "Toyota Axio", "Honda Civic");
         colorField.getItems().addAll("White", "Black", "Silver");
@@ -38,12 +39,27 @@ public class vehicleBookingController {
         textArea.setText("");
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void availabilityButton(ActionEvent actionEvent) {
         String model = modelField.getValue();
+        String customerName = nameField.getText();
+        String contact = numberField.getText();
+
+        if (customerName == null) {
+            outputLabel.setText("Please enter Customer Name");
+            outputLabel.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
+            return;
+        }
+
+        if (contact == null) {
+            outputLabel.setText("Please enter Contact Number");
+            outputLabel.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
+            return;
+        }
 
         if (model == null) {
-            textArea.setText("Please select a vehicle model first.");
+            outputLabel.setText("Please select a vehicle model first.");
+            outputLabel.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
             return;
         }
 
@@ -60,7 +76,7 @@ public class vehicleBookingController {
         }
 
     }
-    @javafx.fxml.FXML
+    @FXML
     public void backButton(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Karima/sales_dashboard.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
@@ -69,7 +85,7 @@ public class vehicleBookingController {
         stage.setScene(scene);
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void bookingButton(ActionEvent actionEvent) {
 
         String model = modelField.getValue();
@@ -78,7 +94,8 @@ public class vehicleBookingController {
         String number = numberField.getText();
 
         if (model == null || color == null || name.isEmpty() || number.isEmpty()) {
-            textArea.setText("Please fill all details before booking.");
+            outputLabel.setText("Please fill all details before booking.");
+            outputLabel.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
             return;
         }
 
@@ -94,7 +111,9 @@ public class vehicleBookingController {
 
 
         if (currentStock == 0) {
-            textArea.setText("Booking Failed!\n\nSorry, " + model + " is currently not available.\nPlease check availability or choose another model.");
+            outputLabel.setText("Booking Failed!\n\nSorry, " + model + " is currently not available.\nPlease check availability or choose another model.");
+            outputLabel.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
+
             return;
         }
 
@@ -108,7 +127,7 @@ public class vehicleBookingController {
         }
 
         textArea.setText(
-                "=== Booking Receipt ===\n\n" +
+                " Booking Receipt \n\n" +
                         "Customer Name: " + name + "\n" +
                         "Vehicle Model: " + model + "\n" +
                         "Color: " + color + "\n" +
@@ -118,4 +137,40 @@ public class vehicleBookingController {
 
     }
 
+    @FXML
+    public void loadButton(ActionEvent actionEvent) {
+        ArrayList<vehicleBooking> vehicleList = new ArrayList<>();
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("booking.bin"))) {
+            vehicleList = (ArrayList<vehicleBooking>) in.readObject();
+            outputLabel.setText("Loaded " + vehicleList.size() + " bookings");
+            outputLabel.setStyle("-fx-text-fill: black; -fx-font-weight: bold;");
+
+        } catch (Exception e) {
+            outputLabel.setText("No file found!");
+            outputLabel.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
+        }
+    }
+
+    @FXML
+    public void saveButton(ActionEvent actionEvent) {
+
+        ArrayList<vehicleBooking> vehicleList = new ArrayList<>();
+        String customerName = "Customer Name";
+        String model="model";
+        String color="color";
+        String contact="contact";
+
+
+        vehicleBooking info = new vehicleBooking(customerName, model, color,contact);
+        vehicleList.add(info);
+
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("booking.bin"))) {
+            out.writeObject(vehicleList);
+            outputLabel.setText("Saved!");
+            outputLabel.setStyle("-fx-text-fill: black; -fx-font-weight: bold;");
+        } catch (Exception e) {
+            outputLabel.setText("Save failed!");
+            outputLabel.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
+        }
+    }
 }

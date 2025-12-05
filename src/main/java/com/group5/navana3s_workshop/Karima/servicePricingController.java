@@ -9,7 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.*;
 
 public class servicePricingController
 {
@@ -97,5 +97,35 @@ public class servicePricingController
         newPriceField.clear();
 
         outputLabel.setText("Price updated successfully.");
+    }
+
+    @javafx.fxml.FXML
+    public void savePricingButton(ActionEvent actionEvent) {
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("pricing.bin"))) {
+
+            for (servicePricing sp : tableView.getItems()) {
+                out.writeObject(sp);
+            }
+
+            outputLabel.setText("Pricing saved!");
+        } catch (Exception e) {
+            outputLabel.setText("Error!");
+        }
+    }
+
+    @javafx.fxml.FXML
+    public void loadPricingButton(ActionEvent actionEvent) {
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("pricing.bin"))) {
+
+            while (true) {
+                servicePricing sp = (servicePricing) in.readObject();
+                tableView.getItems().add(sp);
+            }
+
+        } catch (EOFException e) {
+            outputLabel.setText("Pricing loaded!");
+        } catch (Exception e) {
+            outputLabel.setText("Error!");
+        }
     }
 }

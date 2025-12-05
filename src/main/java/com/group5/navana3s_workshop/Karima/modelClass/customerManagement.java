@@ -1,14 +1,17 @@
 package com.group5.navana3s_workshop.Karima.modelClass;
 
-public class customer {
+import java.io.Serializable;
+
+public class customerManagement implements Serializable {
     private String name;
     private String contact;
     private String interestModel;
 
-    public customer(String name, String contact, String interestModel) {
+    public customerManagement(String name, String contact, String interestModel) {
         this.name = name;
         this.contact = contact;
         this.interestModel = interestModel;
+
     }
 
     public String getName() {
@@ -35,9 +38,13 @@ public class customer {
         this.interestModel = interestModel;
     }
 
+
+
+
+
     @Override
     public String toString() {
-        return "customer{" +
+        return "customerManagement{" +
                 "name='" + name + '\'' +
                 ", contact='" + contact + '\'' +
                 ", interestModel='" + interestModel + '\'' +

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="472.0" prefWidth="666.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Karima.financingOptionsController">
+<AnchorPane prefHeight="472.0" prefWidth="705.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Karima.financingOptionsController">
    <children>
       <Label layoutX="227.0" layoutY="21.0" text="Financing Options">
          <font>
@@ -30,11 +30,11 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TableView fx:id="tableField" layoutX="405.0" layoutY="136.0" prefHeight="200.0" prefWidth="254.0">
+      <TableView fx:id="tableField" layoutX="405.0" layoutY="136.0" prefHeight="200.0" prefWidth="292.0">
         <columns>
-          <TableColumn fx:id="planCol" prefWidth="75.0" text="Plan" />
-          <TableColumn fx:id="paymentCol" prefWidth="119.199951171875" text="Down Payment" />
-            <TableColumn fx:id="emiCol" prefWidth="59.199987792968756" text="EMI" />
+          <TableColumn fx:id="planCol" prefWidth="94.39996337890625" text="Plan" />
+          <TableColumn fx:id="paymentCol" prefWidth="115.199951171875" text="Down Payment" />
+            <TableColumn fx:id="emiCol" prefWidth="81.60003662109375" text="EMI" />
         </columns>
       </TableView>
       <Button layoutX="165.0" layoutY="281.0" mnemonicParsing="false" onAction="#searchPlanButton" text="Search Plans">
@@ -48,7 +48,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Label fx:id="outputLabel" layoutX="206.0" layoutY="380.0" prefHeight="26.0" prefWidth="210.0" />
+      <Label fx:id="outputLabel" layoutX="206.0" layoutY="380.0" prefHeight="26.0" prefWidth="234.0" />
       <TextField fx:id="vehicleModelField" layoutX="213.0" layoutY="157.0" />
       <TextField fx:id="incomeField" layoutX="213.0" layoutY="206.0" />
    </children>

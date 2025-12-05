@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Karima.vehicleSpecificationController">
    <children>
       <Label layoutX="210.0" layoutY="22.0" text="Vehicle Specifications">
@@ -15,35 +14,38 @@
             <Font size="23.0" />
          </font>
       </Label>
-      <Label layoutX="66.0" layoutY="112.0" text="Select Vehicle Model">
+      <Label layoutX="81.0" layoutY="89.0" text="Select Vehicle Model">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="113.0" layoutY="164.0" text="Engine Type">
+      <Label layoutX="113.0" layoutY="129.0" text="Engine Type">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="130.0" layoutY="213.0" text="Fuel Type">
+      <Label layoutX="121.0" layoutY="174.0" text="Fuel Type">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="112.0" layoutY="255.0" text="Key Features">
+      <Label layoutX="121.0" layoutY="213.0" text="Key Features">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Button layoutX="145.0" layoutY="332.0" mnemonicParsing="false" onAction="#specSheetButton" text="Generate Spec Sheet">
+      <Button layoutX="32.0" layoutY="268.0" mnemonicParsing="false" onAction="#specSheetButton" text="Generate Spec Sheet">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
       <Button layoutX="493.0" layoutY="334.0" mnemonicParsing="false" onAction="#backButton" style="-fx-background-color: black;" text="BACK" textFill="WHITE" />
-      <ComboBox fx:id="modelField" layoutX="236.0" layoutY="109.0" prefWidth="150.0" />
-      <TextField fx:id="engineTypeField" layoutX="237.0" layoutY="161.0" />
-      <TextField fx:id="featuresField" layoutX="237.0" layoutY="255.0" />
-      <TextField fx:id="fuelTypeField" layoutX="237.0" layoutY="210.0" />
+      <ComboBox fx:id="modelField" layoutX="236.0" layoutY="86.0" prefWidth="150.0" />
+      <TextField fx:id="engineTypeField" layoutX="236.0" layoutY="126.0" />
+      <TextField fx:id="featuresField" layoutX="237.0" layoutY="210.0" />
+      <TextField fx:id="fuelTypeField" layoutX="237.0" layoutY="171.0" />
+      <Button layoutX="237.0" layoutY="270.0" mnemonicParsing="false" onAction="#saveButton" text="Save" />
+      <Button layoutX="328.0" layoutY="270.0" mnemonicParsing="false" onAction="#loadButton" text="Load" />
+      <Label fx:id="outputLabel" layoutX="171.0" layoutY="333.0" prefHeight="26.0" prefWidth="243.0" />
    </children>
 </AnchorPane>

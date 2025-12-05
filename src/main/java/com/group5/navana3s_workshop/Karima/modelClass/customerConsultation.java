@@ -2,7 +2,9 @@ package com.group5.navana3s_workshop.Karima.modelClass;
 
 import javafx.beans.property.SimpleStringProperty;
 
-public class customerConsultation {
+import java.io.Serializable;
+
+public class customerConsultation implements Serializable {
     private String budget;
     private String model;
     private String color;
