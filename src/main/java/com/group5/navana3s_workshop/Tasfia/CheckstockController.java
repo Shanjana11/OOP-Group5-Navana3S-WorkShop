@@ -59,12 +59,17 @@ public class CheckstockController
         statuscol.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("status"));
 
 
-
-
     }
 
     @javafx.fxml.FXML
     public void refreshOnActionButtons(ActionEvent actionEvent) {
+        tableview.refresh();
+        searchfield.clear();
+        partidfield.clear();
+        partnamefield.clear();
+        quantityfield.clear();
+        locationfield.clear();
+        statusCB.setValue(null);
     }
 
     @javafx.fxml.FXML
@@ -79,6 +84,21 @@ public class CheckstockController
             alert.show();
             return;
         }
+
+        List<StockModel> stockList = new ArrayList<>();
+
+        if (stockList.isEmpty()) {
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("No results");
+            alert.setHeaderText(null);
+            alert.setContentText("No matching stock found!!");
+            alert.show();
+        }
+
+
+
+
+
     }
 
     @javafx.fxml.FXML
@@ -120,5 +140,20 @@ public class CheckstockController
             alert.show();
             return;
         }
+
+        StockModel stockModel = new StockModel(id, name, qty, location, status);
+
+        stockList.add(sm);
+
+
+        partidfield.clear();
+        partnamefield.clear();
+        quantityfield.clear();
+        locationfield.clear();
+        statusCB.setValue(null);
+
+
+
+
     }
 }
