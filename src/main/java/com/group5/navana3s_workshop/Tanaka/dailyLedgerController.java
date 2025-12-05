@@ -1,51 +1,68 @@
 package com.group5.navana3s_workshop.Tanaka;
 
+import com.group5.navana3s_workshop.HelloApplication;
 import javafx.event.ActionEvent;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class dailyLedgerController
 {
     @javafx.fxml.FXML
-    private DatePicker datePickerFrom;
-    @javafx.fxml.FXML
-    private DatePicker datePickerEntryDate;
-    @javafx.fxml.FXML
-    private TextField textFieldCredit;
-    @javafx.fxml.FXML
-    private TableColumn columnBalance;
-    @javafx.fxml.FXML
-    private DatePicker datePickerTo;
-    @javafx.fxml.FXML
-    private TableColumn columnCredit;
-    @javafx.fxml.FXML
-    private TextField textFieldDebit;
-    @javafx.fxml.FXML
-    private TableColumn columnDescription;
-    @javafx.fxml.FXML
-    private TextField textFieldDescription;
-    @javafx.fxml.FXML
-    private TableColumn columnDate;
-    @javafx.fxml.FXML
-    private TableColumn columnDebit;
-    @javafx.fxml.FXML
     private TableView tableViewLedger;
+    @javafx.fxml.FXML
+    private DatePicker fromDatePicker;
+    @javafx.fxml.FXML
+    private DatePicker entryDateDatePicker;
+    @javafx.fxml.FXML
+    private DatePicker toDatePicker;
+    @javafx.fxml.FXML
+    private TextField creditTextField;
+    @javafx.fxml.FXML
+    private TableColumn balanceColumn;
+    @javafx.fxml.FXML
+    private TableColumn debitColumn;
+    @javafx.fxml.FXML
+    private TextField openingTextField;
+    @javafx.fxml.FXML
+    private TextField closingTextField;
+    @javafx.fxml.FXML
+    private TableColumn dateColumn;
+    @javafx.fxml.FXML
+    private TextField descriptionTextField;
+    @javafx.fxml.FXML
+    private TableColumn creditColumn;
+    @javafx.fxml.FXML
+    private TableColumn descriptionColumn;
+    @javafx.fxml.FXML
+    private TextField debitTextField;
 
     @javafx.fxml.FXML
     public void initialize() {
     }
 
     @javafx.fxml.FXML
-    public void onActionExpportLedgerButton(ActionEvent actionEvent) {
-    }
-
-    @javafx.fxml.FXML
-    public void onActionAddEntryButton(ActionEvent actionEvent) {
-    }
-
-    @javafx.fxml.FXML
     public void onActionApplyFilterButton(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void onActionExportLedgerButton(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void backOnActionButton(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("com/group5/navana3s_workshop/Tanaka/accountsOfficerDashboard.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Button signOutButton = (Button) actionEvent.getSource();
+        Stage stage = (Stage) signOutButton.getScene().getWindow();
+        stage.setTitle("Test Drive");
+        stage.setScene(scene);
+    }
+
+    @javafx.fxml.FXML
+    public void addEntryOnActionButton(ActionEvent actionEvent) {
     }
 }

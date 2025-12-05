@@ -9,7 +9,7 @@ public class RepairApproval {
     private String repairDescription;
     private double estimatedCost;
     private LocalDate requestDate;
-    private String status; // Pending, Approved, Rejected
+    private String status;
     private String customerResponse;
 
     public RepairApproval(String approvalId, String bookingId, String customerId, String repairDescription, double estimatedCost, LocalDate requestDate, String status, String customerResponse) {

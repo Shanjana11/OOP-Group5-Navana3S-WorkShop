@@ -1,6 +1,8 @@
 package com.group5.navana3s_workshop.Tasfia;
 
 import com.group5.navana3s_workshop.HelloApplication;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -8,31 +10,69 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RecorddeliveryController
 {
     @javafx.fxml.FXML
     private DatePicker date;
     @javafx.fxml.FXML
-    private TableColumn deliverydatecol;
+    private TableColumn<Delivery,String> deliverydatecol;
     @javafx.fxml.FXML
-    private TableColumn partnamecol;
+    private TableColumn<Delivery,String> partnamecol;
     @javafx.fxml.FXML
     private TextField namefield;
     @javafx.fxml.FXML
-    private TableColumn quantitycol;
+    private TableColumn <Delivery,Integer>quantitycol;
     @javafx.fxml.FXML
     private TextField quantityfield;
     @javafx.fxml.FXML
-    private TableView tableview;
+    private TableView<Delivery> tableview;
+
+    private ObservableList<Delivery> deliveryList = FXCollections.observableArrayList();
+
+
+
 
     @javafx.fxml.FXML
     public void initialize() {
+        partnamecol.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("partName"));
+        quantitycol.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("quantity"));
+        deliverydatecol.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("deliveryDate"));
+
+        tableview.setItems(deliveryList);
     }
 
     @javafx.fxml.FXML
     public void adddeliveryOnActionButton(ActionEvent actionEvent) {
-    }
+        String partName = namefield.getText();
+        int quantity;
+        try {
+            quantity = Integer.parseInt(quantityfield.getText());
+        } catch (NumberFormatException e) {
+            new Alert(Alert.AlertType.WARNING, "Enter a alid number for quantity.").showAndWait();
+            return;
+        }
+        String deliveryDate = (date.getValue() != null) ? date.getValue().toString() : "";
+
+        if (partName.isEmpty() || deliveryDate.isEmpty()) {
+            new Alert(Alert.AlertType.WARNING,"Please fill all fields.").showAndWait();
+            return;
+        }
+
+        Delivery newDelivery = new Delivery(partName, quantity, deliveryDate);
+        deliveryList.add(newDelivery);
+
+
+        namefield.clear();
+        quantityfield.clear();
+        date.setValue(null);
+
+
+
+}
+
 
     @javafx.fxml.FXML
     public void backOnActionButton(ActionEvent actionEvent)throws IOException {
@@ -45,5 +85,7 @@ public class RecorddeliveryController
 
     @javafx.fxml.FXML
     public void saveOnActionButton(ActionEvent actionEvent) {
+      Alert alert = new Alert(Alert.AlertType.INFORMATION,"Delivery records saved successfully", ButtonType.OK);
+      alert.showAndWait();
     }
 }

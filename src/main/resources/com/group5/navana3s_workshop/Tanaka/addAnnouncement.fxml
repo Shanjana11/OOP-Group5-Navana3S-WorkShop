@@ -5,27 +5,36 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="505.0" prefWidth="610.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Tanaka.addAnnouncementController">
+<AnchorPane prefHeight="518.0" prefWidth="699.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Tanaka.addAnnouncementController">
    <children>
       <Label layoutX="167.0" layoutY="14.0" text="Add Announcement">
          <font>
             <Font name="System Bold" size="27.0" />
          </font>
       </Label>
-      <Label layoutX="22.0" layoutY="213.0" text="Priority:" />
-      <ComboBox layoutX="120.0" layoutY="209.0" prefWidth="150.0" />
-      <CheckBox layoutX="120.0" layoutY="258.0" mnemonicParsing="false" text="Send to all customers" />
-      <TextArea layoutX="120.0" layoutY="80.0" prefHeight="78.0" prefWidth="200.0" />
-      <Label layoutX="28.0" layoutY="90.0" text="Label" />
-      <Label layoutX="28.0" layoutY="170.0" text="Label" />
-      <DatePicker layoutX="120.0" layoutY="166.0" />
-      <Button layoutX="120.0" layoutY="292.0" mnemonicParsing="false" text="Submit" />
-      <Button layoutX="515.0" layoutY="453.0" mnemonicParsing="false" text="Back" />
-      <Label layoutX="63.0" layoutY="356.0" prefHeight="20.0" prefWidth="200.0" />
+      <Label layoutX="14.0" layoutY="213.0" text="Priority:" />
+      <ComboBox fx:id="priorityComboBox" layoutX="163.0" layoutY="209.0" prefWidth="150.0" />
+      <CheckBox fx:id="sendAllCustomersCheckBox" layoutX="163.0" layoutY="259.0" mnemonicParsing="false" text="Send to all customers" />
+      <TextArea fx:id="messageTextArea" layoutX="205.0" layoutY="69.0" prefHeight="78.0" prefWidth="242.0" />
+      <Label layoutX="14.0" layoutY="90.0" text="Announcement Message Input:" />
+      <Label layoutX="14.0" layoutY="170.0" text="Announcement Date:" />
+      <DatePicker fx:id="announcementDateDatePicker" layoutX="163.0" layoutY="166.0" />
+      <Button layoutX="163.0" layoutY="298.0" mnemonicParsing="false" onAction="#submitOnActionButton" text="Submit" />
+      <Button layoutX="515.0" layoutY="453.0" mnemonicParsing="false" onAction="#backOnActionButton" text="Back" />
+      <Label layoutX="50.0" layoutY="356.0" prefHeight="26.0" prefWidth="255.0" />
+      <TableView fx:id="announcementTableView" layoutX="387.0" layoutY="168.0" prefHeight="200.0" prefWidth="305.0">
+        <columns>
+          <TableColumn fx:id="messageColumn" prefWidth="75.0" text="Message" />
+          <TableColumn fx:id="dateColumn" prefWidth="75.0" text="Date" />
+            <TableColumn fx:id="priorityColumn" prefWidth="75.0" text="Priority" />
+            <TableColumn fx:id="sentByColumn" prefWidth="79.19997558593752" text="Sent By" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

@@ -1,8 +1,9 @@
 package com.group5.navana3s_workshop.Shanjana;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class ServiceHistory {
+public class ServiceHistory implements Serializable {
     private String bookingId;
     private LocalDate serviceDate;
     private String serviceType;

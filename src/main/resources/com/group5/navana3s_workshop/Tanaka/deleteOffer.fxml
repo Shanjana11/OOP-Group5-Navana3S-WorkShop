@@ -8,25 +8,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Tanaka.deleteOfferController">
    <children>
-      <Label layoutX="157.0" layoutY="14.0" text="Delete an Expired Offer">
+      <Label layoutX="140.0" layoutY="14.0" text="Delete an Expired Offer">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
       </Label>
-      <TableView layoutX="39.0" layoutY="66.0" prefHeight="154.0" prefWidth="375.0">
+      <TableView fx:id="deleteOfferTableView" layoutX="39.0" layoutY="66.0" prefHeight="154.0" prefWidth="428.0">
         <columns>
-          <TableColumn prefWidth="144.8000144958496" text="Offer Name" />
-          <TableColumn prefWidth="140.8000030517578" text="Expiry Date" />
-            <TableColumn prefWidth="84.0" text="Select/ Delete" />
+          <TableColumn fx:id="offerNameColumn" prefWidth="144.8000144958496" text="Offer Name" />
+          <TableColumn fx:id="expiryDateColumn" prefWidth="150.39996337890625" text="Expiry Date" />
+            <TableColumn fx:id="selectOrDeleteColumn" prefWidth="131.20001220703125" text="Select/ Delete" />
         </columns>
       </TableView>
-      <Label layoutX="25.0" layoutY="255.0" prefHeight="30.0" prefWidth="258.0" text="Confirmation" />
-      <CheckBox layoutX="121.0" layoutY="293.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="69.0" text="Select" />
-      <Button layoutX="243.0" layoutY="298.0" mnemonicParsing="false" text="Delete Offer" />
-      <CheckBox layoutX="121.0" layoutY="320.0" mnemonicParsing="false" text="Delete" />
-      <Button layoutX="521.0" layoutY="352.0" mnemonicParsing="false" text="Back" />
+      <Label fx:id="confirmationLabel" layoutX="25.0" layoutY="255.0" prefHeight="30.0" prefWidth="258.0" text="Confirmation" />
+      <CheckBox fx:id="selectCheckbox" layoutX="121.0" layoutY="293.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="69.0" text="Select" />
+      <Button layoutX="243.0" layoutY="298.0" mnemonicParsing="false" onAction="#deleteOfferOnActionButton" text="Delete Offer" />
+      <CheckBox fx:id="deleteCheckBox" layoutX="121.0" layoutY="320.0" mnemonicParsing="false" text="Delete" />
+      <Button layoutX="521.0" layoutY="352.0" mnemonicParsing="false" onAction="#backOnActionButton" text="Back" />
    </children>
 </AnchorPane>

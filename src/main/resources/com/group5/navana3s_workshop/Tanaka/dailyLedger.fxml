@@ -13,11 +13,11 @@
    <children>
       <TableView fx:id="tableViewLedger" layoutX="13.0" layoutY="164.0" prefHeight="133.0" prefWidth="374.0">
         <columns>
-          <TableColumn fx:id="columnDate" prefWidth="59.999969482421875" text="Date" />
-          <TableColumn fx:id="columnDescription" prefWidth="79.99999237060547" text="Description" />
-            <TableColumn fx:id="columnDebit" prefWidth="72.0" text="Debit" />
-            <TableColumn fx:id="columnCredit" prefWidth="81.60000610351562" text="Credit" />
-            <TableColumn fx:id="columnBalance" prefWidth="81.60000610351562" text="Balance" />
+          <TableColumn fx:id="dateColumn" prefWidth="59.999969482421875" text="Date" />
+          <TableColumn fx:id="descriptionColumn" prefWidth="79.99999237060547" text="Description" />
+            <TableColumn fx:id="debitColumn" prefWidth="72.0" text="Debit" />
+            <TableColumn fx:id="creditColumn" prefWidth="81.60000610351562" text="Credit" />
+            <TableColumn fx:id="balanceColumn" prefWidth="81.60000610351562" text="Balance" />
         </columns>
       </TableView>
       <Label layoutX="160.0" layoutY="14.0" prefHeight="34.0" prefWidth="220.0" text="Manage Daily Ledger">
@@ -27,23 +27,23 @@
       </Label>
       <Label layoutX="26.0" layoutY="64.0" text="Opening:" />
       <Label layoutX="29.0" layoutY="98.0" text="Closing:" />
-      <TextField layoutX="85.0" layoutY="60.0" />
-      <TextField layoutX="85.0" layoutY="94.0" />
+      <TextField fx:id="openingTextField" layoutX="85.0" layoutY="60.0" />
+      <TextField fx:id="closingTextField" layoutX="85.0" layoutY="94.0" />
       <Label layoutX="311.0" layoutY="56.0" text="From:" />
       <Label layoutX="312.0" layoutY="85.0" text="To:" />
-      <DatePicker fx:id="datePickerFrom" layoutX="350.0" layoutY="51.0" prefHeight="26.0" prefWidth="114.0" />
-      <DatePicker fx:id="datePickerTo" layoutX="350.0" layoutY="80.0" prefHeight="26.0" prefWidth="113.0" />
+      <DatePicker fx:id="fromDatePicker" layoutX="350.0" layoutY="51.0" prefHeight="26.0" prefWidth="114.0" />
+      <DatePicker fx:id="toDatePicker" layoutX="350.0" layoutY="80.0" prefHeight="26.0" prefWidth="113.0" />
       <Button layoutX="369.0" layoutY="120.0" mnemonicParsing="false" onAction="#onActionApplyFilterButton" text="Apply Filter" />
-      <Label layoutX="15.0" layoutY="311.0" text="Date:" />
-      <DatePicker fx:id="datePickerEntryDate" layoutX="50.0" layoutY="306.0" prefHeight="26.0" prefWidth="82.0" />
+      <Label layoutX="15.0" layoutY="311.0" text="Entry Date:" />
+      <DatePicker fx:id="entryDateDatePicker" layoutX="92.0" layoutY="306.0" prefHeight="26.0" prefWidth="114.0" />
       <Label layoutX="13.0" layoutY="345.0" text="Description:" />
-      <Label layoutX="15.0" layoutY="405.0" text="Credit:" />
+      <Label layoutX="8.0" layoutY="414.0" text="Credit:" />
       <Label layoutX="13.0" layoutY="379.0" text="Debit:" />
-      <TextField fx:id="textFieldDescription" layoutX="85.0" layoutY="341.0" />
-      <TextField fx:id="textFieldDebit" layoutX="57.0" layoutY="375.0" />
-      <TextField fx:id="textFieldCredit" layoutX="57.0" layoutY="410.0" />
-      <Button layoutX="251.0" layoutY="423.0" mnemonicParsing="false" onAction="#onActionAddEntryButton" text="Add Entry" />
-      <Button layoutX="465.0" layoutY="120.0" mnemonicParsing="false" onAction="#onActionExpportLedgerButton" text="Export to PDF" />
-      <Button layoutX="533.0" layoutY="423.0" mnemonicParsing="false" text="Back" />
+      <TextField fx:id="descriptionTextField" layoutX="85.0" layoutY="341.0" />
+      <TextField fx:id="debitTextField" layoutX="57.0" layoutY="375.0" />
+      <TextField fx:id="creditTextField" layoutX="57.0" layoutY="410.0" />
+      <Button layoutX="251.0" layoutY="423.0" mnemonicParsing="false" onAction="#addEntryOnActionButton" text="Add Entry" />
+      <Button layoutX="465.0" layoutY="120.0" mnemonicParsing="false" onAction="#onActionExportLedgerButton" text="Export to PDF" />
+      <Button layoutX="533.0" layoutY="423.0" mnemonicParsing="false" onAction="#backOnActionButton" text="Back" />
    </children>
 </AnchorPane>

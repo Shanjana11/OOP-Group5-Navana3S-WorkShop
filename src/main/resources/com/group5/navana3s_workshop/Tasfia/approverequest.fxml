@@ -25,6 +25,6 @@
       </TableView>
       <Button layoutX="36.0" layoutY="462.0" mnemonicParsing="false" onAction="#backOnActionButton" text="Back" />
       <Label layoutX="36.0" layoutY="410.0" text="Update Status" />
-      <ComboBox fx:id="combobox" layoutX="127.0" layoutY="406.0" prefWidth="150.0" promptText="Select Status" />
+      <ComboBox fx:id="selectstatusCombobox" layoutX="127.0" layoutY="406.0" prefWidth="150.0" promptText="Select Status" />
    </children>
 </AnchorPane>

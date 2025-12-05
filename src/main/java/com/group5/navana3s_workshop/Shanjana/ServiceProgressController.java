@@ -5,13 +5,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ServiceProgressController
 {
-
     @javafx.fxml.FXML
     private TableColumn customerCol;
     @javafx.fxml.FXML
@@ -34,10 +37,6 @@ public class ServiceProgressController
     private TextField jobCard;
 
     @javafx.fxml.FXML
-    public void initialize() {
-    }
-
-    @javafx.fxml.FXML
     public void handleUpdateProgressButton(ActionEvent actionEvent) {
     }
 
@@ -45,8 +44,7 @@ public class ServiceProgressController
     public void handleBackButton(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Shanjana/csa.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        Button signOutButton = (Button) actionEvent.getSource();
-        Stage stage = (Stage) signOutButton.getScene().getWindow();
+        Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
         stage.setScene(scene);
     }
 }

@@ -1,30 +1,44 @@
 package com.group5.navana3s_workshop.Shanjana;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Invoice {
-    private String invoiceId;
+public class Invoice implements Serializable {
+
     private String bookingId;
-    private LocalDate invoiceDate;
+    private String serviceType;
     private double amount;
-    private String paymentStatus;
-    private LocalDate dueDate;
+    private String status;
+    private String paymentMethod;
+    private LocalDate date;
 
-    public Invoice(String invoiceId, String bookingId, LocalDate invoiceDate, double amount, String paymentStatus, LocalDate dueDate) {
-        this.invoiceId = invoiceId;
+    @Override
+    public String toString() {
+        return "Invoice{" +
+                "bookingId='" + bookingId + '\'' +
+                ", serviceType='" + serviceType + '\'' +
+                ", amount=" + amount +
+                ", status='" + status + '\'' +
+                ", paymentMethod='" + paymentMethod + '\'' +
+                ", date=" + date +
+                '}';
+    }
+
+    public Invoice(String bookingId, String serviceType, double amount, String status, String paymentMethod, LocalDate date) {
         this.bookingId = bookingId;
-        this.invoiceDate = invoiceDate;
+        this.serviceType = serviceType;
         this.amount = amount;
-        this.paymentStatus = paymentStatus;
-        this.dueDate = dueDate;
+        this.status = status;
+        this.paymentMethod = paymentMethod;
+        this.date = date;
     }
 
-    public String getInvoiceId() {
-        return invoiceId;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setInvoiceId(String invoiceId) {
-        this.invoiceId = invoiceId;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     public String getBookingId() {
@@ -35,12 +49,12 @@ public class Invoice {
         this.bookingId = bookingId;
     }
 
-    public LocalDate getInvoiceDate() {
-        return invoiceDate;
+    public String getServiceType() {
+        return serviceType;
     }
 
-    public void setInvoiceDate(LocalDate invoiceDate) {
-        this.invoiceDate = invoiceDate;
+    public void setServiceType(String serviceType) {
+        this.serviceType = serviceType;
     }
 
     public double getAmount() {
@@ -51,31 +65,27 @@ public class Invoice {
         this.amount = amount;
     }
 
-    public String getPaymentStatus() {
-        return paymentStatus;
+    public String getStatus() {
+        return status;
     }
 
-    public void setPaymentStatus(String paymentStatus) {
-        this.paymentStatus = paymentStatus;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public LocalDate getDueDate() {
-        return dueDate;
+    public String getPaymentMethod() {
+        return paymentMethod;
     }
 
-    public void setDueDate(LocalDate dueDate) {
-        this.dueDate = dueDate;
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
     }
 
-    @Override
-    public String toString() {
-        return "Invoice{" +
-                "invoiceId='" + invoiceId + '\'' +
-                ", bookingId='" + bookingId + '\'' +
-                ", invoiceDate=" + invoiceDate +
-                ", amount=" + amount +
-                ", paymentStatus='" + paymentStatus + '\'' +
-                ", dueDate=" + dueDate +
-                '}';
+    public Invoice(String bookingId, String serviceType, double amount, String status) {
+        this.bookingId = bookingId;
+        this.serviceType = serviceType;
+        this.amount = amount;
+        this.status = status;
+        this.paymentMethod = paymentMethod;
     }
 }

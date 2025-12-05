@@ -1,10 +1,13 @@
 package com.group5.navana3s_workshop.Tasfia;
 
 import com.group5.navana3s_workshop.HelloApplication;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -14,20 +17,38 @@ public class UnresolvedissuesController
     @javafx.fxml.FXML
     private TextField managerfield;
     @javafx.fxml.FXML
-    private TableColumn severitycol;
+    private TableColumn<UnresolvedIssue,String> severitycol;
     @javafx.fxml.FXML
-    private TableView tableview;
+    private TableView <UnresolvedIssue>tableview;
     @javafx.fxml.FXML
-    private TableColumn managercol;
-    @javafx.fxml.FXML
-    private TableColumn desriptioncol;
+    private TableColumn<UnresolvedIssue,String> managercol;
     @javafx.fxml.FXML
     private TextArea textarea;
     @javafx.fxml.FXML
-    private ComboBox combobox;
+    private ComboBox<String> combobox;
+    @javafx.fxml.FXML
+    private TableColumn descriptioncol;
+
+    private ObservableList<UnresolvedIssue> issueList = FXCollections.observableArrayList();
 
     @javafx.fxml.FXML
     public void initialize() {
+        combobox.getItems().addAll("Low","Medium","High");
+
+        descriptioncol.setCellValueFactory(new PropertyValueFactory<>("description"));
+        severitycol.setCellValueFactory(new PropertyValueFactory<>("severity"));
+        managercol.setCellValueFactory(new PropertyValueFactory<>("manager"));
+
+
+
+        issueList.addAll(
+                new UnresolvedIssue("Engine overheating", "High", "Mr. Rahman"),
+                new UnresolvedIssue("Brake malfunction", "Medium", "Ms. Fatima"),
+                new UnresolvedIssue("Headlight not working", "Low", "Mr. Karim")
+        );
+
+        tableview.setItems(issueList);
+
     }
 
     @javafx.fxml.FXML
@@ -41,9 +62,26 @@ public class UnresolvedissuesController
 
     @javafx.fxml.FXML
     public void saveOnActionButton(ActionEvent actionEvent) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.showAndWait();
     }
 
     @javafx.fxml.FXML
     public void addissueOnActionButton(ActionEvent actionEvent) {
+        String description = textarea.getText();
+        String severity = combobox.getValue();
+        String manager = managerfield.getText();
+
+        if (description.isEmpty() || severity == null || manager.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING,"Please fill all fields",ButtonType.OK);
+            alert.showAndWait();
+            return;
+
+        }
+
+        UnresolvedIssue newUnresolvedIssue = new UnresolvedIssue(description,severity,manager);
+        issueList.add(newUnresolvedIssue);
+
+
     }
 }

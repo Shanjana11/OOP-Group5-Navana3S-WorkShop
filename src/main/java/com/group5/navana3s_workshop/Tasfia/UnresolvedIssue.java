@@ -1,57 +1,46 @@
 package com.group5.navana3s_workshop.Tasfia;
 
 public class UnresolvedIssue {
-    private String JobId;
-    private String vechicleNo;
-    private String issueDescription;
-    private String priority;
+    private String description;
+    private String severity;
+    private String manager;
 
-    public UnresolvedIssue(String jobId, String vechicleNo, String issueDescription, String priority) {
-        JobId = jobId;
-        this.vechicleNo = vechicleNo;
-        this.issueDescription = issueDescription;
-        this.priority = priority;
+    public String getDescription() {
+        return description;
     }
 
-    public String getJobId() {
-        return JobId;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public void setJobId(String jobId) {
-        JobId = jobId;
+    public String getSeverity() {
+        return severity;
     }
 
-    public String getVechicleNo() {
-        return vechicleNo;
+    public void setSeverity(String severity) {
+        this.severity = severity;
     }
 
-    public void setVechicleNo(String vechicleNo) {
-        this.vechicleNo = vechicleNo;
+    public String getManager() {
+        return manager;
     }
 
-    public String getIssueDescription() {
-        return issueDescription;
+    public void setManager(String manager) {
+        this.manager = manager;
     }
 
-    public void setIssueDescription(String issueDescription) {
-        this.issueDescription = issueDescription;
-    }
-
-    public String getPriority() {
-        return priority;
-    }
-
-    public void setPriority(String priority) {
-        this.priority = priority;
+    public UnresolvedIssue(String description, String severity, String manager) {
+        this.description = description;
+        this.severity = severity;
+        this.manager = manager;
     }
 
     @Override
     public String toString() {
         return "UnresolvedIssue{" +
-                "JobId='" + JobId + '\'' +
-                ", vechicleNo='" + vechicleNo + '\'' +
-                ", issueDescription='" + issueDescription + '\'' +
-                ", priority='" + priority + '\'' +
+                "description='" + description + '\'' +
+                ", severity='" + severity + '\'' +
+                ", manager='" + manager + '\'' +
                 '}';
     }
 }

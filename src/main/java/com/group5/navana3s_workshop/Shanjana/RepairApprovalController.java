@@ -2,101 +2,112 @@ package com.group5.navana3s_workshop.Shanjana;
 
 import com.group5.navana3s_workshop.HelloApplication;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RepairApprovalController
-{
+public class RepairApprovalController {
 
-    @javafx.fxml.FXML
-    private TableColumn<RepairApproval, String> bookingIdCol;
-    @javafx.fxml.FXML
-    private TableColumn<RepairApproval, Double> estimatedCostCol;
-    @javafx.fxml.FXML
-    private TableColumn<RepairApproval, LocalDate> dateCol;
-    @javafx.fxml.FXML
-    private TableColumn<RepairApproval, String> statusCol;
-    @javafx.fxml.FXML
-    private Label repairDetailsLabel;
-    @javafx.fxml.FXML
-    private TableView<RepairApproval> repairRequestTable;
-    @javafx.fxml.FXML
-    private TableColumn<RepairApproval, String> repairDescCol;
+    @FXML
+    private TableView<AdditionalRepair> repairRequestTable;
+    @FXML
+    private TableColumn<AdditionalRepair, String> bookingIdCol;
+    @FXML
+    private TableColumn<AdditionalRepair, String> repairDescCol;
+    @FXML
+    private TableColumn<AdditionalRepair, Double> estimatedCostCol;
+    @FXML
+    private TableColumn<AdditionalRepair, LocalDate> dateCol;
+    @FXML
+    private Label infoLabel;
 
-    private List<RepairApproval> approvalList = new ArrayList<>();
+    private final String FILE_PATH =
+            "D:\\Study\\7th semester\\OOP Projects\\Navana3S_WorkShop\\additionalParts.dat";
 
-
-    @javafx.fxml.FXML
+    @FXML
     public void initialize() {
         bookingIdCol.setCellValueFactory(new PropertyValueFactory<>("bookingId"));
         repairDescCol.setCellValueFactory(new PropertyValueFactory<>("repairDescription"));
         estimatedCostCol.setCellValueFactory(new PropertyValueFactory<>("estimatedCost"));
-        dateCol.setCellValueFactory(new PropertyValueFactory<>("requestDate"));
-        statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
+        dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
 
-        fetchApprovalRequests();
-
-        repairRequestTable.getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) -> {
-            if (newValue != null) {
-                repairDetailsLabel.setText(
-                        "Booking ID: " + newValue.getBookingId() + "\n" +
-                                "Description: " + newValue.getRepairDescription() + "\n" +
-                                "Estimated Cost: " + newValue.getEstimatedCost() + "\n" +
-                                "Date: " + newValue.getRequestDate() + "\n" +
-                                "Status: " + newValue.getStatus()
-                );
-            }
-        });
-
+        repairRequestTable.getItems().addAll(loadOrCreateDummy());
     }
 
-    private void fetchApprovalRequests() {
-        // Load from database
-        approvalList.add(new RepairApproval("BK003", "Brake pad replacement needed", 3000.0, LocalDate.of(2024, 11, 28), "Pending"));
-        approvalList.add(new RepairApproval("BK004", "Engine oil change", 1500.0, LocalDate.of(2024, 11, 29), "Pending"));
-        approvalList.add(new RepairApproval("BK005", "Tire replacement", 8000.0, LocalDate.of(2024, 11, 30), "Pending"));
-        repairRequestTable.getItems().clear();
-        repairRequestTable.getItems().addAll(approvalList);
-    }
+    private List<AdditionalRepair> loadOrCreateDummy() {
+        File file = new File(FILE_PATH);
 
-    @javafx.fxml.FXML
-    public void Reject(ActionEvent actionEvent) {
-        RepairApproval selected = repairRequestTable.getSelectionModel().getSelectedItem();
-        if (selected != null) {
-            selected.setStatus("Rejected");
-            repairRequestTable.refresh();
-            repairDetailsLabel.setText("Repair rejected!");
-        } else {
-            repairDetailsLabel.setText("Please select a repair request");
+        if (!file.exists() || file.length() == 0) {
+            return createDummyData();
+        }
+
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(file))) {
+            return (List<AdditionalRepair>) in.readObject();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return createDummyData();
         }
     }
 
-    @javafx.fxml.FXML
-    public void Back(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Shanjana/Customer.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        Button signOutButton = (Button) actionEvent.getSource();
-        Stage stage = (Stage) signOutButton.getScene().getWindow();
-        stage.setScene(scene);
+    private List<AdditionalRepair> createDummyData() {
+        List<AdditionalRepair> list = new ArrayList<>();
+        list.add(new AdditionalRepair("B001", "Front Brake Replacement", 5500.0, LocalDate.now()));
+        list.add(new AdditionalRepair("B002", "Oil Filter + Engine Oil", 3200.0, LocalDate.now()));
+        list.add(new AdditionalRepair("B003", "Suspension Tightening", 1500.0, LocalDate.now()));
+        list.add(new AdditionalRepair("B004", "Battery Check & Charging", 800.0, LocalDate.now()));
+
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(FILE_PATH))) {
+            out.writeObject(list);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return list;
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void Approve(ActionEvent actionEvent) {
-        RepairApproval selected = repairRequestTable.getSelectionModel().getSelectedItem();
-        if (selected != null) {
-            selected.setStatus("Approved");
-            repairRequestTable.refresh();
-            repairDetailsLabel.setText("Repair approved successfully!");
-        } else {
-            repairDetailsLabel.setText("Please select a repair request");
+        AdditionalRepair selected = repairRequestTable.getSelectionModel().getSelectedItem();
+
+        if (selected == null) {
+            infoLabel.setText("Select a repair request to approve.");
+            return;
+        }
+
+        infoLabel.setText("Approved: " + selected.getRepairDescription());
+    }
+
+    @FXML
+    public void Reject(ActionEvent actionEvent) {
+        AdditionalRepair selected = repairRequestTable.getSelectionModel().getSelectedItem();
+
+        if (selected == null) {
+            infoLabel.setText("Select a repair request to reject.");
+            return;
+        }
+
+        infoLabel.setText("Rejected: " + selected.getRepairDescription());
+    }
+
+    @FXML
+    public void Back(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Shanjana/Customer.fxml"
+            ));
+            Scene scene = new Scene(loader.load());
+            Button btn = (Button) actionEvent.getSource();
+            Stage stage = (Stage) btn.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

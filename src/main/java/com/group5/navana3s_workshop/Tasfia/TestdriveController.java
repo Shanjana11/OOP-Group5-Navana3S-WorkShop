@@ -15,7 +15,7 @@ import java.io.IOException;
 public class TestdriveController
 {
     @javafx.fxml.FXML
-    private ComboBox resultCombobox;
+    private ComboBox <String>resultCombobox;
     @javafx.fxml.FXML
     private TextField brakefield;
     @javafx.fxml.FXML
@@ -27,10 +27,30 @@ public class TestdriveController
 
     @javafx.fxml.FXML
     public void initialize() {
+        resultCombobox.getItems().addAll("Pass","Fail","Pending");
     }
 
     @javafx.fxml.FXML
     public void savereportOnActionButton(ActionEvent actionEvent) {
+        String speed = speedfield.getText();
+        String brake = brakefield.getText();
+        String noise = noisefield.getText();
+        String overall = textarea.getText();
+        String result = resultCombobox.getValue();
+
+        System.out.println("Speed Performance: " + speed);
+        System.out.println("Brake Test: " + brake);
+        System.out.println("Engine Noise: " + noise);
+        System.out.println("Overall Performance: " + overall);
+        System.out.println("Result: " + result);
+
+        speedfield.clear();
+        brakefield.clear();
+        noisefield.clear();
+        textarea.clear();
+        resultCombobox.getSelectionModel().clearSelection();
+
+
     }
 
     @javafx.fxml.FXML

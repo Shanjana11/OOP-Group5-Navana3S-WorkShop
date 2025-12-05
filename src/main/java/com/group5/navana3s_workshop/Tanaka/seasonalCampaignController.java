@@ -7,20 +7,21 @@ import javafx.scene.control.TableView;
 
 public class seasonalCampaignController
 {
+
     @javafx.fxml.FXML
-    private TableColumn endDatecol;
+    private TableColumn endDateColumn;
     @javafx.fxml.FXML
-    private TableColumn startDatecol;
+    private TableColumn startDateColumn;
     @javafx.fxml.FXML
-    private TableColumn statuscol;
+    private TableColumn statusColumn;
     @javafx.fxml.FXML
-    private TableColumn campaignNamecol;
+    private TableView seasonalCampaigntableView;
     @javafx.fxml.FXML
-    private CheckBox checkbox;
+    private CheckBox ActiveTypeCheckbox;
     @javafx.fxml.FXML
-    private TableView tableview;
+    private TableColumn campaignNameColumn;
     @javafx.fxml.FXML
-    private ComboBox combobox;
+    private ComboBox campaignTypeCombobox;
 
     @javafx.fxml.FXML
     public void initialize() {

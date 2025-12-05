@@ -7,26 +7,25 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="343.0" prefWidth="586.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Tanaka.vendorPaymentController">
    <children>
-      <Button layoutX="25.0" layoutY="75.0" mnemonicParsing="false" text="Process Payment" />
-      <Button layoutX="166.0" layoutY="75.0" mnemonicParsing="false" text="Mark Paid" />
-      <TableView layoutX="78.0" layoutY="113.0" prefHeight="154.0" prefWidth="403.0">
+      <Button layoutX="25.0" layoutY="75.0" mnemonicParsing="false" onAction="#processPaymentOnActionButton" text="Process Payment" />
+      <Button layoutX="166.0" layoutY="75.0" mnemonicParsing="false" onAction="#markPaidOnActionButton" text="Mark Paid" />
+      <TableView fx:id="vendorPaymentTableView" layoutX="78.0" layoutY="113.0" prefHeight="154.0" prefWidth="403.0">
         <columns>
-          <TableColumn prefWidth="112.80002212524414" text="Vendor Name" />
-          <TableColumn prefWidth="113.60000610351562" text="Due Amount" />
-            <TableColumn prefWidth="72.80001831054688" text="Due Date" />
-            <TableColumn prefWidth="101.60000610351562" text="Payment Status" />
+          <TableColumn fx:id="vendorNameColumn" prefWidth="112.80002212524414" text="Vendor Name" />
+          <TableColumn fx:id="DueAmountColumn" prefWidth="113.60000610351562" text="Due Amount" />
+            <TableColumn fx:id="DueDateColumn" prefWidth="72.80001831054688" text="Due Date" />
+            <TableColumn fx:id="paymentStatusColumn" prefWidth="101.60000610351562" text="Payment Status" />
         </columns>
       </TableView>
-      <Label layoutX="25.0" layoutY="276.0" prefHeight="18.0" prefWidth="351.0" text="Pending Total" />
-      <Label layoutX="25.0" layoutY="313.0" prefHeight="18.0" prefWidth="140.0" text="Paid Total" />
+      <Label fx:id="pendingTotalLabel" layoutX="25.0" layoutY="276.0" prefHeight="18.0" prefWidth="351.0" text="Pending Total" />
+      <Label fx:id="paidTotalLabel" layoutX="25.0" layoutY="313.0" prefHeight="18.0" prefWidth="140.0" text="Paid Total" />
       <Label layoutX="165.0" layoutY="14.0" text="Vendor Payment ">
          <font>
             <Font name="System Bold" size="27.0" />
          </font>
       </Label>
-      <Button layoutX="505.0" layoutY="300.0" mnemonicParsing="false" text="Back" />
+      <Button layoutX="505.0" layoutY="300.0" mnemonicParsing="false" onAction="#backOnActionButton" text="Back" />
    </children>
 </AnchorPane>
