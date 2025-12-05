@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="424.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Karima.inventoryRequestController">
+   <children>
+      <Label layoutX="220.0" layoutY="24.0" text="Inventory Requests">
+         <font>
+            <Font size="22.0" />
+         </font></Label>
+      <Label layoutX="23.0" layoutY="72.0" text="Request Details">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="30.0" layoutY="118.0" text="Item Specifications">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+      <TableView fx:id="tableView" layoutX="365.0" layoutY="100.0" prefHeight="200.0" prefWidth="252.0">
+        <columns>
+          <TableColumn fx:id="itemNameCol" prefWidth="75.0" text="Item Name" />
+          <TableColumn fx:id="quantityCol" prefWidth="75.0" text="Quantity" />
+            <TableColumn fx:id="requestedByCol" prefWidth="100.79998779296875" text="Requested By" />
+        </columns>
+      </TableView>
+      <Label layoutX="69.0" layoutY="190.0" text="Reason">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+      <Label layoutX="29.0" layoutY="154.0" text="Current Stock Level">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+      <TextField fx:id="itemField" layoutX="150.0" layoutY="115.0" />
+      <TextField fx:id="reasonField" layoutX="150.0" layoutY="187.0" />
+      <TextField fx:id="stockField" layoutX="150.0" layoutY="151.0" />
+      <Button layoutX="73.0" layoutY="313.0" mnemonicParsing="false" onAction="#approveButton" text="Approve">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button layoutX="196.0" layoutY="313.0" mnemonicParsing="false" onAction="#rejectButton" text="Reject">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button layoutX="533.0" layoutY="360.0" mnemonicParsing="false" onAction="#backButton" style="-fx-background-color: black;" text="BACK" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Label fx:id="outputLabel" layoutX="175.0" layoutY="359.0" prefHeight="32.0" prefWidth="274.0" />
+      <Label layoutX="66.0" layoutY="223.0" text="Quantity">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+      <Label layoutX="51.0" layoutY="262.0" text="Requested By">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+      <TextField fx:id="quantityField" layoutX="150.0" layoutY="220.0" />
+      <TextField fx:id="requestedByField" layoutX="150.0" layoutY="259.0" />
+   </children>
+</AnchorPane>

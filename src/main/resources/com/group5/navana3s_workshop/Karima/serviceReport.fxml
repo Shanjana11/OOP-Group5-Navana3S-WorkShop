@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="514.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Karima.serviceReportController">
+   <children>
+      <Label layoutX="235.0" layoutY="20.0" text="Service Reports">
+         <font>
+            <Font size="19.0" />
+         </font></Label>
+      <Label fx:id="outputLabel" layoutX="40.0" layoutY="229.0" prefHeight="42.0" prefWidth="294.0" />
+      <Label layoutX="63.0" layoutY="83.0" text="Report Type">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label layoutX="63.0" layoutY="130.0" text="Start Date">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label layoutX="66.0" layoutY="182.0" text="End Date">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <ComboBox fx:id="typeCombobox" layoutX="164.0" layoutY="79.0" prefWidth="150.0" />
+      <DatePicker fx:id="startDate" layoutX="152.0" layoutY="126.0" />
+      <DatePicker fx:id="endDate" layoutX="152.0" layoutY="179.0" />
+      <Button layoutX="514.0" layoutY="451.0" mnemonicParsing="false" onAction="#backButton" style="-fx-background-color: black;" text="Back" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button layoutX="356.0" layoutY="384.0" mnemonicParsing="false" onAction="#reportButton" text="View Report">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <TextArea fx:id="textArea" layoutX="365.0" layoutY="129.0" prefHeight="200.0" prefWidth="214.0" />
+      <Label layoutX="420.0" layoutY="83.0" text="Report Summary">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <PieChart fx:id="pieChart" layoutX="40.0" layoutY="257.0" prefHeight="210.0" prefWidth="285.0" />
+      <Button layoutX="465.0" layoutY="384.0" mnemonicParsing="false" onAction="#generatePDF" text="Generate PDF">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+   </children>
+</AnchorPane>
