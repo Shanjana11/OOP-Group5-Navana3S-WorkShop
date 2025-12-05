@@ -40,7 +40,7 @@ public class FeedbackComplaintController {
         List<BookService> bookings = loadBookings();
 
         for (BookService b : bookings) {
-            bookingIdCombo.getItems().add(b.getConfirmationId());
+            bookingIdCombo.getItems().add(b.getBookingId());
         }
     }
 
@@ -103,17 +103,10 @@ public class FeedbackComplaintController {
     }
 
     @FXML
-    public void backButton(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(
-                    HelloApplication.class.getResource("/com/group5/navana3s_workshop/Shanjana/Customer.fxml")
-            );
-            Scene scene = new Scene(fxmlLoader.load());
-            Button btn = (Button) actionEvent.getSource();
-            Stage stage = (Stage) btn.getScene().getWindow();
-            stage.setScene(scene);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void backButton(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Shanjana/Customer.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
+        stage.setScene(scene);
     }
 }

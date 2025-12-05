@@ -43,7 +43,7 @@ public class WarrantyClaimController {
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(file))) {
             List<BookService> list = (List<BookService>) in.readObject();
             for (BookService b : list) {
-                BookIDCombo.getItems().add(b.getConfirmationId());
+                BookIDCombo.getItems().add(b.getBookingId());
             }
         } catch (Exception e) {
             infoLabel.setText("Unable to load booking IDs.");

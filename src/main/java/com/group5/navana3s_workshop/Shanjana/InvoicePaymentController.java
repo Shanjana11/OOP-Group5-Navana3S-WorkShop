@@ -17,14 +17,13 @@ import java.util.List;
 
 public class InvoicePaymentController {
 
-    private final String BOOKING_FILE = "bookings.dat";
+    private final String ESTIMATE_FILE = "estimates.dat";
     private final String PAYMENT_FILE = "payments.dat";
 
     @FXML private TableView<Invoice> tableView;
     @FXML private TableColumn<Invoice, String> BookIDC;
-    @FXML private TableColumn<Invoice, String> amountC;
+    @FXML private TableColumn<Invoice, Double> amountC;
     @FXML private TableColumn<Invoice, String> statusC;
-    @FXML private TableColumn<Invoice, String> dateC;
     @FXML private Label infoLabel;
     @FXML private ComboBox<String> methodCombo;
 
@@ -33,30 +32,27 @@ public class InvoicePaymentController {
     @FXML
     public void initialize() {
 
-        methodCombo.getItems().addAll("Cash", "Card", "Bkash", "Nagad");
+        methodCombo.getItems().addAll("Debit Card", "Credit Card", "Bkash", "Nagad");
 
         BookIDC.setCellValueFactory(new PropertyValueFactory<>("bookingId"));
         amountC.setCellValueFactory(new PropertyValueFactory<>("amount"));
         statusC.setCellValueFactory(new PropertyValueFactory<>("status"));
-        dateC.setCellValueFactory(new PropertyValueFactory<>("date"));
+
 
         loadInvoices();
     }
 
     private void loadInvoices() {
-        List<BookService> bookings = loadBookings();
+        List<Estimate> estimates = loadEstimates();
 
         invoiceList.clear();
 
-        for (BookService b : bookings) {
-            double amount = calculateAmount(b.getServiceType());
+        for (Estimate e : estimates) {
 
             Invoice record = new Invoice(
-                    b.getConfirmationId(),
-                    b.getVehicleId(),
-                    b.getServiceType(),
-                    b.getDate(),
-                    amount,
+                    e.getBookingId(),
+                    e.getServiceType(),
+                    e.getTotalCost(),
                     "Unpaid"
             );
 
@@ -66,24 +62,12 @@ public class InvoicePaymentController {
         tableView.setItems(invoiceList);
     }
 
-    private double calculateAmount(String type) {
-        return switch (type) {
-            case "Regular Service" -> 1500;
-            case "Oil Change" -> 700;
-            case "Brake Service" -> 1200;
-            case "Engine Repair" -> 4500;
-            case "AC Service" -> 1800;
-            case "Tire Change" -> 900;
-            default -> 1000;
-        };
-    }
-
-    private List<BookService> loadBookings() {
-        File file = new File(BOOKING_FILE);
+    private List<Estimate> loadEstimates() {
+        File file = new File(ESTIMATE_FILE);
         if (!file.exists()) return new ArrayList<>();
 
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(file))) {
-            return (List<BookService>) in.readObject();
+            return (List<Estimate>) in.readObject();
         } catch (Exception e) {
             e.printStackTrace();
             return new ArrayList<>();
@@ -107,13 +91,18 @@ public class InvoicePaymentController {
         selected.setStatus("Paid");
         tableView.refresh();
 
-        savePayment(selected);
+        savePayment(selected, method);
 
         infoLabel.setText("Payment successful for " + selected.getBookingId());
     }
 
-    private void savePayment(Invoice record) {
+    private void savePayment(Invoice record, String method) {
+
         List<Invoice> paid = loadPayments();
+
+        // attach method info inside record
+        record.setPaymentMethod(method);
+
         paid.add(record);
 
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(PAYMENT_FILE))) {

@@ -20,43 +20,50 @@ public class TrackServiceController {
     @FXML
     private TextField bookID;
 
-    private final String FILE_PATH = "D:\\Study\\7th semester\\OOP Projects\\Navana3S_WorkShop\\service_progress.dat";
+    private final String FILE_PATH = "service_progress.dat";
+    private List<ServiceStatus> serviceList;
+
+    @FXML
+    public void initialize() {
+        // Load data on startup
+        serviceList = loadOrCreateDummyData();
+
+    }
 
     @FXML
     public void trackButton(ActionEvent actionEvent) {
-
-        // Load or create dummy data
-        List<ServiceStatus> list = loadOrCreateDummyData();
-
         String enteredId = bookID.getText().trim();
 
-        // If no ID entered, show all dummy data
         if (enteredId.isEmpty()) {
-            StringBuilder sb = new StringBuilder("Service Progress (Dummy Data):\n");
-            for (ServiceStatus s : list) {
-                sb.append(s.getBookingId()).append(" → ").append(s.getStatus()).append("\n");
-            }
-            progressStatus.setText(sb.toString());
+            showAllProgress();
             return;
         }
 
-        // Search for specific booking ID
-        for (ServiceStatus s : list) {
+        boolean found = false;
+        for (ServiceStatus s : serviceList) {
             if (s.getBookingId().equalsIgnoreCase(enteredId)) {
                 progressStatus.setText("Current Status: " + s.getStatus());
-                return;
+                found = true;
+                break;
             }
         }
 
-        // If booking ID not found
-        progressStatus.setText("No matching booking ID found.");
+        if (!found) {
+            progressStatus.setText("No matching booking ID found.");
+        }
+    }
+
+    private void showAllProgress() {
+        StringBuilder sb = new StringBuilder("Service Progress:\n");
+        for (ServiceStatus s : serviceList) {
+            sb.append(s.getBookingId()).append(" → ").append(s.getStatus()).append("\n");
+        }
+        progressStatus.setText(sb.toString());
     }
 
     private List<ServiceStatus> loadOrCreateDummyData() {
-
         File file = new File(FILE_PATH);
 
-        // If file does not exist or is empty, create dummy data
         if (!file.exists() || file.length() == 0) {
             return createDummyFile();
         }
@@ -70,7 +77,6 @@ public class TrackServiceController {
     }
 
     private List<ServiceStatus> createDummyFile() {
-
         List<ServiceStatus> dummy = new ArrayList<>();
         dummy.add(new ServiceStatus("BK101", "Received"));
         dummy.add(new ServiceStatus("BK102", "Diagnosis Stage"));
@@ -91,8 +97,7 @@ public class TrackServiceController {
     public void BackButton(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Shanjana/Customer.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        Button signOutButton = (Button) actionEvent.getSource();
-        Stage stage = (Stage) signOutButton.getScene().getWindow();
+        Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
         stage.setScene(scene);
     }
 }

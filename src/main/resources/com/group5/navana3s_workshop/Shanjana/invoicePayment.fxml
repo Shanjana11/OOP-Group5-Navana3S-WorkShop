@@ -19,7 +19,6 @@
       <TableView fx:id="tableView" layoutX="23.0" layoutY="73.0" prefHeight="200.0" prefWidth="598.0">
         <columns>
           <TableColumn fx:id="BookIDC" prefWidth="75.0" text="Booking ID" />
-          <TableColumn fx:id="dateC" prefWidth="75.0" text="Date" />
             <TableColumn fx:id="amountC" prefWidth="75.0" text="Amount" />
             <TableColumn fx:id="statusC" prefWidth="75.0" text="Status" />
         </columns>

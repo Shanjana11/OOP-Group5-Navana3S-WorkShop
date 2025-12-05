@@ -30,14 +30,7 @@ public class ServiceRequestController {
 
     @javafx.fxml.FXML
     public void initialize() {
-        serviceCombo.getItems().addAll(
-                "Regular Service",
-                "Oil Change",
-                "Brake Service",
-                "Engine Repair",
-                "AC Service",
-                "Tire Change"
-        );
+        serviceCombo.getItems().addAll("Regular Service", "Oil Change", "Brake Service", "Engine Repair", "AC Service", "Tire Change");
     }
 
     @javafx.fxml.FXML
