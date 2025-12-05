@@ -36,8 +36,6 @@ public class SparepartsmanagerController
         stage.setScene(scene);
     }
 
-    @Deprecated
-
     @javafx.fxml.FXML
     public void approverequest(ActionEvent actionEvent)throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Tasfia/Approverequest.fxml"));
@@ -98,6 +96,17 @@ public class SparepartsmanagerController
         Button signOutButton = (Button) actionEvent.getSource();
         Stage stage = (Stage) signOutButton.getScene().getWindow();
         stage.setTitle ("Reorder Low Stock Items");
+        stage.setScene(scene);
+
+    }
+
+    @javafx.fxml.FXML
+    public void urgentrequestOnAction(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Tasfia/urgentrequestform.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Button signOutButton = (Button) actionEvent.getSource();
+        Stage stage = (Stage) signOutButton.getScene().getWindow();
+        stage.setTitle ("Urgent Request");
         stage.setScene(scene);
 
     }

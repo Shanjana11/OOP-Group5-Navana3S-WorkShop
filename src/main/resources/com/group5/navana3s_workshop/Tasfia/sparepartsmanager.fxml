@@ -22,5 +22,6 @@
       <Button layoutX="419.0" layoutY="196.0" mnemonicParsing="false" onAction="#reorderlowstockitemsOnActionButton" text=" Reorder Low stock Items" />
       <Button layoutX="642.0" layoutY="470.0" mnemonicParsing="false" onAction="#logout" text="Log Out" />
       <Line endX="87.20001220703125" endY="267.5999755859375" layoutX="228.0" layoutY="90.0" startX="87.20001220703125" startY="7.600006103515625" />
+      <Button layoutX="432.0" layoutY="244.0" mnemonicParsing="false" onAction="#urgentrequestOnAction" text="Urgent Requeat" />
    </children>
 </AnchorPane>
