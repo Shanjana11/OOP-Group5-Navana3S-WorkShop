@@ -14,7 +14,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.scene.control.Alert;
 
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+
 import javafx.scene.control.Alert;
 
 public class InventoryupdateController
@@ -43,6 +46,9 @@ public class InventoryupdateController
         partnamecol.setCellValueFactory(new PropertyValueFactory<>("name"));
         quantitycol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
 
+
+        loadBinary();
+
         tableview.setItems(partsList);
 
         partsList.addAll(
@@ -53,6 +59,7 @@ public class InventoryupdateController
 
 
     }
+
 
     @javafx.fxml.FXML
     public void searchOnActionButton(ActionEvent actionEvent) {
@@ -114,4 +121,27 @@ public class InventoryupdateController
               showAlert("Invalid Input","Quantity must be a number.");
         }
     }
+
+    private void saveBinary() {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("parts.bin"))) {
+            oos.writeObject(new ArrayList<>(partsList));
+        } catch (IOException e) {
+            showAlert("Error", "Failed to save binary file.");
+        }
+
+    }
+
+    private void loadBinary() {
+        File file = new File("parts.bin");
+        if (!file.exists()) return;
+
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
+            List<Part> data = (List<Part>) ois.readObject();
+            partsList.setAll(data);
+        } catch (Exception e) {
+            showAlert("Error", "Failed to load binary file.");
+        }
+
+    }
+
 }

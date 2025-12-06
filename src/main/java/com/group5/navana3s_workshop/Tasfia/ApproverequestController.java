@@ -48,13 +48,13 @@ public class ApproverequestController
 
 
 
-        //Add some samplle data
+
         requestList.add(new PartRequest("REQ001", "Brake Pad", 4, "Worn out", "Tariq", "Pending"));
         requestList.add(new PartRequest("REQ002", "Battery", 1, "Dead battery", "Nadia", "Pending"));
         requestList.add(new PartRequest("REQ003", "Wheel Bearing", 2, "Noise issue", "Hasan", "Rejected"));
         requestList.add(new PartRequest("REQ101", "Brake Fluid", 2, "Fluid Top-up", "Karim", "Approved"));
 
-       //Set List into tableview
+
 
         tableview.getItems().setAll(requestList);
 

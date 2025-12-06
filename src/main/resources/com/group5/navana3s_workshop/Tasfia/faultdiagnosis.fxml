@@ -29,7 +29,7 @@
           <TableColumn fx:id="jobidcol" text="Job Id" />
           <TableColumn fx:id="vechiclenocol" prefWidth="103.20001220703125" text="Vechicle No" />
             <TableColumn fx:id="errorcol" prefWidth="120.0" text="Error Code" />
-            <TableColumn fx:id="errorcol2" prefWidth="132.800048828125" text="Description" />
+            <TableColumn fx:id="descriptioncol" prefWidth="132.800048828125" text="Description" />
         </columns>
       </TableView>
       <Button layoutX="545.0" layoutY="307.0" mnemonicParsing="false" onAction="#addDiagnosisButton" text="Add Diagnosis" />
