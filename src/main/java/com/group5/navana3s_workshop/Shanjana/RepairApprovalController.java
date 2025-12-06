@@ -29,8 +29,7 @@ public class RepairApprovalController {
     @FXML
     private Label infoLabel;
 
-    private final String FILE_PATH =
-            "D:\\Study\\7th semester\\OOP Projects\\Navana3S_WorkShop\\additionalParts.dat";
+    private final String FILE_PATH = "additionalParts.dat";
 
     @FXML
     public void initialize() {
@@ -98,16 +97,11 @@ public class RepairApprovalController {
     }
 
     @FXML
-    public void Back(ActionEvent actionEvent) {
-        try {
-            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Shanjana/Customer.fxml"
-            ));
-            Scene scene = new Scene(loader.load());
-            Button btn = (Button) actionEvent.getSource();
-            Stage stage = (Stage) btn.getScene().getWindow();
-            stage.setScene(scene);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void Back(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Shanjana/Customer.fxml"));
+        Scene scene = new Scene(loader.load());
+        Button btn = (Button) actionEvent.getSource();
+        Stage stage = (Stage) btn.getScene().getWindow();
+        stage.setScene(scene);
     }
 }

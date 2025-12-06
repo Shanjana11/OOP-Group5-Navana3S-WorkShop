@@ -123,6 +123,7 @@ public class staffProductivityController
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("productivity.bin"))) {
             productivityList = (ArrayList<staffProductivity>) in.readObject();
             outputLabel.setText("Loaded Successfully");
+            outputLabel.setStyle("-fx-text-fill: black; -fx-font-weight: bold;");
 
         } catch (Exception e) {
             outputLabel.setText("No file found!");
@@ -136,6 +137,7 @@ public class staffProductivityController
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("productivity.bin"))) {
             out.writeObject(productivityList);
             outputLabel.setText("Saved!");
+            outputLabel.setStyle("-fx-text-fill: black; -fx-font-weight: bold;");
         } catch (Exception e) {
             outputLabel.setText("Save failed!");
             outputLabel.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");

@@ -97,8 +97,7 @@ public class VehicleInspectionController {
         if (others.isSelected()) issues.add("Other Issue");
 
         // Create inspection object
-        VehicleInspection inspection =
-                new VehicleInspection(bookingId, date.toString(), condition, issues);
+        VehicleInspection inspection = new VehicleInspection(bookingId, date.toString(), condition, issues);
 
         saveInspection(inspection);
 

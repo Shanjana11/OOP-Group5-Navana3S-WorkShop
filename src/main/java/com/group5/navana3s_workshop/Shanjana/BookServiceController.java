@@ -49,6 +49,7 @@ public class BookServiceController {
         String serviceType = serviceTypeCombo.getValue();
         String timeSlot = slotCombo.getValue();
 
+        //validation
         if (vehicleId.isEmpty() || date == null || serviceType == null || timeSlot == null) {
             statusLabel.setText("Please fill all fields.");
             return;

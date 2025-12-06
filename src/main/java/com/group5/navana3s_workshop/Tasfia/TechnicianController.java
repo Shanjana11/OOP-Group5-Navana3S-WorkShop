@@ -32,7 +32,7 @@ public class TechnicianController
         Scene scene = new Scene(fxmlLoader.load());
         Button signOutButton = (Button) actionEvent.getSource();
         Stage stage = (Stage) signOutButton.getScene().getWindow();
-        stage.setTitle("Test Drive");
+        stage.setTitle("Request Spare Parts");
         stage.setScene(scene);
     }
 

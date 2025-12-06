@@ -37,7 +37,6 @@ public class DailyReportController {
 
     @FXML
     public void initialize() {
-        // Setup table columns
         vehicleCol.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("vehicleId"));
         serviceCol.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("serviceType"));
         technicianCol.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("technician"));

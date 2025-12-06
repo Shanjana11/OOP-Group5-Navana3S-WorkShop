@@ -108,9 +108,11 @@ public class vehicleSpecificationController {
             }
 
             outputLabel.setText("Loaded successfully!");
+            outputLabel.setStyle("-fx-text-fill: black; -fx-font-weight: bold;");
 
         } catch (Exception ex) {
             outputLabel.setText("No saved file found!");
+            outputLabel.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
         }
     }
 
@@ -121,9 +123,11 @@ public class vehicleSpecificationController {
 
             out.writeObject(vehicleList);
             outputLabel.setText("Vehicles saved!");
+            outputLabel.setStyle("-fx-text-fill: black; -fx-font-weight: bold;");
 
         } catch (IOException ex) {
             outputLabel.setText("Saving failed!");
+            outputLabel.setStyle("-fx-text-fill: black; -fx-font-weight: bold;");
         }
     }
 

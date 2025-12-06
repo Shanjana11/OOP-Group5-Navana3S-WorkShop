@@ -9,7 +9,7 @@ public class BookService implements Serializable {
     private String timeSlot;
     private String serviceType;
     private String bookingId;
-    private String confirmationId;
+
 
     @Override
     public String toString() {
@@ -68,10 +68,6 @@ public class BookService implements Serializable {
         this.timeSlot = timeSlot;
         this.serviceType = serviceType;
         this.bookingId = bookingId;
-    }
-
-    public String getConfirmationId() {
-        return confirmationId;
     }
 
 }
