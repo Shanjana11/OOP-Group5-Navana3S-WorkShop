@@ -10,7 +10,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
 
 public class ReorderlowstockitemController
 {
@@ -38,6 +39,9 @@ public class ReorderlowstockitemController
     private TextField nameidfield;
 
     private ObservableList<ReorderLowStockModel> dataList = FXCollections.observableArrayList();
+
+
+    private final String FILE_NAME = "reorder_data.bin";
 
     @javafx.fxml.FXML
     public void initialize() {
@@ -103,4 +107,29 @@ public class ReorderlowstockitemController
         }
         tableview.refresh();
     }
+
+    @javafx.fxml.FXML
+    public void saveToBinaryFile(ActionEvent actionEvent) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_NAME))) {
+            oos.writeObject(new ArrayList<>(dataList));
+            System.out.println("Data saved to " + FILE_NAME + " successfully!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @javafx.fxml.FXML
+    public void loadFromBinaryFile(ActionEvent actionEvent) {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_NAME))) {
+            ArrayList<ReorderLowStockModel> list = (ArrayList<ReorderLowStockModel>) ois.readObject();
+            dataList.setAll(list);
+            tableview.refresh();
+            System.out.println("Data loaded from " + FILE_NAME + " successfully!");
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

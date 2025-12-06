@@ -10,8 +10,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class SafetytrainingController
 {
@@ -36,6 +37,9 @@ public class SafetytrainingController
     @javafx.fxml.FXML
     private TextArea textarea;
 
+    private static final String FILE_NAME = "safety_training_data.dat";
+
+
     ObservableList<SafetyTraningModel> list = FXCollections.observableArrayList();
 
     @javafx.fxml.FXML
@@ -48,6 +52,10 @@ public class SafetytrainingController
         datecol.setCellValueFactory(new PropertyValueFactory<>("date"));
         statuscol.setCellValueFactory(new PropertyValueFactory<>("status"));
         notescol.setCellValueFactory(new PropertyValueFactory<>("notes"));
+
+
+        loadDataFromFile();
+
 
         tableview.setItems(list);
 
@@ -89,12 +97,15 @@ public class SafetytrainingController
 
     @javafx.fxml.FXML
     public void saveOnActionButton(ActionEvent actionEvent) {
-        System.out.println("Training Data");
-        for (SafetyTraningModel s : list);{
-            System.out.println();
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_NAME))) {
+            oos.writeObject(new ArrayList<>(list)); // save as ArrayList
+            showAlert("Data saved successfully!");
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Error saving data: " + e.getMessage());
 
-        }
-        showAlert("Data saved successfully" );
+    }
+
 
     }
 
@@ -104,4 +115,21 @@ public class SafetytrainingController
         alert.setContentText(msg);
         alert.show();
     }
+
+    private void loadDataFromFile() {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_NAME))) {
+            Object obj = ois.readObject();
+            if (obj instanceof ArrayList<?> savedList) {
+                for (Object o : savedList) {
+                    if (o instanceof SafetyTraningModel stm) {
+                        list.add(stm);
+                    }
+                }
+            }
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("No previous data found or error reading file.");
+        }
+    }
+
+
 }

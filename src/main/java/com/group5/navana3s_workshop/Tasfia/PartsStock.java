@@ -1,6 +1,8 @@
 package com.group5.navana3s_workshop.Tasfia;
 
-public class PartsStock {
+import java.io.Serializable;
+
+public class  PartsStock implements Serializable {
     private String partId;
     private String partName;
     private int quantity;

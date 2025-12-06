@@ -1,6 +1,8 @@
 package com.group5.navana3s_workshop.Tasfia;
 
-public class ReorderLowStockModel {
+import java.io.Serializable;
+
+public class ReorderLowStockModel implements Serializable {
 
     private Boolean selected;
     private String partId;
