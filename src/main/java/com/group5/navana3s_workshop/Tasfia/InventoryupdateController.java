@@ -35,6 +35,9 @@ public class InventoryupdateController
     @javafx.fxml.FXML
     private TextField searchfield;
 
+
+    private static final String FILE_PATH = "spareParts.dat";
+
     private ObservableList<Part> partsList = FXCollections.observableArrayList();
 
 
@@ -47,7 +50,7 @@ public class InventoryupdateController
         quantitycol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
 
 
-        loadBinary();
+
 
         tableview.setItems(partsList);
 
@@ -122,26 +125,30 @@ public class InventoryupdateController
         }
     }
 
-    private void saveBinary() {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("parts.bin"))) {
-            oos.writeObject(new ArrayList<>(partsList));
+    private void saveBinary(List<Part> parts) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_PATH))) {
+            oos.writeObject(new ArrayList<>(parts));
+            System.out.println("Saved binary to: " + FILE_PATH);
         } catch (IOException e) {
+            e.printStackTrace();
             showAlert("Error", "Failed to save binary file.");
         }
-
     }
 
-    private void loadBinary() {
-        File file = new File("parts.bin");
-        if (!file.exists()) return;
+    private List<Part> loadBinary() {
+        File file = new File(FILE_PATH);
+        if (!file.exists()) return new ArrayList<>();
 
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
-            List<Part> data = (List<Part>) ois.readObject();
-            partsList.setAll(data);
+            return (List<Part>) ois.readObject();
         } catch (Exception e) {
+            e.printStackTrace();
             showAlert("Error", "Failed to load binary file.");
+            return new ArrayList<>();
         }
 
+
     }
+
 
 }
