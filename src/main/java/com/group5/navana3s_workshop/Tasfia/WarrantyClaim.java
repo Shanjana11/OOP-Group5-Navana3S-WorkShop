@@ -1,6 +1,8 @@
 package com.group5.navana3s_workshop.Tasfia;
 
-public class WarrantyClaim {
+import java.io.Serializable;
+
+public class WarrantyClaim implements Serializable {
     private String partName;
     private String description;
     private String claimDate;

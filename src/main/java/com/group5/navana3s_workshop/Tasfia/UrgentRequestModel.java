@@ -1,8 +1,9 @@
 package com.group5.navana3s_workshop.Tasfia;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class UrgentRequestModel {
+public class UrgentRequestModel implements Serializable {
     private String requestId;
     private String partId;
     private String partName;

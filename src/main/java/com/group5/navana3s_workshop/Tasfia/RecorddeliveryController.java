@@ -9,7 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +30,10 @@ public class RecorddeliveryController
     @javafx.fxml.FXML
     private TableView<Delivery> tableview;
 
+
+    private final String FILE_PATH = "delivery_records.bin";
+
+
     private ObservableList<Delivery> deliveryList = FXCollections.observableArrayList();
 
 
@@ -41,7 +45,17 @@ public class RecorddeliveryController
         quantitycol.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("quantity"));
         deliverydatecol.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("deliveryDate"));
 
+
+        loadDeliveryRecords();
+
+
+
+
+
+
         tableview.setItems(deliveryList);
+
+
     }
 
     @javafx.fxml.FXML
@@ -85,7 +99,59 @@ public class RecorddeliveryController
 
     @javafx.fxml.FXML
     public void saveOnActionButton(ActionEvent actionEvent) {
-      Alert alert = new Alert(Alert.AlertType.INFORMATION,"Delivery records saved successfully", ButtonType.OK);
-      alert.showAndWait();
+      savedDeliveryRecords();
+
+        }
+
+
+        private void savedDeliveryRecords() {
+            try (ObjectOutputStream oos =
+                         new ObjectOutputStream(new FileOutputStream(FILE_PATH))) {
+
+                oos.writeObject(new ArrayList<>(deliveryList));
+
+                new Alert(Alert.AlertType.INFORMATION,
+                        "Delivery records saved successfully").showAndWait();
+
+            } catch (IOException e) {
+                new Alert(Alert.AlertType.ERROR,
+                        "Error saving file: " + e.getMessage()).showAndWait();
+            }
+
+        }
+
+    private void loadDeliveryRecords() {
+        File file = new File(FILE_PATH);
+
+        if (!file.exists()) return;
+
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
+
+            Object obj = ois.readObject();
+
+            if (obj instanceof ArrayList<?>) {
+
+                ArrayList<?> list = (ArrayList<?>) obj;
+
+                deliveryList.clear();
+
+                for (Object o : list) {
+                    if (o instanceof Delivery) {
+                        deliveryList.add((Delivery) o);
+                    }
+                }
+            }
+
+        } catch (IOException | ClassNotFoundException e) {
+            new Alert(Alert.AlertType.ERROR,
+                    "Error loading saved records: " + e.getMessage()).showAndWait();
+        }
     }
+
+
+
+
+
 }
+
+

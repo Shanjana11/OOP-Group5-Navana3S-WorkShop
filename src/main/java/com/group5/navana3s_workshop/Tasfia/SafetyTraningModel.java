@@ -1,8 +1,9 @@
 package com.group5.navana3s_workshop.Tasfia;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class SafetyTraningModel {
+public class SafetyTraningModel implements Serializable {
     private String module;
     private LocalDate date;
     private String status;

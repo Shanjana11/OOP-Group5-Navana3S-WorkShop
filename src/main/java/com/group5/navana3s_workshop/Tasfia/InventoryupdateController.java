@@ -20,24 +20,28 @@ import java.util.List;
 
 import javafx.scene.control.Alert;
 
-public class InventoryupdateController
-{
+public class InventoryupdateController {
     @javafx.fxml.FXML
     private TextField newquantityfield;
     @javafx.fxml.FXML
-    private TableColumn <Part,Integer>partidcol;
+    private TableColumn<Part, Integer> partidcol;
     @javafx.fxml.FXML
-    private TableColumn<Part,String> partnamecol;
+    private TableColumn<Part, String> partnamecol;
     @javafx.fxml.FXML
-    private TableColumn <Part,Integer> quantitycol;
+    private TableColumn<Part, Integer> quantitycol;
     @javafx.fxml.FXML
     private TableView<Part> tableview;
     @javafx.fxml.FXML
     private TextField searchfield;
 
+
+    private static final String FILE_PATH = "parts.dat";
+
+
+
+
+
     private ObservableList<Part> partsList = FXCollections.observableArrayList();
-
-
 
 
     @javafx.fxml.FXML
@@ -47,7 +51,7 @@ public class InventoryupdateController
         quantitycol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
 
 
-        loadBinary();
+
 
         tableview.setItems(partsList);
 
@@ -79,10 +83,13 @@ public class InventoryupdateController
         }
 
         tableview.setItems(filtered);
+
+
+
     }
 
     @javafx.fxml.FXML
-    public void backOnActionButton(ActionEvent actionEvent)throws IOException {
+    public void backOnActionButton(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Tasfia/sparepartsmanager.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Button signOutButton = (Button) actionEvent.getSource();
@@ -90,7 +97,7 @@ public class InventoryupdateController
         stage.setScene(scene);
     }
 
-    private void showAlert(String title,String msg) {
+    private void showAlert(String title, String msg) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(title);
         alert.setContentText(msg);
@@ -102,12 +109,12 @@ public class InventoryupdateController
         Part selected = tableview.getSelectionModel().getSelectedItem();
 
         if (selected == null) {
-            showAlert("No selection","Please select a part from the table.");
+            showAlert("No selection", "Please select a part from the table.");
             return;
         }
 
         if (newquantityfield.getText().isEmpty()) {
-            showAlert("Empty field","Please enter new quantity.");
+            showAlert("Empty field", "Please enter new quantity.");
             return;
         }
         try {
@@ -116,32 +123,17 @@ public class InventoryupdateController
             selected.setQuantity(newQTy);
             tableview.refresh();
 
-            showAlert("Success","Quantity updated sucessfully!!");
-            } catch (NumberFormatException e) {
-              showAlert("Invalid Input","Quantity must be a number.");
+            showAlert("Success", "Quantity updated sucessfully!!");
+        } catch (NumberFormatException e) {
+            showAlert("Invalid Input", "Quantity must be a number.");
         }
     }
 
-    private void saveBinary() {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("parts.bin"))) {
-            oos.writeObject(new ArrayList<>(partsList));
-        } catch (IOException e) {
-            showAlert("Error", "Failed to save binary file.");
-        }
 
-    }
 
-    private void loadBinary() {
-        File file = new File("parts.bin");
-        if (!file.exists()) return;
 
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
-            List<Part> data = (List<Part>) ois.readObject();
-            partsList.setAll(data);
-        } catch (Exception e) {
-            showAlert("Error", "Failed to load binary file.");
-        }
 
-    }
 
 }
+
+

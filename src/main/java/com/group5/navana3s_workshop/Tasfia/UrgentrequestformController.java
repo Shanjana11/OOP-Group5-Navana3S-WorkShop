@@ -10,8 +10,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class UrgentrequestformController
 {
@@ -43,6 +44,9 @@ public class UrgentrequestformController
     private CheckBox managerapprovedcheckbox;
 
     private ObservableList<UrgentRequestModel> list = FXCollections.observableArrayList();
+
+
+    private static final String FILE_PATH = "urgentRequests.bin";
 
 
     @javafx.fxml.FXML
@@ -110,4 +114,21 @@ public class UrgentrequestformController
         textarea.clear();
         managerapprovedcheckbox.setSelected(false);
     }
+
+    private void saveToFile() {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_PATH))) {
+            oos.writeObject(new ArrayList<>(list));
+            System.out.println("Saved to binary file!");
+        } catch (IOException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Error saving data!", ButtonType.OK);
+            alert.showAndWait();
+        }
+    }
+
+
+
+
+
+
 }

@@ -10,8 +10,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class WarrantyclaimController
 {
@@ -33,12 +34,17 @@ public class WarrantyclaimController
 
     private ObservableList<WarrantyClaim> claimList = FXCollections.observableArrayList();
 
+    private final String FILE_NAME = "warrantyclaims.bin";
+
 
     @javafx.fxml.FXML
     public void initialize() {
         partnamecol.setCellValueFactory(new PropertyValueFactory<>("partName"));
         datecol.setCellValueFactory(new PropertyValueFactory<>("claimDate"));
         descriptioncol.setCellValueFactory(new PropertyValueFactory<>("description"));
+
+
+        loadClaimsFromFile();
 
 
         claimList.add(new WarrantyClaim("Engine Part A", LocalDate.now().toString(), "Engine replacement needed"));
@@ -82,5 +88,36 @@ public class WarrantyclaimController
         partnamefield.clear();
         claimarea.clear();
 
+    }
+
+    private void saveClaimsToFile() {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_NAME))) {
+            oos.writeObject(new ArrayList<>(claimList));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadClaimsFromFile() {
+        File file = new File(FILE_NAME);
+        if (!file.exists()) {
+            claimList.add(new WarrantyClaim("Engine Part A", LocalDate.now().toString(), "Engine replacement needed"));
+            claimList.add(new WarrantyClaim("Brake Pad", LocalDate.now().minusDays(2).toString(), "Brake malfunction"));
+            claimList.add(new WarrantyClaim("Oil Filter", LocalDate.now().minusDays(5).toString(), "Regular maintenance"));
+            return;
+        }
+
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_NAME))) {
+            Object obj = ois.readObject();
+            if (obj instanceof ArrayList<?> list) {
+                for (Object o : list) {
+                    if (o instanceof WarrantyClaim claim) {
+                        claimList.add(claim);
+                    }
+                }
+            }
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -11,7 +11,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +31,8 @@ public class ApproverequestController
     private TableView <PartRequest>tableview;
     @javafx.fxml.FXML
     private ComboBox<String> selectstatusCombobox;
+
+    private final String BINARY_FILE = "part_requests.dat";
 
 
     List<PartRequest> requestList = new ArrayList<>();
@@ -56,6 +58,7 @@ public class ApproverequestController
 
 
 
+
         tableview.getItems().setAll(requestList);
 
 
@@ -70,5 +73,6 @@ public class ApproverequestController
         Button signOutButton = (Button) actionEvent.getSource();
         Stage stage = (Stage) signOutButton.getScene().getWindow();
         stage.setScene(scene);
-    } 
+    }
+
 }

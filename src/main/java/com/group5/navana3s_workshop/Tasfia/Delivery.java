@@ -1,6 +1,8 @@
 package com.group5.navana3s_workshop.Tasfia;
 
-public class Delivery {
+import java.io.Serializable;
+
+public class Delivery implements Serializable {
     private String partName;
     private int quantity;
     private String deliveryDate;

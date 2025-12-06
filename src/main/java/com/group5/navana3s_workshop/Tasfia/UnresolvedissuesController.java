@@ -10,7 +10,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
 
 public class UnresolvedissuesController
 {
@@ -29,6 +30,10 @@ public class UnresolvedissuesController
     @javafx.fxml.FXML
     private TableColumn descriptioncol;
 
+    private final String filePath = "unresolved_issues.dat";
+
+
+
     private ObservableList<UnresolvedIssue> issueList = FXCollections.observableArrayList();
 
     @javafx.fxml.FXML
@@ -38,6 +43,9 @@ public class UnresolvedissuesController
         descriptioncol.setCellValueFactory(new PropertyValueFactory<>("description"));
         severitycol.setCellValueFactory(new PropertyValueFactory<>("severity"));
         managercol.setCellValueFactory(new PropertyValueFactory<>("manager"));
+
+
+        loadIssues();
 
 
 
@@ -62,8 +70,28 @@ public class UnresolvedissuesController
 
     @javafx.fxml.FXML
     public void saveOnActionButton(ActionEvent actionEvent) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.showAndWait();
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filePath))) {
+            oos.writeObject(new ArrayList<>(issueList));
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Saved successfully!", ButtonType.OK);
+            alert.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Failed to save!", ButtonType.OK);
+            alert.showAndWait();
+        }
+
+    }
+
+    private void loadIssues() {
+        File file = new File(filePath);
+        if (!file.exists()) return;
+
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
+            ArrayList<UnresolvedIssue> savedList = (ArrayList<UnresolvedIssue>) ois.readObject();
+            issueList.addAll(savedList);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     @javafx.fxml.FXML

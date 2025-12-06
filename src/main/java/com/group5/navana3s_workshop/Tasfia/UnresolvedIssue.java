@@ -1,6 +1,8 @@
 package com.group5.navana3s_workshop.Tasfia;
 
-public class UnresolvedIssue {
+import java.io.Serializable;
+
+public class UnresolvedIssue implements Serializable {
     private String description;
     private String severity;
     private String manager;
