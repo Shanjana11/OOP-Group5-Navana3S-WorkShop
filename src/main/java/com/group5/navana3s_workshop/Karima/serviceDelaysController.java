@@ -1,7 +1,6 @@
 package com.group5.navana3s_workshop.Karima;
 
 import com.group5.navana3s_workshop.HelloApplication;
-import com.group5.navana3s_workshop.Karima.modelClass.inventoryRequest;
 import com.group5.navana3s_workshop.Karima.modelClass.serviceDelay;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;

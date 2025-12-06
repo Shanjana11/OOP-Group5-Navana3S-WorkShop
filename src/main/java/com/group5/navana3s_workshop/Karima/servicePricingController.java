@@ -69,6 +69,7 @@ public class servicePricingController
 
         if (selected == null) {
             outputLabel.setText("Please select a service first.");
+            outputLabel.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
             return;
         }
 
@@ -76,6 +77,7 @@ public class servicePricingController
 
         if (newPriceText.isEmpty()) {
             outputLabel.setText("Enter new price.");
+            outputLabel.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
             return;
         }
 
@@ -85,6 +87,7 @@ public class servicePricingController
             newPrice = Double.parseDouble(newPriceText);
         } catch (NumberFormatException e) {
             outputLabel.setText("Invalid price.");
+            outputLabel.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
             return;
         }
 
@@ -97,6 +100,7 @@ public class servicePricingController
         newPriceField.clear();
 
         outputLabel.setText("Price updated successfully.");
+        outputLabel.setStyle("-fx-text-fill: black; -fx-font-weight: bold;");
     }
 
     @javafx.fxml.FXML
@@ -108,8 +112,10 @@ public class servicePricingController
             }
 
             outputLabel.setText("Pricing saved!");
+            outputLabel.setStyle("-fx-text-fill: black; -fx-font-weight: bold;");
         } catch (Exception e) {
             outputLabel.setText("Error!");
+            outputLabel.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
         }
     }
 
@@ -124,8 +130,10 @@ public class servicePricingController
 
         } catch (EOFException e) {
             outputLabel.setText("Pricing loaded!");
+            outputLabel.setStyle("-fx-text-fill: black; -fx-font-weight: bold;");
         } catch (Exception e) {
             outputLabel.setText("Error!");
+            outputLabel.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
         }
     }
 }
