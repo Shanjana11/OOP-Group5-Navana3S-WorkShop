@@ -1,7 +1,6 @@
 package com.group5.navana3s_workshop.Karima;
 
 import com.group5.navana3s_workshop.HelloApplication;
-import com.group5.navana3s_workshop.Karima.modelClass.customerConsultation;
 import com.group5.navana3s_workshop.Karima.modelClass.customerManagement;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -45,7 +44,6 @@ public class customerManagementController
         String contact = numberField.getText().trim();
         String interest = interestField.getText().trim();
 
-        // Event 4: Validate
         if (name.isEmpty() || contact.isEmpty() || interest.isEmpty()) {
             outputLabel.setText("Please fill all fields.");
             return;

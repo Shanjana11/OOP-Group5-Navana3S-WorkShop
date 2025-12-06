@@ -85,7 +85,7 @@ public class resourceManagementController
             return;
         }
 
-        // Event 4 → Verify staff availability
+
         for (resourceAllocation r : staffTable.getItems()) {
 
             if (r.getStaffName().equals(selectedStaff)) {
