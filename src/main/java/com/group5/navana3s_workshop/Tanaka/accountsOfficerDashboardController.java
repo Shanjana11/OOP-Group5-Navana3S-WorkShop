@@ -17,31 +17,31 @@ public class accountsOfficerDashboardController
 
     @javafx.fxml.FXML
     public void accountHistoryOnActionButton(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("com/group5/navana3s_workshop/Tanaka/accountHistory.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Tanaka/accountHistory.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Button signOutButton = (Button) actionEvent.getSource();
         Stage stage = (Stage) signOutButton.getScene().getWindow();
-        stage.setTitle("Account History");
+        stage.setTitle("Accounts Officer Dashboard");
         stage.setScene(scene);
     }
 
     @javafx.fxml.FXML
     public void claimsOnActionButton(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("com/group5/navana3s_workshop/Tanaka/claimsController.java"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Tanaka/claims.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Button signOutButton = (Button) actionEvent.getSource();
         Stage stage = (Stage) signOutButton.getScene().getWindow();
-        stage.setTitle("Claims");
+        stage.setTitle("Accounts Officer Dashboard");
         stage.setScene(scene);
     }
 
     @javafx.fxml.FXML
     public void dailyLedgerOnActionButton(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("com/group5/navana3s_workshop/Tanaka/dailyLedger.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Tanaka/dailyLedger.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Button signOutButton = (Button) actionEvent.getSource();
         Stage stage = (Stage) signOutButton.getScene().getWindow();
-        stage.setTitle("Daily Ledger");
+        stage.setTitle("Accounts Officer Dashboard");
         stage.setScene(scene);
     }
 
@@ -56,51 +56,45 @@ public class accountsOfficerDashboardController
 
     @javafx.fxml.FXML
     public void processPaymentOnActionButton(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("com/group5/navana3s_workshop/Tanaka/paymentProcess.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Tanaka/paymentProcess.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Button signOutButton = (Button) actionEvent.getSource();
         Stage stage = (Stage) signOutButton.getScene().getWindow();
-        stage.setTitle("Payment Process");
-        stage.setScene(scene);
-    }
-
-    @javafx.fxml.FXML
-    public void vendorPayments(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("com/group5/navana3s_workshop/Tanaka/vendorPayment.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        Button signOutButton = (Button) actionEvent.getSource();
-        Stage stage = (Stage) signOutButton.getScene().getWindow();
-        stage.setTitle("Vendor Payment");
+        stage.setTitle("Accounts Officer Dashboard");
         stage.setScene(scene);
     }
 
     @javafx.fxml.FXML
     public void generateInvoiceOnActionButton(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("com/group5/navana3s_workshop/Tanaka/generateInvoice.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Tanaka/generateInvoice.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Button signOutButton = (Button) actionEvent.getSource();
         Stage stage = (Stage) signOutButton.getScene().getWindow();
-        stage.setTitle("Generate Invoice");
+        stage.setTitle("Accounts Officer Dashboard");
         stage.setScene(scene);
-    }
+        }
 
     @javafx.fxml.FXML
     public void pettyCashOnActionButton(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("com/group5/navana3s_workshop/Tanaka/pettyCash.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Tanaka/pettyCash.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Button signOutButton = (Button) actionEvent.getSource();
         Stage stage = (Stage) signOutButton.getScene().getWindow();
-        stage.setTitle("Petty Cash");
+        stage.setTitle("Accounts Officer Dashboard");
+        stage.setScene(scene);
+       }
+
+    @javafx.fxml.FXML
+    public void financialReportsOnActionButton(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/group5/navana3s_workshop/Tanaka/financialReport.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Button signOutButton = (Button) actionEvent.getSource();
+        Stage stage = (Stage) signOutButton.getScene().getWindow();
+        stage.setTitle("Accounts Officer Dashboard");
         stage.setScene(scene);
     }
 
     @javafx.fxml.FXML
-    public void financialReportsOnActionButton(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("com/group5/navana3s_workshop/Tanaka/financialReport.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        Button signOutButton = (Button) actionEvent.getSource();
-        Stage stage = (Stage) signOutButton.getScene().getWindow();
-        stage.setTitle("Financial Reports");
-        stage.setScene(scene);
+    public void vendorPayments(ActionEvent actionEvent) {
     }
 }

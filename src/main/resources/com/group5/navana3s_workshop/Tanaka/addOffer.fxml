@@ -3,26 +3,36 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Tanaka.addOfferController">
+<AnchorPane prefHeight="400.0" prefWidth="669.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group5.navana3s_workshop.Tanaka.addOfferController">
    <children>
       <Label layoutX="171.0" layoutY="14.0" text="Add New Offer">
          <font>
             <Font name="System Bold" size="27.0" />
          </font>
       </Label>
-      <Label layoutX="30.0" layoutY="82.0" text="Offer Name:" />
-      <TextField fx:id="offerNameTextField" layoutX="179.0" layoutY="78.0" />
-      <TextField fx:id="discountPercentageTextField" layoutX="179.0" layoutY="115.0" />
-      <Label layoutX="30.0" layoutY="119.0" text="Discount Percentage:" />
-      <Label layoutX="33.0" layoutY="164.0" text="Offer Start:" />
-      <Label layoutX="32.0" layoutY="202.0" text="Offer end:" />
-      <DatePicker fx:id="offerStartDatePicker" layoutX="179.0" layoutY="159.0" prefHeight="26.0" prefWidth="175.0" />
-      <DatePicker fx:id="offerEndDatePicker" layoutX="179.0" layoutY="198.0" />
-      <Button layoutX="118.0" layoutY="258.0" mnemonicParsing="false" onAction="#addOfferOnActionButton" text="Add Offer" />
+      <Label layoutX="14.0" layoutY="82.0" text="Offer Name:" />
+      <TextField fx:id="offerNameTextField" layoutX="91.0" layoutY="78.0" />
+      <TextField fx:id="discountPercentageTextField" layoutX="131.0" layoutY="115.0" />
+      <Label layoutX="14.0" layoutY="119.0" text="Discount Percentage:" />
+      <Label layoutX="17.0" layoutY="164.0" text="Offer Start:" />
+      <Label layoutX="14.0" layoutY="202.0" text="Offer end:" />
+      <DatePicker fx:id="offerStartDatePicker" layoutX="83.0" layoutY="160.0" prefHeight="26.0" prefWidth="175.0" />
+      <DatePicker fx:id="offerEndDatePicker" layoutX="78.0" layoutY="198.0" />
+      <Button layoutX="137.0" layoutY="234.0" mnemonicParsing="false" onAction="#addOfferOnActionButton" text="Add Offer" />
       <Button layoutX="535.0" layoutY="343.0" mnemonicParsing="false" onAction="#backOnActionButton" text="Back" />
+      <TableView fx:id="newOfferTableView" layoutX="301.0" layoutY="73.0" prefHeight="200.0" prefWidth="353.0">
+        <columns>
+          <TableColumn fx:id="offerNameColumn" prefWidth="79.20001220703125" text="Offer Name" />
+          <TableColumn fx:id="discountPercentageColumn" prefWidth="129.60003662109375" text="Discount Percentage" />
+            <TableColumn fx:id="startOfferColumn" prefWidth="73.5999755859375" text="Start Offer" />
+            <TableColumn fx:id="endOfferColunb" prefWidth="68.800048828125" text="End Offer" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>
