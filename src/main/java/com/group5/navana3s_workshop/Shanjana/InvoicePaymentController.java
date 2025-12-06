@@ -10,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +37,6 @@ public class InvoicePaymentController {
         amountC.setCellValueFactory(new PropertyValueFactory<>("amount"));
         statusC.setCellValueFactory(new PropertyValueFactory<>("status"));
 
-
         loadInvoices();
     }
 
@@ -46,16 +44,8 @@ public class InvoicePaymentController {
         List<Estimate> estimates = loadEstimates();
 
         invoiceList.clear();
-
         for (Estimate e : estimates) {
-
-            Invoice record = new Invoice(
-                    e.getBookingId(),
-                    e.getServiceType(),
-                    e.getTotalCost(),
-                    "Unpaid"
-            );
-
+            Invoice record = new Invoice(e.getBookingId(), e.getServiceType(), e.getTotalCost(), "Unpaid");
             invoiceList.add(record);
         }
 
@@ -79,6 +69,7 @@ public class InvoicePaymentController {
         Invoice selected = tableView.getSelectionModel().getSelectedItem();
         String method = methodCombo.getValue();
 
+        // validation
         if (selected == null) {
             infoLabel.setText("Select a service to pay.");
             return;
@@ -89,19 +80,17 @@ public class InvoicePaymentController {
         }
 
         selected.setStatus("Paid");
+        selected.setPaymentMethod(method);
         tableView.refresh();
 
-        savePayment(selected, method);
+        savePayment(selected);
 
         infoLabel.setText("Payment successful for " + selected.getBookingId());
     }
 
-    private void savePayment(Invoice record, String method) {
+    private void savePayment(Invoice record) {
 
         List<Invoice> paid = loadPayments();
-
-        // attach method info inside record
-        record.setPaymentMethod(method);
 
         paid.add(record);
 
@@ -131,4 +120,5 @@ public class InvoicePaymentController {
         Stage stage = (Stage) backBtn.getScene().getWindow();
         stage.setScene(scene);
     }
-}
+
+    }

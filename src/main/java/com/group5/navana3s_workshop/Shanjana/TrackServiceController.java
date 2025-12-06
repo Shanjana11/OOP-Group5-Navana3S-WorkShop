@@ -16,7 +16,6 @@ public class TrackServiceController {
 
     @FXML
     private Label progressStatus;
-
     @FXML
     private TextField bookID;
 
@@ -25,9 +24,8 @@ public class TrackServiceController {
 
     @FXML
     public void initialize() {
-        // Load data on startup
+        // Load data
         serviceList = loadOrCreateDummyData();
-
     }
 
     @FXML
@@ -89,7 +87,6 @@ public class TrackServiceController {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-
         return dummy;
     }
 

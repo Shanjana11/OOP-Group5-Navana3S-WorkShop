@@ -26,15 +26,8 @@ public class FeedbackComplaintController {
 
     @FXML
     public void initialize() {
-
-        // Load rating items
         rateCombo.getItems().addAll("Excellent", "Average", "Poor");
-
-        // Load service types
-        typeCombo.getItems().addAll(
-                "Regular Service", "Oil Change", "Brake Service",
-                "Engine Repair", "AC Service", "Tire Change"
-        );
+        typeCombo.getItems().addAll("Regular Service", "Oil Change", "Brake Service", "Engine Repair", "AC Service", "Tire Change");
 
         // Load booking IDs from bookings.dat
         List<BookService> bookings = loadBookings();
@@ -56,12 +49,7 @@ public class FeedbackComplaintController {
             return;
         }
 
-        Feedback record = new Feedback(
-                bookingId,
-                serviceType,
-                rating,
-                LocalDateTime.now()
-        );
+        Feedback record = new Feedback(bookingId, serviceType, rating, LocalDateTime.now());
 
         saveFeedback(record);
 

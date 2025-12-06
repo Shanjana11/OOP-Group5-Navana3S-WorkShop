@@ -24,7 +24,7 @@ public class SparePartAvailabilityController {
     @FXML
     private Label partInfo;
 
-    private final String FILE_PATH = "D:\\Study\\7th semester\\OOP Projects\\Navana3S_WorkShop\\spareParts.dat";
+    private final String FILE_PATH = "spareParts.dat";
 
     @FXML
     public void initialize() {

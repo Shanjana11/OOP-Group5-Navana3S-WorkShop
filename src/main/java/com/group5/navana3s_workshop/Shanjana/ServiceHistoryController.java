@@ -37,9 +37,9 @@ public class ServiceHistoryController {
         serviceTypeCol.setCellValueFactory(new PropertyValueFactory<>("serviceType"));
     }
 
-    // Load service history when clicking Load button
+
     @FXML
-    public void LoadHistory(ActionEvent actionEvent) {
+    public void LoadHistory(ActionEvent actionEvent) {     // Load service history when clicking Load button
 
         List<BookService> bookingList = loadBookingData();
 
