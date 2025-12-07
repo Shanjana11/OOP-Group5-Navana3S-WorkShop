@@ -29,6 +29,6 @@
       <TextField fx:id="newquantityfield" layoutX="117.0" layoutY="153.0" promptText="New Quantity" />
       <Button layoutX="27.0" layoutY="247.0" mnemonicParsing="false" onAction="#updateOnActionButton" text="Update" />
       <Button layoutX="32.0" layoutY="450.0" mnemonicParsing="false" onAction="#backOnActionButton" text="Back" />
-      <Label layoutX="137.0" layoutY="122.0" text="0" />
+      <Label fx:id="currentquantity" layoutX="137.0" layoutY="122.0" text="0" />
    </children>
 </AnchorPane>

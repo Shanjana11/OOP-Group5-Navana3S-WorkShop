@@ -47,7 +47,7 @@ public class AssignedjobController
     }
 
     public void loadTableData() {
-        // Demo Data
+
 
     }
 
